@@ -15133,69 +15133,7 @@ render._withStripped = true
         
       }
     })();
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
-module.exports = {
-  "characters": {
-    "1": {
-      "link": "require('/assets/images/bowser.png')"
-    },
-    "2": {
-      "link": "require('/assets/images/zelda.png')"
-    }
-  },
-  "game": {
-    "1": {
-      "question": "PAGE GAME/1 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/2",
-          "src": "/testimg.b3b21468.jpg",
-          "altSrc": "img-answer-one"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose",
-          "src": "/zelda.772ea01c.png",
-          "altSrc": "img-answer-two"
-        },
-        "answerThree": {
-          "message": "Maybe",
-          "link": "/game/2",
-          "src": "/testimg.b3b21468.jpg",
-          "altSrc": "img-answer-three"
-        }
-      }
-    },
-    "2": {
-      "question": "PAGE GAME/2 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/3"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
-    },
-    "3": {
-      "question": "PAGE GAME/3 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/home"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
-    }
-  }
-};
-},{}],"assets/images/okay.png":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"assets/images/okay.png":[function(require,module,exports) {
 module.exports = "/okay.23d6cbf7.png";
 },{}],"assets/images/close.svg":[function(require,module,exports) {
 module.exports = "/close.4d174d6e.svg";
@@ -15208,11 +15146,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _data = _interopRequireDefault(require("../data.json"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 //
 //
 //
@@ -15422,7 +15355,61 @@ render._withStripped = true
       
       }
     })();
-},{"../data.json":"data.json","/assets/images/okay.png":"assets/images/okay.png","/assets/images/close.svg":"assets/images/close.svg","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Game.vue":[function(require,module,exports) {
+},{"/assets/images/okay.png":"assets/images/okay.png","/assets/images/close.svg":"assets/images/close.svg","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
+module.exports = {
+  "1": {
+    "question": "PAGE GAME/1 ?",
+    "choices": {
+      "answerOne": {
+        "message": "Oui",
+        "link": "/game/2",
+        "src": "/testimg.b3b21468.jpg",
+        "altSrc": "img-answer-one"
+      },
+      "answerTwo": {
+        "message": "No",
+        "link": "/lose",
+        "src": "/zelda.772ea01c.png",
+        "altSrc": "img-answer-two"
+      },
+      "answerThree": {
+        "message": "Maybe",
+        "link": "/game/2",
+        "src": "/testimg.b3b21468.jpg",
+        "altSrc": "img-answer-three"
+      }
+    }
+  },
+  "2": {
+    "question": "PAGE GAME/2 ?",
+    "choices": {
+      "answerOne": {
+        "message": "Oui",
+        "link": "/game/3",
+        "src": "/testimg.b3b21468.jpg",
+        "altSrc": "img-answer-three"
+      },
+      "answerTwo": {
+        "message": "No",
+        "link": "/lose"
+      }
+    }
+  },
+  "3": {
+    "question": "PAGE GAME/3 ?",
+    "choices": {
+      "answerOne": {
+        "message": "Oui",
+        "link": "/home"
+      },
+      "answerTwo": {
+        "message": "No",
+        "link": "/lose"
+      }
+    }
+  }
+};
+},{}],"components/Game.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15452,11 +15439,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
-      level: _data2.default.game[this.$route.params.id],
-      choices: _data2.default.game[this.$route.params.id].choices
+      level: _data2.default[this.$route.params.id],
+      choices: _data2.default[this.$route.params.id].choices
     };
   }
 };
@@ -15480,34 +15469,31 @@ exports.default = _default;
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "answers" },
-      _vm._l(_vm.choices, function(choice) {
-        return _c(
-          "div",
-          { key: choice.message },
-          [
-            _c("img", {
-              staticStyle: { width: "200px" },
-              attrs: { src: choice.src, alt: choice.altSrc }
-            }),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              { staticClass: "button", attrs: { to: choice.link } },
-              [
-                _vm._v(
-                  "\n                  " + _vm._s(choice.message) + "\n    "
-                )
-              ]
-            )
-          ],
-          1
-        )
-      }),
-      0
-    )
+    _c("div", { staticClass: "answers" }, [
+      _c(
+        "div",
+        _vm._l(_vm.choices, function(choice) {
+          return _c(
+            "router-link",
+            {
+              key: choice.message,
+              staticClass: "button",
+              attrs: { to: choice.link }
+            },
+            [
+              _vm._v(
+                "\n                  " + _vm._s(choice.message) + "\n   \n   "
+              ),
+              _c("img", {
+                staticStyle: { width: "200px" },
+                attrs: { src: choice.src, alt: choice.altSrc }
+              })
+            ]
+          )
+        }),
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -15773,7 +15759,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 new _vue.default({
   router: _router.default
-}).$mount('#root'); // register modal component
+}).$mount('#root');
 
 _vue.default.component('modal', {
   template: '#modal-template'
@@ -15806,7 +15792,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59654" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57996" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

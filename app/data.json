@@ -1,16 +1,5 @@
-{
+{ 
 
-  "characters" : {
-    "1" : {
-      "link" : "require('/assets/images/bowser.png')"
-    },
-
-    "2" : {
-      "link" : "require('/assets/images/zelda.png')"
-    }
-  },
- 
-  "game" : {
     "1" : {
       "question" : "PAGE GAME/1 ?",
         "choices" : {
@@ -44,7 +33,9 @@
         "choices" : {
           "answerOne" : {
             "message" : "Oui",
-            "link" : "/game/3"
+            "link" : "/game/3",
+            "src" : "/testimg.b3b21468.jpg",
+            "altSrc" : "img-answer-three"
           },
           "answerTwo" : {
             "message" : "No",
@@ -70,5 +61,5 @@
   }
     
 
-}
+
   
