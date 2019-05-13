@@ -1,5 +1,19 @@
-@import 'reset';
+@import '../scss/reset.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import '../scss/fonts.scss';
+
+.modal {
+  width: 80vw;
+  height: 80vh;
+
+  background-color: lightblue;
+  opacity: .9;
+  animation: fadeIn 1s ease-out;
+}
+
+.modal-leave-active {
+  animation: fadeOut 1s;
+}
 
 $hetic-green: #14133f;
 
@@ -9,12 +23,37 @@ $hetic-green: #14133f;
   justify-content: center;
 }
 
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: .9;
+  }
+}
+
+
+@keyframes fadeOut {
+  from {
+    opacity: .9;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
 body,
 button,
 input,
 select,
 textarea {
-  font-family: 'Roboto';
+  font-family: 'ea_font_v1.5_by_ghettosharkRg';
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
 .big-header {
@@ -36,7 +75,8 @@ textarea {
   padding: 5px;
   border-radius: 5px;
   border: 3px purple solid;
-
+  width: auto;
+  height: 40px;
   @include flex-center;
   flex-direction: column;
 
@@ -58,9 +98,11 @@ a img {
 }
 
 .hover:hover {
-  border-radius: 25px; border: 1px solid blue;
+  /*border-radius: 25px; border: 1px solid blue;*/
+  opacity: .3;
   cursor: pointer;
-  transform: scale(1.1);
+
+ 
 }
 
 .test {

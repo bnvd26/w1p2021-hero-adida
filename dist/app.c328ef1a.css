@@ -222,12 +222,48 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: "ea_font_v1.5_by_ghettosharkRg";
+  src: url("/easports15-webfont.aebd52ed.woff2") format("woff2"), url("/easports15-webfont.5f894091.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.modal {
+  width: 80vw;
+  height: 80vh;
+  background-color: lightblue;
+  opacity: 0.9;
+  animation: fadeIn 1s ease-out;
+}
+
+.modal-leave-active {
+  animation: fadeOut 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
+}
 body,
 button,
 input,
 select,
 textarea {
-  font-family: "Roboto";
+  font-family: "ea_font_v1.5_by_ghettosharkRg";
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
 .big-header {
@@ -248,6 +284,8 @@ textarea {
   padding: 5px;
   border-radius: 5px;
   border: 3px purple solid;
+  width: auto;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,10 +305,9 @@ a img {
 }
 
 .hover:hover {
-  border-radius: 25px;
-  border: 1px solid blue;
+  /*border-radius: 25px; border: 1px solid blue;*/
+  opacity: 0.3;
   cursor: pointer;
-  transform: scale(1.1);
 }
 
 .test {

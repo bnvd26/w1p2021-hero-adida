@@ -14707,7 +14707,74 @@ if (inBrowser && window.Vue) {
 
 var _default = VueRouter;
 exports.default = _default;
-},{}],"../node_modules/vue-hot-reload-api/dist/index.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/vue-hot-reload-api/dist/index.js":[function(require,module,exports) {
 var Vue // late bind
 var version
 var map = Object.create(null)
@@ -14999,7 +15066,7 @@ exports.default = void 0;
 var _default = {
   data: function data() {
     return {
-      message: 'Bienvenue sur la page principal de ce jeu en construction'
+      message: 'ULTIMATE CAREER 19'
     };
   }
 };
@@ -15020,7 +15087,11 @@ exports.default = _default;
     "div",
     { staticClass: "big-header" },
     [
-      _c("h1", [_vm._v(_vm._s(_vm.message))]),
+      _c(
+        "h1",
+        { staticStyle: { "font-size": "100px", "word-spacing": "50px" } },
+        [_vm._v(_vm._s(_vm.message))]
+      ),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
@@ -15062,7 +15133,7 @@ render._withStripped = true
         
       }
     })();
-},{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
 module.exports = {
   "characters": {
     "1": {
@@ -15124,78 +15195,13 @@ module.exports = {
     }
   }
 };
-},{}],"assets/images/zelda.png":[function(require,module,exports) {
-module.exports = "/zelda.772ea01c.png";
-},{}],"assets/images/bowser.png":[function(require,module,exports) {
-module.exports = "/bowser.83cbcbf9.png";
-},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/Character.vue":[function(require,module,exports) {
+},{}],"assets/images/okay.png":[function(require,module,exports) {
+module.exports = "/okay.23d6cbf7.png";
+},{}],"assets/images/close.svg":[function(require,module,exports) {
+module.exports = "/close.4d174d6e.svg";
+},{}],"assets/images/entraineur-1.png":[function(require,module,exports) {
+module.exports = "/entraineur-1.0d14a7bc.png";
+},{}],"components/Character.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15225,20 +15231,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
       visible: true,
-      firstCharacter: require('/assets/images/zelda.png'),
-      secondCharacter: require('/assets/images/bowser.png'),
+      showModal: false,
+      firstCharacter: require('/assets/images/okay.png'),
+      secondCharacter: require('/assets/images/okay.png'),
+      closeSvg: require('/assets/images/close.svg'),
+      picEntr: require('/assets/images/entraineur-1.png'),
       message: "Choisissez votre PERSONNAGE"
     };
   },
-  methods: {
-    say: function say() {
-      document.querySelector('.hoverr').classList.add('translateX');
-    }
-  }
+  methods: {}
 };
 exports.default = _default;
         var $1c4b50 = exports.default || module.exports;
@@ -15284,30 +15302,88 @@ exports.default = _default;
                   _c("img", {
                     staticClass: "hover",
                     staticStyle: { height: "220px" },
-                    attrs: { src: _vm.firstCharacter }
+                    attrs: { src: _vm.firstCharacter },
+                    on: {
+                      click: function($event) {
+                        _vm.showModal = true
+                      }
+                    }
                   }),
                   _vm._v(" "),
                   _c("img", {
-                    staticClass: "hoverr",
+                    staticClass: "hover hoverr",
                     staticStyle: { height: "220px" },
                     attrs: { src: _vm.secondCharacter },
-                    on: { click: _vm.say }
+                    on: {
+                      click: function($event) {
+                        _vm.showModal = true
+                      }
+                    }
                   })
                 ]
               )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              key: _vm.visible,
-              staticClass: "button",
-              attrs: { to: "/game/1" }
-            },
-            [_vm._v("Go to Game")]
-          )
-        ],
-        1
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "modal" } }, [
+        _vm.showModal
+          ? _c(
+              "div",
+              {
+                staticClass: "modal",
+                staticStyle: { position: "absolute" },
+                attrs: { id: "modal-template" }
+              },
+              [
+                _c("h1", [
+                  _vm._v("TEST"),
+                  _c(
+                    "h1",
+                    [
+                      _c("img", {
+                        staticStyle: {
+                          width: "30px",
+                          height: "30px",
+                          cursor: "pointer"
+                        },
+                        attrs: { src: _vm.closeSvg },
+                        on: {
+                          click: function($event) {
+                            _vm.showModal = false
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticStyle: { width: "100px" },
+                        attrs: { src: _vm.picEntr }
+                      }),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore minus facere libero recusandae quidem, dignissimos repellendus. Illum, hic ex recusandae, quos deserunt obcaecati, iusto distinctio porro ducimus sint blanditiis tempora?"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        { staticClass: "button", attrs: { to: "game/1" } },
+                        [_vm._v(" Jouer avec Jurgen Klopp ")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ]
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        { key: _vm.visible, staticClass: "button", attrs: { to: "/game/1" } },
+        [_vm._v("Go to Game")]
       )
     ],
     1
@@ -15346,7 +15422,7 @@ render._withStripped = true
       
       }
     })();
-},{"../data.json":"data.json","/assets/images/zelda.png":"assets/images/zelda.png","/assets/images/bowser.png":"assets/images/bowser.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Game.vue":[function(require,module,exports) {
+},{"../data.json":"data.json","/assets/images/okay.png":"assets/images/okay.png","/assets/images/close.svg":"assets/images/close.svg","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Game.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15684,7 +15760,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app.js":[function(require,module,exports) {
+},{"./easports15-webfont.woff2":[["easports15-webfont.aebd52ed.woff2","assets/scss/easports15-webfont.woff2"],"assets/scss/easports15-webfont.woff2"],"./easports15-webfont.woff":[["easports15-webfont.5f894091.woff","assets/scss/easports15-webfont.woff"],"assets/scss/easports15-webfont.woff"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -15697,7 +15773,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 new _vue.default({
   router: _router.default
-}).$mount('#root');
+}).$mount('#root'); // register modal component
+
+_vue.default.component('modal', {
+  template: '#modal-template'
+});
 },{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./assets/scss/styles.scss":"assets/scss/styles.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -15726,7 +15806,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49226" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59654" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

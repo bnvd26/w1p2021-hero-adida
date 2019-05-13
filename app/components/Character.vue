@@ -7,11 +7,24 @@
     <br />
  <transition-group name="bounce" appear tag="div" class="test">
     <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100%;">
-   <img :src="firstCharacter" style="height: 220px;" class="hover" >
-   <img :src="secondCharacter" style="height: 220px;" class="hoverr" v-on:click="say">   
-   </div> 
- 
+   <img :src="firstCharacter" style="height: 220px;" class="hover" @click="showModal = true">
+   <img :src="secondCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true">   
+   </div>
+    
+   </transition-group> 
 
+<transition name="modal">
+  
+  <div v-if="showModal" style="position: absolute" id="modal-template" class="modal">
+     <h1 >TEST<h1>
+      
+       <img :src="closeSvg" style="width: 30px; height:30px; cursor: pointer" @click="showModal = false">
+        <img :src="picEntr" style="width: 100px">
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore minus facere libero recusandae quidem, dignissimos repellendus. Illum, hic ex recusandae, quos deserunt obcaecati, iusto distinctio porro ducimus sint blanditiis tempora?</p>
+       <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
+    </div> 
+
+</transition>
   <router-link :key="visible"  class="button" to="/game/1">Go to Game</router-link>
      </div>  
 </template>
@@ -26,19 +39,24 @@ import data from '../data.json';
         return {
          
             visible: true,
-        
-            firstCharacter: require('/assets/images/zelda.png'),
-            secondCharacter: require('/assets/images/bowser.png'),
+            showModal: false,
+            firstCharacter: require('/assets/images/okay.png'),
+            secondCharacter: require('/assets/images/okay.png'),
+            closeSvg: require('/assets/images/close.svg'),
+            picEntr : require('/assets/images/entraineur-1.png'),
             message : "Choisissez votre PERSONNAGE",
            
         }
         
     },
    methods: {
-     say: function () {
-      document.querySelector('.hoverr').classList.add('translateX')
+     
+   
+     
+
+
     }
-   }
+   
    
 
  

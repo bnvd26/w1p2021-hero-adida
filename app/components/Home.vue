@@ -1,6 +1,6 @@
 <template>
   <div class="big-header">
-    <h1>{{ message }}</h1>
+    <h1 style="font-size: 100px; word-spacing: 50px;">{{message}}</h1>
     <br />
     <router-link class="button" to="/character">Go to Page</router-link>
     
@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      message: 'Bienvenue sur la page principal de ce jeu en construction'
+      message: 'ULTIMATE CAREER 19'
     };
   }
 };
