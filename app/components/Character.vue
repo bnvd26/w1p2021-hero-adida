@@ -1,25 +1,28 @@
 <template>
  
-  <div class="big-header">
+  <div class="big-header" > <!-- for opacity dynamic :class="showModal ? 'opacity' : ' ' -->
+>
   
     <h1 >{{message}}</h1>
 
     <br />
  <transition-group name="bounce" appear tag="div" class="test">
-    <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100%;">
+    <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
    <img :src="firstCharacter" style="height: 220px;" class="hover" @click="showModal = true">
    <img :src="secondCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true">   
+   <img :src="thirdCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true"> 
+
    </div>
     
    </transition-group> 
 
 <transition name="modal">
   
-  <div v-if="showModal" style="position: absolute" id="modal-template" class="modal">
+  <div v-if="showModal" style="position: absolute;" id="modal-template" class="modal" >
      <h1 >TEST<h1>
       
-       <img :src="closeSvg" style="width: 30px; height:30px; cursor: pointer" @click="showModal = false">
-        <img :src="picEntr" style="width: 100px">
+       <img :src="closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModal = false">
+        <img :src="cardEntr" style="width: 100px">
        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore minus facere libero recusandae quidem, dignissimos repellendus. Illum, hic ex recusandae, quos deserunt obcaecati, iusto distinctio porro ducimus sint blanditiis tempora?</p>
        <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
     </div> 
@@ -38,12 +41,13 @@
         
         return {
          
-            visible: true,
+           visible: true,
             showModal: false,
-            firstCharacter: require('/assets/images/okay.png'),
-            secondCharacter: require('/assets/images/okay.png'),
+            firstCharacter: require('/assets/images/klopp.png'),
+            secondCharacter: require('/assets/images/zidane.png'),
+            thirdCharacter: require('/assets/images/kombouare.png'),
             closeSvg: require('/assets/images/close.svg'),
-            picEntr : require('/assets/images/entraineur-1.png'),
+            cardEntr : require('/assets/images/entraineur-1.png'),
             message : "Choisissez votre PERSONNAGE",
            
         }

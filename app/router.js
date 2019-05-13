@@ -10,6 +10,7 @@ import Win from './components/Win.vue';
 
 
 
+
 Vue.use(Router);
 
 const router = new Router({
@@ -21,6 +22,7 @@ const router = new Router({
       name: 'home',
       component: Home
     },
+  
     {
       path: '/character',
       name: 'character',

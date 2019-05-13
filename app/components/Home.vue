@@ -1,9 +1,10 @@
 <template>
   <div class="big-header">
-    <h1 style="font-size: 100px; word-spacing: 50px;">{{message}}</h1>
+    <h1 style="font-size: 100px; word-spacing: 50px;" >{{message}}</h1>
     <br />
-    <router-link class="button" to="/character">Go to Page</router-link>
-    
+    <transition name="play" appear :duration="100000" >
+    <router-link  class="button" to="/character" > {{rules}} </router-link>
+    </transition>
   </div>
 </template>
 
@@ -11,8 +12,12 @@
 export default {
   data() {
     return {
-      message: 'ULTIMATE CAREER 19'
-    };
-  }
+      message: 'ULTIMATE CAREER 19',
+      rules: 'CLICKER POUR JOUER'
+    
+    }
+  },
+
+  
 };
 </script>

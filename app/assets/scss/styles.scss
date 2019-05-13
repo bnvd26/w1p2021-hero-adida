@@ -3,7 +3,7 @@
 @import '../scss/fonts.scss';
 
 .modal {
-  width: 80vw;
+  width: 90vw;
   height: 80vh;
 
   background-color: lightblue;
@@ -11,9 +11,21 @@
   animation: fadeIn 1s ease-out;
 }
 
+.opacity {
+  opacity: .4;
+
+}
+
 .modal-leave-active {
   animation: fadeOut 1s;
 }
+
+
+
+/*
+.play-enter-active {
+  animation: myFade 3s infinite;        // a rajouter a la fin 
+}*/
 
 $hetic-green: #14133f;
 
@@ -21,6 +33,28 @@ $hetic-green: #14133f;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes myFade {
+  0%{
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 

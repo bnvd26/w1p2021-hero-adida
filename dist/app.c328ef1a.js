@@ -15063,10 +15063,12 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
-      message: 'ULTIMATE CAREER 19'
+      message: 'ULTIMATE CAREER 19',
+      rules: 'CLICKER POUR JOUER'
     };
   }
 };
@@ -15096,9 +15098,16 @@ exports.default = _default;
       _c("br"),
       _vm._v(" "),
       _c(
-        "router-link",
-        { staticClass: "button", attrs: { to: "/character" } },
-        [_vm._v("Go to Page")]
+        "transition",
+        { attrs: { name: "play", appear: "", duration: 100000 } },
+        [
+          _c(
+            "router-link",
+            { staticClass: "button", attrs: { to: "/character" } },
+            [_vm._v(" " + _vm._s(_vm.rules) + " ")]
+          )
+        ],
+        1
       )
     ],
     1
@@ -15133,8 +15142,12 @@ render._withStripped = true
         
       }
     })();
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"assets/images/okay.png":[function(require,module,exports) {
-module.exports = "/okay.23d6cbf7.png";
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"assets/images/klopp.png":[function(require,module,exports) {
+module.exports = "/klopp.057c513a.png";
+},{}],"assets/images/zidane.png":[function(require,module,exports) {
+module.exports = "/zidane.e2b745ad.png";
+},{}],"assets/images/kombouare.png":[function(require,module,exports) {
+module.exports = "/kombouare.4431cf75.png";
 },{}],"assets/images/close.svg":[function(require,module,exports) {
 module.exports = "/close.4d174d6e.svg";
 },{}],"assets/images/entraineur-1.png":[function(require,module,exports) {
@@ -15177,15 +15190,19 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
   data: function data() {
     return {
       visible: true,
       showModal: false,
-      firstCharacter: require('/assets/images/okay.png'),
-      secondCharacter: require('/assets/images/okay.png'),
+      firstCharacter: require('/assets/images/klopp.png'),
+      secondCharacter: require('/assets/images/zidane.png'),
+      thirdCharacter: require('/assets/images/kombouare.png'),
       closeSvg: require('/assets/images/close.svg'),
-      picEntr: require('/assets/images/entraineur-1.png'),
+      cardEntr: require('/assets/images/entraineur-1.png'),
       message: "Choisissez votre PERSONNAGE"
     };
   },
@@ -15208,6 +15225,7 @@ exports.default = _default;
     "div",
     { staticClass: "big-header" },
     [
+      _vm._v("\n>\n  \n    "),
       _c("h1", [_vm._v(_vm._s(_vm.message))]),
       _vm._v(" "),
       _c("br"),
@@ -15228,7 +15246,7 @@ exports.default = _default;
                     display: "flex",
                     "flex-direction": "row",
                     "justify-content": "space-around",
-                    width: "100%"
+                    width: "100vw"
                   }
                 },
                 [
@@ -15247,6 +15265,17 @@ exports.default = _default;
                     staticClass: "hover hoverr",
                     staticStyle: { height: "220px" },
                     attrs: { src: _vm.secondCharacter },
+                    on: {
+                      click: function($event) {
+                        _vm.showModal = true
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "hover hoverr",
+                    staticStyle: { height: "220px" },
+                    attrs: { src: _vm.thirdCharacter },
                     on: {
                       click: function($event) {
                         _vm.showModal = true
@@ -15278,7 +15307,10 @@ exports.default = _default;
                         staticStyle: {
                           width: "30px",
                           height: "30px",
-                          cursor: "pointer"
+                          cursor: "pointer",
+                          position: "absolute",
+                          right: "10px",
+                          top: "10px"
                         },
                         attrs: { src: _vm.closeSvg },
                         on: {
@@ -15290,7 +15322,7 @@ exports.default = _default;
                       _vm._v(" "),
                       _c("img", {
                         staticStyle: { width: "100px" },
-                        attrs: { src: _vm.picEntr }
+                        attrs: { src: _vm.cardEntr }
                       }),
                       _vm._v(" "),
                       _c("p", [
@@ -15355,7 +15387,7 @@ render._withStripped = true
       
       }
     })();
-},{"/assets/images/okay.png":"assets/images/okay.png","/assets/images/close.svg":"assets/images/close.svg","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
+},{"/assets/images/klopp.png":"assets/images/klopp.png","/assets/images/zidane.png":"assets/images/zidane.png","/assets/images/kombouare.png":"assets/images/kombouare.png","/assets/images/close.svg":"assets/images/close.svg","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
 module.exports = {
   "1": {
     "question": "PAGE GAME/1 ?",
@@ -15441,9 +15473,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
+      okay: true,
+      message: 'saloute',
       level: _data2.default[this.$route.params.id],
       choices: _data2.default[this.$route.params.id].choices
     };
@@ -15469,31 +15505,36 @@ exports.default = _default;
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c("div", { staticClass: "answers" }, [
-      _c(
-        "div",
-        _vm._l(_vm.choices, function(choice) {
-          return _c(
-            "router-link",
-            {
-              key: choice.message,
-              staticClass: "button",
-              attrs: { to: choice.link }
-            },
-            [
-              _vm._v(
-                "\n                  " + _vm._s(choice.message) + "\n   \n   "
-              ),
-              _c("img", {
-                staticStyle: { width: "200px" },
-                attrs: { src: choice.src, alt: choice.altSrc }
-              })
-            ]
-          )
-        }),
-        1
-      )
-    ])
+    _c(
+      "div",
+      { staticClass: "answers" },
+      _vm._l(_vm.choices, function(choice) {
+        return _c(
+          "div",
+          { key: choice.message },
+          [
+            _c(
+              "router-link",
+              { staticClass: "button", attrs: { to: choice.link } },
+              [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(choice.message) +
+                    "\n   \n  \n    "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("img", {
+              staticStyle: { width: "200px" },
+              attrs: { src: choice.src, alt: choice.altSrc }
+            })
+          ],
+          1
+        )
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []
@@ -15523,6 +15564,10 @@ render._withStripped = true
         }
 
         
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
       }
     })();
 },{"../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
@@ -15792,7 +15837,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57996" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50481" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
