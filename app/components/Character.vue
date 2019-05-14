@@ -1,7 +1,7 @@
 <template>
  
-  <div class="big-header" > <!-- for opacity dynamic :class="showModal ? 'opacity' : ' ' -->
->
+  <div class="big-header "  >  <!--:class="showModal ? 'opacity' : ' '-->
+
   
     <h1 >{{message}}</h1>
 
@@ -24,24 +24,22 @@
        <img :src="closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModal = false">
         <img :src="cardEntr" style="width: 100px">
        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore minus facere libero recusandae quidem, dignissimos repellendus. Illum, hic ex recusandae, quos deserunt obcaecati, iusto distinctio porro ducimus sint blanditiis tempora?</p>
-       <router-link class="button" to="game/1" @click="transition"> Jouer avec Jurgen Klopp </router-link>
+       <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
     </div> 
 
 </transition>
   <router-link :key="visible"  class="button" to="/game/1">Go to Game</router-link>
-     <div class="loader ">
+    <button v-on:click="counter += 1">Add 1</button>
+ <p :key="view">{{counter }}</p>
+          <input v-model="tst">
+
+
     
-    <div class="loader__tile"></div>
-<div class="loader__tile"></div>
-<div class="loader__tile"></div>
-<div class="loader__tile"></div>
-<div class="loader__tile"></div>
-</div>
-     </div>  
-  
+
 </template>
 
 <script>
+
 
 
     export default {
@@ -49,7 +47,9 @@
         
         
         return {
-         
+          tst: '',
+          view: '',
+         counter: 0,
            visible: true,
             showModal: false,
             firstCharacter: require('/assets/images/klopp.png'),
@@ -62,20 +62,49 @@
         }
         
     },
+
+     mounted() {
+    if (localStorage.tst) {
+      this.tst = localStorage.tst;
+    }
+   
+
+  },
+
+
+   watch: {
+    tst(tstT) {
+      localStorage.tst = tstT;
+    },
+     
+   
+  },
+
+ 
+   
    methods: {
      click : function () {
        document.querySelector('.loader__title').classList.add('loader--active')
-     }
+     },
+
    
      
 
 
     }
+
+    
+ 
+
+       
+  }
+ 
+  
    
    
 
  
-};
+
 
 
 
