@@ -69,6 +69,24 @@ $hetic-green: #14133f;
 }
 
 
+@keyframes fadeInS {
+  from {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+   transform: translateX(100%);
+  }
+
+  to {
+    opacity: .9; width: 100vw;
+    height: 100vh;
+    background-color: black;
+     
+  }
+}
+
+
 @keyframes fadeOut {
   from {
     opacity: .9;

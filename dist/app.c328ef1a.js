@@ -15193,6 +15193,15 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -15206,7 +15215,11 @@ var _default = {
       message: "Choisissez votre PERSONNAGE"
     };
   },
-  methods: {}
+  methods: {
+    click: function click() {
+      document.querySelector('.loader__title').classList.add('loader--active');
+    }
+  }
 };
 exports.default = _default;
         var $1c4b50 = exports.default || module.exports;
@@ -15231,7 +15244,7 @@ exports.default = _default;
       _c("br"),
       _vm._v(" "),
       _c(
-        "transition-group",
+        "transition",
         {
           staticClass: "test",
           attrs: { name: "bounce", appear: "", tag: "div" }
@@ -15333,7 +15346,11 @@ exports.default = _default;
                       _vm._v(" "),
                       _c(
                         "router-link",
-                        { staticClass: "button", attrs: { to: "game/1" } },
+                        {
+                          staticClass: "button",
+                          attrs: { to: "game/1" },
+                          on: { click: _vm.transition }
+                        },
                         [_vm._v(" Jouer avec Jurgen Klopp ")]
                       )
                     ],
@@ -15349,12 +15366,31 @@ exports.default = _default;
         "router-link",
         { key: _vm.visible, staticClass: "button", attrs: { to: "/game/1" } },
         [_vm._v("Go to Game")]
-      )
+      ),
+      _vm._v(" "),
+      _vm._m(0)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "loader " }, [
+      _c("div", { staticClass: "loader__tile" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "loader__tile" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "loader__tile" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "loader__tile" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "loader__tile" })
+    ])
+  }
+]
 render._withStripped = true
 
           return {
@@ -15475,6 +15511,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
@@ -15498,44 +15535,52 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "big-header" }, [
-    _c("h1", { staticStyle: { "font-size": "40px" } }, [
-      _vm._v(_vm._s(_vm.level.question))
-    ]),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "answers" },
-      _vm._l(_vm.choices, function(choice) {
-        return _c(
-          "div",
-          { key: choice.message },
-          [
-            _c(
-              "router-link",
-              { staticClass: "button", attrs: { to: choice.link } },
-              [
-                _vm._v(
-                  "\n                  " +
-                    _vm._s(choice.message) +
-                    "\n   \n  \n    "
-                )
-              ]
-            ),
+  return _c(
+    "transition",
+    { staticClass: "test", attrs: { name: "tiles", appear: "", tag: "div" } },
+    [
+      _vm.okay
+        ? _c("div", { key: _vm.message, staticClass: "big-header" }, [
+            _c("h1", { staticStyle: { "font-size": "40px" } }, [
+              _vm._v(_vm._s(_vm.level.question))
+            ]),
             _vm._v(" "),
-            _c("img", {
-              staticStyle: { width: "200px" },
-              attrs: { src: choice.src, alt: choice.altSrc }
-            })
-          ],
-          1
-        )
-      }),
-      0
-    )
-  ])
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "answers" },
+              _vm._l(_vm.choices, function(choice) {
+                return _c(
+                  "div",
+                  { key: choice.message },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "button", attrs: { to: choice.link } },
+                      [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(choice.message) +
+                            "\n   \n  \n    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticStyle: { width: "200px" },
+                      attrs: { src: choice.src, alt: choice.altSrc }
+                    })
+                  ],
+                  1
+                )
+              }),
+              0
+            )
+          ])
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -15837,7 +15882,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50481" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64681" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

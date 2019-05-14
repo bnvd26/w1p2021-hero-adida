@@ -6,15 +6,15 @@
     <h1 >{{message}}</h1>
 
     <br />
- <transition-group name="bounce" appear tag="div" class="test">
+ <transition name="bounce" appear tag="div" class="test">
     <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
    <img :src="firstCharacter" style="height: 220px;" class="hover" @click="showModal = true">
-   <img :src="secondCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true">   
+   <img :src="secondCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true" >   
    <img :src="thirdCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true"> 
 
    </div>
     
-   </transition-group> 
+   </transition> 
 
 <transition name="modal">
   
@@ -24,12 +24,21 @@
        <img :src="closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModal = false">
         <img :src="cardEntr" style="width: 100px">
        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore minus facere libero recusandae quidem, dignissimos repellendus. Illum, hic ex recusandae, quos deserunt obcaecati, iusto distinctio porro ducimus sint blanditiis tempora?</p>
-       <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
+       <router-link class="button" to="game/1" @click="transition"> Jouer avec Jurgen Klopp </router-link>
     </div> 
 
 </transition>
   <router-link :key="visible"  class="button" to="/game/1">Go to Game</router-link>
+     <div class="loader ">
+    
+    <div class="loader__tile"></div>
+<div class="loader__tile"></div>
+<div class="loader__tile"></div>
+<div class="loader__tile"></div>
+<div class="loader__tile"></div>
+</div>
      </div>  
+  
 </template>
 
 <script>
@@ -54,7 +63,9 @@
         
     },
    methods: {
-     
+     click : function () {
+       document.querySelector('.loader__title').classList.add('loader--active')
+     }
    
      
 
@@ -93,6 +104,78 @@
 
 .bounce-enter-active {
   animation: bounceIn 2s;
+}
+
+.loader {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  transition: width 0s 1.4s ease;
+}
+
+.loader .loader__tile {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 20%;
+  background-color: #007AE5;
+  transition: width 0.7s ease;
+}
+.loader .loader__tile:nth-child(0) {
+  top: calc(-1 * 20%);
+  transition-delay: -0.2s;
+}
+.loader .loader__tile:nth-child(1) {
+  top: calc(0 * 20%);
+  transition-delay: 0s;
+}
+.loader .loader__tile:nth-child(2) {
+  top: calc(1 * 20%);
+  transition-delay: 0.2s;
+}
+.loader .loader__tile:nth-child(3) {
+  top: calc(2 * 20%);
+  transition-delay: 0.4s;
+}
+.loader .loader__tile:nth-child(4) {
+  top: calc(3 * 20%);
+  transition-delay: 0.6s;
+}
+.loader .loader__tile:nth-child(5) {
+  top: calc(4 * 20%);
+  transition-delay: 0.8s;
+}
+.loader--active {
+  width: 100%;
+  transition-delay: 0s;
+}
+.loader--active .loader__icon {
+  opacity: 1;
+  transition: opacity 0.5s 1.4s ease;
+}
+.loader--active .loader__tile {
+  width: 100%;
+}
+.loader--active .loader__tile:nth-child(0) {
+  transition-delay: -0.2s;
+}
+.loader--active .loader__tile:nth-child(1) {
+  transition-delay: 0s;
+}
+.loader--active .loader__tile:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.loader--active .loader__tile:nth-child(3) {
+  transition-delay: 0.4s;
+}
+.loader--active .loader__tile:nth-child(4) {
+  transition-delay: 0.6s;
+}
+.loader--active .loader__tile:nth-child(5) {
+  transition-delay: 0.8s;
 }
 
 

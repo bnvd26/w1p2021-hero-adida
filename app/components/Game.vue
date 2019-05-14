@@ -1,8 +1,9 @@
 
 
 <template>
-
-  <div class="big-header">
+<transition name="tiles" appear tag="div" class="test">
+  <div class="big-header" :key="message" v-if="okay">
+    
     <h1 style="font-size: 40px;">{{ level.question }}</h1>
     <br />
     <div class="answers">
@@ -17,7 +18,7 @@
 
 </div>
   </div>
-
+</transition>
 </template>
 
 <script>
@@ -42,7 +43,14 @@ export default {
 
 <style>
 
+.tiles-enter-active {
+  animation: fadeInS 1s;
+  
+}
 
+.tiles-enter-to {
+background: #000;
+}
 
 
 
