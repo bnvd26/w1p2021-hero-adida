@@ -1,4 +1,5 @@
 <template>
+<transition name="begin" appear >
   <div class="big-header">
     <h1 style="font-size: 100px; word-spacing: 50px;" >{{message}}</h1>
     <br />
@@ -6,6 +7,7 @@
     <router-link  class="button" to="/character" > {{rules}} </router-link>
     </transition>
   </div>
+  </transition>
 </template>
 
 <script>
@@ -21,3 +23,20 @@ export default {
   
 };
 </script>
+
+
+
+<style>
+
+.begin-enter-active {
+  animation: fadeIn 2s;
+  
+}
+
+.begin-enter-to {
+background: #000;
+}
+
+
+
+</style>

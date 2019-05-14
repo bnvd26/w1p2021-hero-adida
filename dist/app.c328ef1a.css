@@ -1,3 +1,11 @@
+.begin-enter-active {
+  animation: fadeIn 2s;
+  
+}
+
+.begin-enter-to {
+background: #000;
+}
 .translate-enter, .translate-enter-active {
   transform: translateY(100px);
 }
@@ -308,6 +316,10 @@ table {
   font-weight: normal;
   font-style: normal;
 }
+.none {
+  display: none;
+}
+
 .modal {
   width: 90vw;
   height: 80vh;
