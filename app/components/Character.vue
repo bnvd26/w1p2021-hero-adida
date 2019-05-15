@@ -45,8 +45,9 @@
     export default {
     data () {
         
-        
+
         return {
+     
           tst: '',
           view: '',
          counter: 0,
@@ -63,10 +64,11 @@
         
     },
 
-     mounted() {
+     mounted () {
     if (localStorage.tst) {
       this.tst = localStorage.tst;
     }
+
    
 
   },

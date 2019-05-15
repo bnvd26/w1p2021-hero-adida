@@ -29,8 +29,8 @@ export default {
     return {
       okay: true,
       message: 'saloute',
-      level: data[this.$route.params.id],
-      choices: data[this.$route.params.id].choices
+      level: data.game[this.$route.params.id],
+      choices: data.game[this.$route.params.id].choices
     }
   
  

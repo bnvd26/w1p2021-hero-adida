@@ -119,57 +119,61 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"data.json":[function(require,module,exports) {
 module.exports = {
-  "1": {
-    "question": "PAGE GAME/1 ?",
-    "choices": {
-      "answerOne": {
-        "message": "Oui",
-        "link": "/game/2",
-        "src": "/testimg.b3b21468.jpg",
-        "altSrc": "img-answer-one"
-      },
-      "answerTwo": {
-        "message": "No",
-        "link": "/lose",
-        "src": "/zelda.772ea01c.png",
-        "altSrc": "img-answer-two"
-      },
-      "answerThree": {
-        "message": "Maybe",
-        "link": "/game/2",
-        "src": "/testimg.b3b21468.jpg",
-        "altSrc": "img-answer-three"
+  "game": {
+    "1": {
+      "question": "PAGE GAME/1 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/2",
+          "src": "/bowser.png",
+          "altSrc": "img-answer-one",
+          "reputation": 10
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose",
+          "src": "/zelda.png",
+          "altSrc": "img-answer-two"
+        },
+        "answerThree": {
+          "message": "Maybe",
+          "link": "/game/2",
+          "src": "/testimg.b3b21468.jpg",
+          "altSrc": "img-answer-three"
+        }
+      }
+    },
+    "2": {
+      "question": "PAGE GAME/2 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/3",
+          "src": "/testimg.b3b21468.jpg",
+          "altSrc": "img-answer-three"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "3": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/home"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
       }
     }
   },
-  "2": {
-    "question": "PAGE GAME/2 ?",
-    "choices": {
-      "answerOne": {
-        "message": "Oui",
-        "link": "/game/3",
-        "src": "/testimg.b3b21468.jpg",
-        "altSrc": "img-answer-three"
-      },
-      "answerTwo": {
-        "message": "No",
-        "link": "/lose"
-      }
-    }
-  },
-  "3": {
-    "question": "PAGE GAME/3 ?",
-    "choices": {
-      "answerOne": {
-        "message": "Oui",
-        "link": "/home"
-      },
-      "answerTwo": {
-        "message": "No",
-        "link": "/lose"
-      }
-    }
-  }
+  "character": {}
 };
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -199,7 +203,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60834" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55419" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

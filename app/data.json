@@ -1,63 +1,70 @@
 { 
+"game" : {
+  "1" : {
+    "question" : "PAGE GAME/1 ?",
+      "choices" : {
+        "answerOne" : {
+          "message" : "Oui",
+          "link" : "/game/2",
+          "src" : "/bowser.png",
+          "altSrc" : "img-answer-one",
+          "reputation" : 10
+        
+        },
+        "answerTwo" : {
+          "message" : "No",
+          "link" : "/lose",
+          "src" : "/zelda.png",
+          "altSrc" : "img-answer-two"
+        
+        },
+        "answerThree" : {
+          "message" : "Maybe",
+          "link" : "/game/2",
+          "src" : "/testimg.b3b21468.jpg",
+          "altSrc" : "img-answer-three"
+        
+        }
+      }
+   
 
-    "1" : {
-      "question" : "PAGE GAME/1 ?",
-        "choices" : {
-          "answerOne" : {
-            "message" : "Oui",
-            "link" : "/game/2",
-            "src" : "/testimg.b3b21468.jpg",
-            "altSrc" : "img-answer-one"
-          
-          },
-          "answerTwo" : {
-            "message" : "No",
-            "link" : "/lose",
-            "src" : "/zelda.772ea01c.png",
-            "altSrc" : "img-answer-two"
-          
-          },
-          "answerThree" : {
-            "message" : "Maybe",
-            "link" : "/game/2",
-            "src" : "/testimg.b3b21468.jpg",
-            "altSrc" : "img-answer-three"
-          
-          }
+  },
+  "2" : {
+    "question" : "PAGE GAME/2 ?",
+      "choices" : {
+        "answerOne" : {
+          "message" : "Oui",
+          "link" : "/game/3",
+          "src" : "/testimg.b3b21468.jpg",
+          "altSrc" : "img-answer-three"
+        },
+        "answerTwo" : {
+          "message" : "No",
+          "link" : "/lose"
+        
         }
-     
+      }
+  },
+  "3" : {
+    "question" : "PAGE GAME/3 ?",
+      "choices" : {
+        "answerOne" : {
+          "message" : "Oui",
+          "link" : "/home"
+        },
+        "answerTwo" : {
+          "message" : "No",
+          "link" : "/lose"
+        
+        }
+      }
+  }
+},
 
-    },
-    "2" : {
-      "question" : "PAGE GAME/2 ?",
-        "choices" : {
-          "answerOne" : {
-            "message" : "Oui",
-            "link" : "/game/3",
-            "src" : "/testimg.b3b21468.jpg",
-            "altSrc" : "img-answer-three"
-          },
-          "answerTwo" : {
-            "message" : "No",
-            "link" : "/lose"
-          
-          }
-        }
-    },
-    "3" : {
-      "question" : "PAGE GAME/3 ?",
-        "choices" : {
-          "answerOne" : {
-            "message" : "Oui",
-            "link" : "/home"
-          },
-          "answerTwo" : {
-            "message" : "No",
-            "link" : "/lose"
-          
-          }
-        }
-    }
+  "character" : {
+
+  }
+    
   }
     
 

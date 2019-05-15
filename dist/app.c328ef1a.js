@@ -15453,57 +15453,61 @@ render._withStripped = true
     })();
 },{"/assets/images/klopp.png":"assets/images/klopp.png","/assets/images/zidane.png":"assets/images/zidane.png","/assets/images/kombouare.png":"assets/images/kombouare.png","/assets/images/close.svg":"assets/images/close.svg","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
 module.exports = {
-  "1": {
-    "question": "PAGE GAME/1 ?",
-    "choices": {
-      "answerOne": {
-        "message": "Oui",
-        "link": "/game/2",
-        "src": "/testimg.b3b21468.jpg",
-        "altSrc": "img-answer-one"
-      },
-      "answerTwo": {
-        "message": "No",
-        "link": "/lose",
-        "src": "/zelda.772ea01c.png",
-        "altSrc": "img-answer-two"
-      },
-      "answerThree": {
-        "message": "Maybe",
-        "link": "/game/2",
-        "src": "/testimg.b3b21468.jpg",
-        "altSrc": "img-answer-three"
+  "game": {
+    "1": {
+      "question": "PAGE GAME/1 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/2",
+          "src": "/bowser.png",
+          "altSrc": "img-answer-one",
+          "reputation": 10
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose",
+          "src": "/zelda.png",
+          "altSrc": "img-answer-two"
+        },
+        "answerThree": {
+          "message": "Maybe",
+          "link": "/game/2",
+          "src": "/testimg.b3b21468.jpg",
+          "altSrc": "img-answer-three"
+        }
+      }
+    },
+    "2": {
+      "question": "PAGE GAME/2 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/3",
+          "src": "/testimg.b3b21468.jpg",
+          "altSrc": "img-answer-three"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "3": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/home"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
       }
     }
   },
-  "2": {
-    "question": "PAGE GAME/2 ?",
-    "choices": {
-      "answerOne": {
-        "message": "Oui",
-        "link": "/game/3",
-        "src": "/testimg.b3b21468.jpg",
-        "altSrc": "img-answer-three"
-      },
-      "answerTwo": {
-        "message": "No",
-        "link": "/lose"
-      }
-    }
-  },
-  "3": {
-    "question": "PAGE GAME/3 ?",
-    "choices": {
-      "answerOne": {
-        "message": "Oui",
-        "link": "/home"
-      },
-      "answerTwo": {
-        "message": "No",
-        "link": "/lose"
-      }
-    }
-  }
+  "character": {}
 };
 },{}],"components/Game.vue":[function(require,module,exports) {
 "use strict";
@@ -15545,8 +15549,8 @@ var _default = {
     return {
       okay: true,
       message: 'saloute',
-      level: _data2.default[this.$route.params.id],
-      choices: _data2.default[this.$route.params.id].choices
+      level: _data2.default.game[this.$route.params.id],
+      choices: _data2.default.game[this.$route.params.id].choices
     };
   }
 };
@@ -15911,7 +15915,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60834" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55419" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
