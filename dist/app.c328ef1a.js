@@ -15072,6 +15072,11 @@ var _default = {
       message: 'ULTIMATE CAREER 19',
       rules: 'CLICKER POUR JOUER'
     };
+  },
+  methods: {
+    click: function click() {
+      document.querySelector('.loader__title').classList.add('loader--active');
+    }
   }
 };
 exports.default = _default;
@@ -15150,14 +15155,97 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"assets/images/klopp.png":[function(require,module,exports) {
-module.exports = "/klopp.057c513a.png";
-},{}],"assets/images/zidane.png":[function(require,module,exports) {
-module.exports = "/zidane.e2b745ad.png";
-},{}],"assets/images/kombouare.png":[function(require,module,exports) {
-module.exports = "/kombouare.4431cf75.png";
-},{}],"assets/images/close.svg":[function(require,module,exports) {
-module.exports = "/close.4d174d6e.svg";
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
+module.exports = {
+  "characters": [{
+    "1": {
+      "id": 1,
+      "message": "salut",
+      "src": "/klopp.png",
+      "altSrc": "img-klopp",
+      "isactive": {
+        "title": "ZINEDINE ZIDANE",
+        "text": "BON",
+        "closeSvg": "/close.svg"
+      }
+    },
+    "2": {
+      "id": 2,
+      "message": "pkay",
+      "src": "/zidane.png",
+      "altSrc": "img-zidane",
+      "isactive": {
+        "title": "ZINEDINE ZIDANE",
+        "text": "BON"
+      }
+    },
+    "3": {
+      "id": 2,
+      "message": "good",
+      "src": "/kombouare.png",
+      "altSrc": "img-kombouare",
+      "isactive": {
+        "title": "ZINEDINE ZIDANE",
+        "text": "BON"
+      }
+    }
+  }],
+  "game": {
+    "1": {
+      "question": "PAGE GAME/1 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/2",
+          "src": "/bowser.png",
+          "altSrc": "img-answer-one",
+          "reputation": 10,
+          "points": "increment()"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose",
+          "src": "/zelda.png",
+          "altSrc": "img-answer-two"
+        },
+        "answerThree": {
+          "message": "Maybe",
+          "link": "/game/2",
+          "src": "/testimg.b3b21468.jpg",
+          "altSrc": "img-answer-three"
+        }
+      }
+    },
+    "2": {
+      "question": "PAGE GAME/2 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/3",
+          "src": "/testimg.b3b21468.jpg",
+          "altSrc": "img-answer-one"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "3": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/home"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    }
+  }
+};
 },{}],"assets/images/entraineur-1.png":[function(require,module,exports) {
 module.exports = "/entraineur-1.0d14a7bc.png";
 },{}],"components/Character.vue":[function(require,module,exports) {
@@ -15167,15 +15255,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _data2 = _interopRequireDefault(require("../data.json"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -15215,17 +15299,29 @@ var _default = {
       counter: 0,
       visible: true,
       showModal: false,
+
+      /*
       firstCharacter: require('/assets/images/klopp.png'),
       secondCharacter: require('/assets/images/zidane.png'),
-      thirdCharacter: require('/assets/images/kombouare.png'),
-      closeSvg: require('/assets/images/close.svg'),
+      thirdCharacter: require('/assets/images/kombouare.png'),*/
       cardEntr: require('/assets/images/entraineur-1.png'),
-      message: "Choisissez votre PERSONNAGE"
+      message: "Choisissez votre PERSONNAGE",
+      characters: _data2.default.characters[0],
+      charactersss: _data2.default.characters[0].id,
+      newNumber: null
     };
   },
   mounted: function mounted() {
     if (localStorage.tst) {
       this.tst = localStorage.tst;
+    }
+
+    if (localStorage.getItem('counter')) {
+      try {
+        this.cats = JSON.parse(localStorage.getItem('counter'));
+      } catch (e) {
+        localStorage.removeItem('counter');
+      }
     }
   },
   watch: {
@@ -15236,6 +15332,10 @@ var _default = {
   methods: {
     click: function click() {
       document.querySelector('.loader__title').classList.add('loader--active');
+    },
+    saveNumber: function saveNumber() {
+      var parsed = JSON.stringify(this.counter);
+      localStorage.setItem('counter', parsed);
     }
   }
 };
@@ -15261,7 +15361,7 @@ exports.default = _default;
       _c("br"),
       _vm._v(" "),
       _c(
-        "transition",
+        "transition-group",
         {
           staticClass: "test",
           attrs: { name: "bounce", appear: "", tag: "div" }
@@ -15279,40 +15379,33 @@ exports.default = _default;
                     width: "100vw"
                   }
                 },
-                [
-                  _c("img", {
-                    staticClass: "hover",
-                    staticStyle: { height: "220px" },
-                    attrs: { src: _vm.firstCharacter },
-                    on: {
-                      click: function($event) {
-                        _vm.showModal = true
+                _vm._l(_vm.characters, function(character) {
+                  return _c(
+                    "div",
+                    {
+                      key: character.message,
+                      staticStyle: {
+                        display: "flex",
+                        "flex-direction": "row",
+                        "justify-content": "space-around",
+                        width: "100vw"
                       }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "hover hoverr",
-                    staticStyle: { height: "220px" },
-                    attrs: { src: _vm.secondCharacter },
-                    on: {
-                      click: function($event) {
-                        _vm.showModal = true
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "hover hoverr",
-                    staticStyle: { height: "220px" },
-                    attrs: { src: _vm.thirdCharacter },
-                    on: {
-                      click: function($event) {
-                        _vm.showModal = true
-                      }
-                    }
-                  })
-                ]
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "hover hoverr",
+                        staticStyle: { height: "220px" },
+                        attrs: { src: character.src, alt: character.altSrc },
+                        on: {
+                          click: function($event) {
+                            _vm.showModal = true
+                          }
+                        }
+                      })
+                    ]
+                  )
+                }),
+                0
               )
             : _vm._e()
         ]
@@ -15328,49 +15421,49 @@ exports.default = _default;
                 attrs: { id: "modal-template" }
               },
               [
-                _c("h1", [
-                  _vm._v("TEST"),
-                  _c(
-                    "h1",
-                    [
-                      _c("img", {
-                        staticStyle: {
-                          width: "30px",
-                          height: "30px",
-                          cursor: "pointer",
-                          position: "absolute",
-                          right: "10px",
-                          top: "10px"
-                        },
-                        attrs: { src: _vm.closeSvg },
-                        on: {
-                          click: function($event) {
-                            _vm.showModal = false
+                _vm._l(_vm.characters, function(character) {
+                  return _c(
+                    "div",
+                    { key: character.message },
+                    _vm._l(character, function(stat) {
+                      return _c("div", { key: stat.title }, [
+                        _c("img", {
+                          staticStyle: {
+                            width: "30px",
+                            height: "30px",
+                            cursor: "pointer",
+                            position: "absolute",
+                            right: "10px",
+                            top: "10px"
+                          },
+                          attrs: { src: stat.closeSvg },
+                          on: {
+                            click: function($event) {
+                              _vm.showModal = false
+                            }
                           }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        staticStyle: { width: "100px" },
-                        attrs: { src: _vm.cardEntr }
-                      }),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore minus facere libero recusandae quidem, dignissimos repellendus. Illum, hic ex recusandae, quos deserunt obcaecati, iusto distinctio porro ducimus sint blanditiis tempora?"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        { staticClass: "button", attrs: { to: "game/1" } },
-                        [_vm._v(" Jouer avec Jurgen Klopp ")]
-                      )
-                    ],
-                    1
+                        }),
+                        _vm._v(" "),
+                        _c("h1", [_vm._v(_vm._s(stat.title)), _c("h1")])
+                      ])
+                    }),
+                    0
                   )
-                ])
-              ]
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.charactersss, function(charact) {
+                  return _c("div", { key: charact.title }, [
+                    _vm._v("\n      " + _vm._s(charact.title) + "\n    ")
+                  ])
+                }),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "button", attrs: { to: "game/1" } },
+                  [_vm._v(" Jouer avec Jurgen Klopp ")]
+                )
+              ],
+              2
             )
           : _vm._e()
       ]),
@@ -15451,64 +15544,38 @@ render._withStripped = true
       
       }
     })();
-},{"/assets/images/klopp.png":"assets/images/klopp.png","/assets/images/zidane.png":"assets/images/zidane.png","/assets/images/kombouare.png":"assets/images/kombouare.png","/assets/images/close.svg":"assets/images/close.svg","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"data.json":[function(require,module,exports) {
-module.exports = {
-  "game": {
-    "1": {
-      "question": "PAGE GAME/1 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/2",
-          "src": "/bowser.png",
-          "altSrc": "img-answer-one",
-          "reputation": 10
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose",
-          "src": "/zelda.png",
-          "altSrc": "img-answer-two"
-        },
-        "answerThree": {
-          "message": "Maybe",
-          "link": "/game/2",
-          "src": "/testimg.b3b21468.jpg",
-          "altSrc": "img-answer-three"
-        }
-      }
-    },
-    "2": {
-      "question": "PAGE GAME/2 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/3",
-          "src": "/testimg.b3b21468.jpg",
-          "altSrc": "img-answer-three"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
-    },
-    "3": {
-      "question": "PAGE GAME/3 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/home"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
+},{"../data.json":"data.json","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"services/countService.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var CountService =
+/*#__PURE__*/
+function () {
+  function CountService() {
+    _classCallCheck(this, CountService);
+
+    this.points = 0;
+  }
+
+  _createClass(CountService, [{
+    key: "increment",
+    value: function increment() {
+      this.points++;
     }
-  },
-  "character": {}
-};
+  }, {
+    key: "value",
+    value: function value() {
+      return this.points;
+    }
+  }]);
+
+  return CountService;
+}();
+
+module.exports = new CountService();
 },{}],"components/Game.vue":[function(require,module,exports) {
 "use strict";
 
@@ -15516,6 +15583,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _countService = _interopRequireDefault(require("../services/countService"));
 
 var _data2 = _interopRequireDefault(require("../data.json"));
 
@@ -15544,14 +15613,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
+      points: _countService.default.value(),
       okay: true,
       message: 'saloute',
       level: _data2.default.game[this.$route.params.id],
       choices: _data2.default.game[this.$route.params.id].choices
     };
+  },
+  mounted: function mounted() {
+    if (localStorage.getItem('points')) {
+      try {
+        this.points = JSON.parse(localStorage.getItem('points'));
+      } catch (e) {
+        localStorage.removeItem('points');
+      }
+    }
+  },
+  methods: {
+    savePoints: function savePoints() {
+      var parsed = JSON.stringify(this.points);
+      localStorage.setItem('points', parsed);
+    },
+    handleClick: function handleClick() {
+      _countService.default.increment();
+
+      this.savePoints();
+    }
   }
 };
 exports.default = _default;
@@ -15573,6 +15665,8 @@ exports.default = _default;
     [
       _vm.okay
         ? _c("div", { key: _vm.message, staticClass: "big-header" }, [
+            _c("p", [_vm._v(_vm._s(_vm.points))]),
+            _vm._v(" "),
             _c("h1", { staticStyle: { "font-size": "40px" } }, [
               _vm._v(_vm._s(_vm.level.question))
             ]),
@@ -15597,6 +15691,18 @@ exports.default = _default;
                             "\n   \n  \n    "
                         )
                       ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.handleClick()
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.savePoints()))]
                     ),
                     _vm._v(" "),
                     _c("img", {
@@ -15647,13 +15753,14 @@ render._withStripped = true
       
       }
     })();
-},{"../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
+},{"../services/countService":"services/countService.js","../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+//
 //
 //
 //
@@ -15692,7 +15799,13 @@ exports.default = _default;
       _vm._v(" "),
       _c("router-link", { staticClass: "button", attrs: { to: "/home" } }, [
         _vm._v("Go to Home")
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        { staticClass: "button", attrs: { to: "/character" } },
+        [_vm._v("PLAY AGAIN")]
+      )
     ],
     1
   )
@@ -15863,7 +15976,477 @@ var router = new _vueRouter.default({
 });
 var _default = router;
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.common.js","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js","./components/Home.vue":"components/Home.vue","./components/Character.vue":"components/Character.vue","./components/Game.vue":"components/Game.vue","./components/Lose.vue":"components/Lose.vue","./components/Win.vue":"components/Win.vue"}],"assets/scss/styles.scss":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js","./components/Home.vue":"components/Home.vue","./components/Character.vue":"components/Character.vue","./components/Game.vue":"components/Game.vue","./components/Lose.vue":"components/Lose.vue","./components/Win.vue":"components/Win.vue"}],"../node_modules/vue-ls/dist/vue-ls.js":[function(require,module,exports) {
+var define;
+var global = arguments[3];
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+(function (global, factory) {
+  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = global || self, global.VueStorage = factory());
+})(this, function () {
+  'use strict';
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+  /* eslint class-methods-use-this: off */
+
+
+  var ls = {};
+
+  var MemoryStorageInterface =
+  /*#__PURE__*/
+  function () {
+    function MemoryStorageInterface() {
+      _classCallCheck(this, MemoryStorageInterface);
+
+      Object.defineProperty(this, 'length', {
+        /**
+         * Define length property
+         *
+         * @return {number}
+         */
+        get: function get() {
+          return Object.keys(ls).length;
+        }
+      });
+    }
+    /**
+     * Get item
+     *
+     * @param {string} name
+     * @returns {*}
+     */
+
+
+    _createClass(MemoryStorageInterface, [{
+      key: "getItem",
+      value: function getItem(name) {
+        return name in ls ? ls[name] : null;
+      }
+      /**
+       * Set item
+       *
+       * @param {string} name
+       * @param {*} value
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "setItem",
+      value: function setItem(name, value) {
+        ls[name] = value;
+        return true;
+      }
+      /**
+       * Remove item
+       *
+       * @param {string} name
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "removeItem",
+      value: function removeItem(name) {
+        var found = name in ls;
+
+        if (found) {
+          return delete ls[name];
+        }
+
+        return false;
+      }
+      /**
+       * Clear storage
+       *
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "clear",
+      value: function clear() {
+        ls = {};
+        return true;
+      }
+      /**
+       * Get item by key
+       *
+       * @param {number} index
+       * @returns {*}
+       */
+
+    }, {
+      key: "key",
+      value: function key(index) {
+        var keys = Object.keys(ls);
+        return typeof keys[index] !== 'undefined' ? keys[index] : null;
+      }
+    }]);
+
+    return MemoryStorageInterface;
+  }();
+
+  var MemoryStorage = new MemoryStorageInterface();
+  var listeners = {};
+  /**
+   * Event class
+   */
+
+  var WebStorageEvent =
+  /*#__PURE__*/
+  function () {
+    function WebStorageEvent() {
+      _classCallCheck(this, WebStorageEvent);
+    }
+
+    _createClass(WebStorageEvent, null, [{
+      key: "on",
+
+      /**
+       * Add storage change event
+       *
+       * @param {string} name
+       * @param {Function} callback
+       */
+      value: function on(name, callback) {
+        if (typeof listeners[name] === 'undefined') {
+          listeners[name] = [];
+        }
+
+        listeners[name].push(callback);
+      }
+      /**
+       * Remove storage change event
+       *
+       * @param {string} name
+       * @param {Function} callback
+       */
+
+    }, {
+      key: "off",
+      value: function off(name, callback) {
+        if (listeners[name].length) {
+          listeners[name].splice(listeners[name].indexOf(callback), 1);
+        } else {
+          listeners[name] = [];
+        }
+      }
+      /**
+       * Emit event
+       *
+       * @param {Object} event
+       */
+
+    }, {
+      key: "emit",
+      value: function emit(event) {
+        var e = event || window.event;
+
+        var getValue = function getValue(data) {
+          try {
+            return JSON.parse(data).value;
+          } catch (err) {
+            return data;
+          }
+        };
+
+        var fire = function fire(listener) {
+          var newValue = getValue(e.newValue);
+          var oldValue = getValue(e.oldValue);
+          listener(newValue, oldValue, e.url || e.uri);
+        };
+
+        if (typeof e === 'undefined' || typeof e.key === 'undefined') {
+          return;
+        }
+
+        var all = listeners[e.key];
+
+        if (typeof all !== 'undefined') {
+          all.forEach(fire);
+        }
+      }
+    }]);
+
+    return WebStorageEvent;
+  }();
+  /**
+   * Storage Bridge
+   */
+
+
+  var WebStorage =
+  /*#__PURE__*/
+  function () {
+    /**
+     * @param {Object} storage
+     */
+    function WebStorage(storage) {
+      _classCallCheck(this, WebStorage);
+
+      this.storage = storage;
+      this.options = {
+        namespace: '',
+        events: ['storage']
+      };
+      Object.defineProperty(this, 'length', {
+        /**
+         * Define length property
+         *
+         * @return {number}
+         */
+        get: function get() {
+          return this.storage.length;
+        }
+      });
+
+      if (typeof window !== 'undefined') {
+        for (var i in this.options.events) {
+          if (window.addEventListener) {
+            window.addEventListener(this.options.events[i], WebStorageEvent.emit, false);
+          } else if (window.attachEvent) {
+            window.attachEvent("on".concat(this.options.events[i]), WebStorageEvent.emit);
+          } else {
+            window["on".concat(this.options.events[i])] = WebStorageEvent.emit;
+          }
+        }
+      }
+    }
+    /**
+     * Set Options
+     *
+     * @param {Object} options
+     */
+
+
+    _createClass(WebStorage, [{
+      key: "setOptions",
+      value: function setOptions() {
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        this.options = Object.assign(this.options, options);
+      }
+      /**
+       * Set item
+       *
+       * @param {string} name
+       * @param {*} value
+       * @param {number} expire - seconds
+       */
+
+    }, {
+      key: "set",
+      value: function set(name, value) {
+        var expire = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var stringifyValue = JSON.stringify({
+          value: value,
+          expire: expire !== null ? new Date().getTime() + expire : null
+        });
+        this.storage.setItem(this.options.namespace + name, stringifyValue);
+      }
+      /**
+       * Get item
+       *
+       * @param {string} name
+       * @param {*} def - default value
+       * @returns {*}
+       */
+
+    }, {
+      key: "get",
+      value: function get(name) {
+        var def = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var item = this.storage.getItem(this.options.namespace + name);
+
+        if (item !== null) {
+          try {
+            var data = JSON.parse(item);
+
+            if (data.expire === null) {
+              return data.value;
+            }
+
+            if (data.expire >= new Date().getTime()) {
+              return data.value;
+            }
+
+            this.remove(name);
+          } catch (err) {
+            return def;
+          }
+        }
+
+        return def;
+      }
+      /**
+       * Get item by key
+       *
+       * @param {number} index
+       * @return {*}
+       */
+
+    }, {
+      key: "key",
+      value: function key(index) {
+        return this.storage.key(index);
+      }
+      /**
+       * Remove item
+       *
+       * @param {string} name
+       * @return {boolean}
+       */
+
+    }, {
+      key: "remove",
+      value: function remove(name) {
+        return this.storage.removeItem(this.options.namespace + name);
+      }
+      /**
+       * Clear storage
+       */
+
+    }, {
+      key: "clear",
+      value: function clear() {
+        if (this.length === 0) {
+          return;
+        }
+
+        var removedKeys = [];
+
+        for (var i = 0; i < this.length; i++) {
+          var key = this.storage.key(i);
+          var regexp = new RegExp("^".concat(this.options.namespace, ".+"), 'i');
+
+          if (regexp.test(key) === false) {
+            continue;
+          }
+
+          removedKeys.push(key);
+        }
+
+        for (var _key in removedKeys) {
+          this.storage.removeItem(removedKeys[_key]);
+        }
+      }
+      /**
+       * Add storage change event
+       *
+       * @param {string} name
+       * @param {Function} callback
+       */
+
+    }, {
+      key: "on",
+      value: function on(name, callback) {
+        WebStorageEvent.on(this.options.namespace + name, callback);
+      }
+      /**
+       * Remove storage change event
+       *
+       * @param {string} name
+       * @param {Function} callback
+       */
+
+    }, {
+      key: "off",
+      value: function off(name, callback) {
+        WebStorageEvent.off(this.options.namespace + name, callback);
+      }
+    }]);
+
+    return WebStorage;
+  }();
+
+  var _global = typeof window !== 'undefined' ? window : global || {};
+  /**
+   * @type {{install: (function(Object, Object): WebStorage)}}
+   */
+
+
+  var VueStorage = {
+    /**
+     * Install plugin
+     *
+     * @param {Object} Vue
+     * @param {Object} options
+     * @returns {WebStorage}
+     */
+    install: function install(Vue) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      var _options = Object.assign({}, options, {
+        storage: options.storage || 'local',
+        name: options.name || 'ls'
+      });
+
+      if (_options.storage && ['memory', 'local', 'session'].indexOf(_options.storage) === -1) {
+        throw new Error("Vue-ls: Storage \"".concat(_options.storage, "\" is not supported"));
+      }
+
+      var store = null;
+
+      switch (_options.storage) {
+        // eslint-disable-line
+        case 'local':
+          store = 'localStorage' in _global ? _global.localStorage : null;
+          break;
+
+        case 'session':
+          store = 'sessionStorage' in _global ? _global.sessionStorage : null;
+          break;
+
+        case 'memory':
+          store = MemoryStorage;
+          break;
+      }
+
+      if (!store) {
+        store = MemoryStorage; // eslint-disable-next-line
+
+        console.error("Vue-ls: Storage \"".concat(_options.storage, "\" is not supported your system, use memory storage"));
+      }
+
+      var ls = new WebStorage(store);
+      ls.setOptions(Object.assign(ls.options, {
+        namespace: ''
+      }, _options || {}));
+      Vue[_options.name] = ls; // eslint-disable-line
+
+      Object.defineProperty(Vue.prototype, "$".concat(_options.name), {
+        /**
+         * Define $ls property
+         *
+         * @return {WebStorage}
+         */
+        get: function get() {
+          return ls;
+        }
+      });
+    }
+  };
+  _global.VueStorage = VueStorage;
+  return VueStorage;
+});
+},{}],"assets/scss/styles.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -15874,6 +16457,8 @@ module.hot.accept(reloadCSS);
 var _vue = _interopRequireDefault(require("vue"));
 
 var _router = _interopRequireDefault(require("./router"));
+
+var _vueLs = _interopRequireDefault(require("vue-ls"));
 
 require("./assets/scss/styles.scss");
 
@@ -15887,7 +16472,20 @@ new _vue.default({
 _vue.default.component('modal', {
   template: '#modal-template'
 });
-},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./assets/scss/styles.scss":"assets/scss/styles.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var body = document.querySelector('.body');
+/*          A VALIDER 
+var onceTime = true;
+
+var ls = function myFunction() {
+  setTimeout(function(){ body.classList.remove('none') }, 3000);
+  onceTime = false;
+}
+
+ls();*/
+
+_vue.default.use(_vueLs.default);
+},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","vue-ls":"../node_modules/vue-ls/dist/vue-ls.js","./assets/scss/styles.scss":"assets/scss/styles.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -15915,7 +16513,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55419" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61532" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

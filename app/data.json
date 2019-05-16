@@ -1,4 +1,60 @@
 { 
+
+"characters" : [
+  {
+    "1" : {
+      "id" : 1,
+      "message" : "salut",
+      "src" : "/klopp.png",
+      "altSrc" : "img-klopp",
+      "isactive" : {
+        "title" : "ZINEDINE ZIDANE",
+        "text" : "BON",
+        "closeSvg": "/close.svg"
+      }
+    },
+    
+
+
+  
+  "2" : {
+  
+    "id" : 2,
+    "message" : "pkay",
+    "src" : "/zidane.png",
+    "altSrc" : "img-zidane",
+    "isactive" : {
+      "title" : "ZINEDINE ZIDANE",
+      "text" : "BON"
+    }
+  },
+
+   
+  "3" : {
+  
+    "id" : 2,
+    "message" : "good",
+    "src" : "/kombouare.png",
+    "altSrc" : "img-kombouare",
+    "isactive" : {
+      "title" : "ZINEDINE ZIDANE",
+      "text" : "BON"
+    }
+  }
+
+
+  
+
+}
+    
+  
+
+     
+],
+
+
+
+
 "game" : {
   "1" : {
     "question" : "PAGE GAME/1 ?",
@@ -8,7 +64,8 @@
           "link" : "/game/2",
           "src" : "/bowser.png",
           "altSrc" : "img-answer-one",
-          "reputation" : 10
+          "reputation" : 10,
+          "points" : "increment()"
         
         },
         "answerTwo" : {
@@ -36,7 +93,7 @@
           "message" : "Oui",
           "link" : "/game/3",
           "src" : "/testimg.b3b21468.jpg",
-          "altSrc" : "img-answer-three"
+          "altSrc" : "img-answer-one"
         },
         "answerTwo" : {
           "message" : "No",
@@ -59,14 +116,12 @@
         }
       }
   }
-},
+}}
 
-  "character" : {
 
-  }
-    
-  }
-    
+
+
+
 
 
   

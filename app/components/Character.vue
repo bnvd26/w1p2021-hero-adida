@@ -1,65 +1,54 @@
 <template>
- 
   <div class="big-header "  >  <!--:class="showModal ? 'opacity' : ' '-->
-
-  
     <h1 >{{message}}</h1>
-
     <br />
- <transition name="bounce" appear tag="div" class="test">
-    <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
-   <img :src="firstCharacter" style="height: 220px;" class="hover" @click="showModal = true">
-   <img :src="secondCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true" >   
-   <img :src="thirdCharacter" style="height: 220px;" class="hover hoverr" @click="showModal = true"> 
-
-   </div>
-    
-   </transition> 
-
+ <transition-group name="bounce" appear tag="div" class="test">
+   <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
+    <div v-for="character in characters" v-bind:key="character.message"  style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
+      <img :src="character.src"  :alt="character.altSrc" class="hover hoverr" @click="showModal = true" style="height: 220px;">
+    </div>
+  </div>
+   </transition-group> 
 <transition name="modal">
-  
   <div v-if="showModal" style="position: absolute;" id="modal-template" class="modal" >
-     <h1 >TEST<h1>
-      
-       <img :src="closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModal = false">
-        <img :src="cardEntr" style="width: 100px">
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore minus facere libero recusandae quidem, dignissimos repellendus. Illum, hic ex recusandae, quos deserunt obcaecati, iusto distinctio porro ducimus sint blanditiis tempora?</p>
-       <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
-    </div> 
-
+    <div v-for="character in characters" v-bind:key="character.message" >
+      <div  v-for="stat in character" v-bind:key="stat.title">
+      <img :src="stat.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModal = false">
+      <h1 >{{stat.title}}<h1>
+    </div>
+  </div>
+    <div v-for="charact in charactersss" v-bind:key="charact.title">
+      {{charact.title}}
+    </div>
+    <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
+  </div> 
 </transition>
   <router-link :key="visible"  class="button" to="/game/1">Go to Game</router-link>
     <button v-on:click="counter += 1">Add 1</button>
  <p :key="view">{{counter }}</p>
           <input v-model="tst">
-
-
-    
-
 </template>
 
 <script>
 
-
-
+import data from '../data.json';
     export default {
     data () {
-        
-
         return {
-     
-          tst: '',
-          view: '',
-         counter: 0,
-           visible: true,
-            showModal: false,
+      
+            tst: '',
+            view: '',
+            counter: 0,
+            visible: true,
+            showModal: false,/*
             firstCharacter: require('/assets/images/klopp.png'),
             secondCharacter: require('/assets/images/zidane.png'),
-            thirdCharacter: require('/assets/images/kombouare.png'),
-            closeSvg: require('/assets/images/close.svg'),
+            thirdCharacter: require('/assets/images/kombouare.png'),*/
             cardEntr : require('/assets/images/entraineur-1.png'),
             message : "Choisissez votre PERSONNAGE",
-           
+            characters: data.characters[0],
+            charactersss: data.characters[0].id,
+            newNumber: null 
         }
         
     },
@@ -69,8 +58,13 @@
       this.tst = localStorage.tst;
     }
 
-   
-
+     if (localStorage.getItem('counter')) {
+      try {
+        this.cats = JSON.parse(localStorage.getItem('counter'));
+      } catch(e) {
+        localStorage.removeItem('counter');
+      }
+    }
   },
 
 
@@ -89,29 +83,14 @@
        document.querySelector('.loader__title').classList.add('loader--active')
      },
 
+     saveNumber : function () {
+           const parsed = JSON.stringify(this.counter);
+      localStorage.setItem('counter', parsed);
+     },
+
    
-     
-
-
     }
-
-    
- 
-
-       
   }
- 
-  
-   
-   
-
- 
-
-
-
-
-
-
 
 </script>
 <style>

@@ -1,5 +1,6 @@
 .begin-enter-active {
-  animation: fadeIn 2s;
+  animation: fadeIn 4s;
+  
   
 }
 
@@ -416,7 +417,7 @@ textarea {
   padding: 5px;
   border-radius: 5px;
   border: 3px purple solid;
-  width: auto;
+  width: 300px;
   height: 40px;
   display: flex;
   align-items: center;

@@ -3,7 +3,8 @@
 <template>
 <transition name="tiles" appear tag="div" class="test">
   <div class="big-header" :key="message" v-if="okay">
-    
+
+   <p>{{points}}</p>
     <h1 style="font-size: 40px;">{{ level.question }}</h1>
     <br />
     <div class="answers">
@@ -13,6 +14,7 @@
    
   
     </router-link>
+    <button @click="handleClick()">{{savePoints()}}</button>
      <img v-bind:src = "choice.src" :alt="choice.altSrc" style="width: 200px;" >
   </div>
 
@@ -23,10 +25,16 @@
 
 <script>
 
+
+
+import countService from '../services/countService';
 import data from '../data.json';
 export default {
   data() {
     return {
+
+      points : countService.value(),
+    
       okay: true,
       message: 'saloute',
       level: data.game[this.$route.params.id],
@@ -35,8 +43,39 @@ export default {
   
  
 
+  },
+  mounted() {
+if (localStorage.getItem('points')) {
+      try {
+        this.points = JSON.parse(localStorage.getItem('points'));
+      } catch(e) {
+        localStorage.removeItem('points');
+      }
+    }
+  },
+
+  methods : {
+     savePoints() {
+      const parsed = JSON.stringify(this.points);
+      localStorage.setItem('points', parsed);
+     
+    },
+
+   
+
+   
+ 
+    handleClick() {
+      countService.increment();
+      this.savePoints();
+      
+    }
   }
+
+  
 };
+
+
 
 </script>
 

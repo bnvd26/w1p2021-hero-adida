@@ -11,6 +11,11 @@
 </template>
 
 <script>
+
+
+
+
+
 export default {
   data() {
     return {
@@ -19,6 +24,13 @@ export default {
     
     }
   },
+
+
+  methods :{
+click : function () {
+       document.querySelector('.loader__title').classList.add('loader--active')
+     }
+  } 
 
   
 };
@@ -29,13 +41,15 @@ export default {
 <style>
 
 .begin-enter-active {
-  animation: fadeIn 2s;
+  animation: fadeIn 4s;
+  
   
 }
 
 .begin-enter-to {
 background: #000;
 }
+
 
 
 

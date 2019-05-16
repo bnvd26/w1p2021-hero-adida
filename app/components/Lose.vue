@@ -3,6 +3,7 @@
    <h1>{{message}}</h1>
     <br />
     <router-link class="button" to="/home">Go to Home</router-link>
+    <router-link class="button" to="/character">PLAY AGAIN</router-link>
   </div>
 </template>
 
