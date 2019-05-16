@@ -1,6 +1,6 @@
 class CountService {
   constructor() {
-    this.points = 0;
+    this.points = 100;
   }
   increment() {
     this.points++;

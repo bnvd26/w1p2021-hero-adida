@@ -15066,17 +15066,13 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
       message: 'ULTIMATE CAREER 19',
       rules: 'CLICKER POUR JOUER'
     };
-  },
-  methods: {
-    click: function click() {
-      document.querySelector('.loader__title').classList.add('loader--active');
-    }
   }
 };
 exports.default = _default;
@@ -15246,8 +15242,6 @@ module.exports = {
     }
   }
 };
-},{}],"assets/images/entraineur-1.png":[function(require,module,exports) {
-module.exports = "/entraineur-1.0d14a7bc.png";
 },{}],"components/Character.vue":[function(require,module,exports) {
 "use strict";
 
@@ -15287,10 +15281,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
 var _default = {
   data: function data() {
     return {
@@ -15299,12 +15289,6 @@ var _default = {
       counter: 0,
       visible: true,
       showModal: false,
-
-      /*
-      firstCharacter: require('/assets/images/klopp.png'),
-      secondCharacter: require('/assets/images/zidane.png'),
-      thirdCharacter: require('/assets/images/kombouare.png'),*/
-      cardEntr: require('/assets/images/entraineur-1.png'),
       message: "Choisissez votre PERSONNAGE",
       characters: _data2.default.characters[0],
       charactersss: _data2.default.characters[0].id,
@@ -15472,41 +15456,7 @@ exports.default = _default;
         "router-link",
         { key: _vm.visible, staticClass: "button", attrs: { to: "/game/1" } },
         [_vm._v("Go to Game")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              _vm.counter += 1
-            }
-          }
-        },
-        [_vm._v("Add 1")]
-      ),
-      _vm._v(" "),
-      _c("p", { key: _vm.view }, [_vm._v(_vm._s(_vm.counter))]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.tst,
-            expression: "tst"
-          }
-        ],
-        domProps: { value: _vm.tst },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.tst = $event.target.value
-          }
-        }
-      })
+      )
     ],
     1
   )
@@ -15544,7 +15494,7 @@ render._withStripped = true
       
       }
     })();
-},{"../data.json":"data.json","/assets/images/entraineur-1.png":"assets/images/entraineur-1.png","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"services/countService.js":[function(require,module,exports) {
+},{"../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"services/countService.js":[function(require,module,exports) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -15557,7 +15507,7 @@ function () {
   function CountService() {
     _classCallCheck(this, CountService);
 
-    this.points = 0;
+    this.points = 100;
   }
 
   _createClass(CountService, [{
@@ -15612,9 +15562,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
 var _default = {
   data: function data() {
     return {
@@ -15638,11 +15585,6 @@ var _default = {
     savePoints: function savePoints() {
       var parsed = JSON.stringify(this.points);
       localStorage.setItem('points', parsed);
-    },
-    handleClick: function handleClick() {
-      _countService.default.increment();
-
-      this.savePoints();
     }
   }
 };
@@ -15681,6 +15623,7 @@ exports.default = _default;
                   "div",
                   { key: choice.message },
                   [
+                    _vm._v(">            \n    "),
                     _c(
                       "router-link",
                       { staticClass: "button", attrs: { to: choice.link } },
@@ -15688,27 +15631,27 @@ exports.default = _default;
                         _vm._v(
                           "\n                  " +
                             _vm._s(choice.message) +
-                            "\n   \n  \n    "
+                            "  \n    "
                         )
                       ]
                     ),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticStyle: { width: "200px" },
+                      attrs: { src: choice.src, alt: choice.altSrc }
+                    }),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
                         on: {
                           click: function($event) {
-                            return _vm.handleClick()
+                            ;(_vm.points += 20), _vm.savePoints()
                           }
                         }
                       },
-                      [_vm._v(_vm._s(_vm.savePoints()))]
-                    ),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticStyle: { width: "200px" },
-                      attrs: { src: choice.src, alt: choice.altSrc }
-                    })
+                      [_vm._v("Increment")]
+                    )
                   ],
                   1
                 )
@@ -16513,7 +16456,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61532" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61143" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
