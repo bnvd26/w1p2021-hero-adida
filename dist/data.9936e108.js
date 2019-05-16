@@ -198,7 +198,124 @@ module.exports = {
       "choices": {
         "answerOne": {
           "message": "Oui",
-          "link": "/home"
+          "link": "/game/4"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "4": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/5"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "5": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/6"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "6": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/7"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "7": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/8"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "8": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/9"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "9": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/10"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "10": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/11"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "11": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/12"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "12": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/13"
         },
         "answerTwo": {
           "message": "No",
@@ -236,7 +353,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61143" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58821" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

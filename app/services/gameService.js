@@ -1,4 +1,5 @@
-class CountService {
+/* A COMPLTETER */
+class gameService {
   constructor() {
     this.points = 100;
   }
@@ -10,8 +11,4 @@ class CountService {
   }
 }
 
-module.exports = new CountService();
-
-
-
-
+module.exports = new gameService();

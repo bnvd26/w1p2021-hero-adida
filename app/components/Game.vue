@@ -7,13 +7,13 @@
     <div class="answers">
     <div  v-for="choice in choices" 
           v-bind:key="choice.message"
-          >>            
-    <router-link  :to="choice.link" class="button"   >
+          >            
+    <router-link  :to="choice.link" class="button"  @click.native="incrementPoints()" >
                   {{choice.message}}  
     </router-link>
 
      <img v-bind:src = "choice.src" :alt="choice.altSrc" style="width: 200px;" >
-     <button @click="(points += 20, savePoints() )">Increment</button>
+
   </div>
 
 </div>
@@ -27,7 +27,8 @@ import data from '../data.json';
 export default {
   data() {
     return {
-      points : countService.value(),
+
+      points : 100,
       okay: true,
       message: 'saloute',
       level: data.game[this.$route.params.id],
@@ -49,6 +50,14 @@ export default {
      savePoints() {
       const parsed = JSON.stringify(this.points);
       localStorage.setItem('points', parsed);     
+  
+  },
+    
+
+    incrementPoints() {
+      
+       this.points += 20;
+       this.savePoints();
     }
   }
 }

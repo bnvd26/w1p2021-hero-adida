@@ -15232,7 +15232,124 @@ module.exports = {
       "choices": {
         "answerOne": {
           "message": "Oui",
-          "link": "/home"
+          "link": "/game/4"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "4": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/5"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "5": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/6"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "6": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/7"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "7": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/8"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "8": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/9"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "9": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/10"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "10": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/11"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "11": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/12"
+        },
+        "answerTwo": {
+          "message": "No",
+          "link": "/lose"
+        }
+      }
+    },
+    "12": {
+      "question": "PAGE GAME/3 ?",
+      "choices": {
+        "answerOne": {
+          "message": "Oui",
+          "link": "/game/13"
         },
         "answerTwo": {
           "message": "No",
@@ -15513,7 +15630,7 @@ function () {
   _createClass(CountService, [{
     key: "increment",
     value: function increment() {
-      this.points++;
+      this.points += 20;
     }
   }, {
     key: "value",
@@ -15565,7 +15682,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   data: function data() {
     return {
-      points: _countService.default.value(),
+      points: 100,
       okay: true,
       message: 'saloute',
       level: _data2.default.game[this.$route.params.id],
@@ -15585,6 +15702,10 @@ var _default = {
     savePoints: function savePoints() {
       var parsed = JSON.stringify(this.points);
       localStorage.setItem('points', parsed);
+    },
+    incrementPoints: function incrementPoints() {
+      this.points += 20;
+      this.savePoints();
     }
   }
 };
@@ -15623,10 +15744,17 @@ exports.default = _default;
                   "div",
                   { key: choice.message },
                   [
-                    _vm._v(">            \n    "),
                     _c(
                       "router-link",
-                      { staticClass: "button", attrs: { to: choice.link } },
+                      {
+                        staticClass: "button",
+                        attrs: { to: choice.link },
+                        nativeOn: {
+                          click: function($event) {
+                            return _vm.incrementPoints()
+                          }
+                        }
+                      },
                       [
                         _vm._v(
                           "\n                  " +
@@ -15639,19 +15767,7 @@ exports.default = _default;
                     _c("img", {
                       staticStyle: { width: "200px" },
                       attrs: { src: choice.src, alt: choice.altSrc }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        on: {
-                          click: function($event) {
-                            ;(_vm.points += 20), _vm.savePoints()
-                          }
-                        }
-                      },
-                      [_vm._v("Increment")]
-                    )
+                    })
                   ],
                   1
                 )
@@ -16456,7 +16572,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61143" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58821" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
