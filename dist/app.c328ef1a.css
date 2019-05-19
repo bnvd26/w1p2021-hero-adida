@@ -93,14 +93,6 @@ background: #000;
     transform: scale3d(0.3, 0.3, 0.3);
   }
 }
-.tiles-enter-active {
-  animation: fadeInS 1s;
-  
-}
-
-.tiles-enter-to {
-background: #000;
-}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)

@@ -15643,6 +15643,56 @@ function () {
 }();
 
 module.exports = new CountService();
+},{}],"services/gameService.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* A COMPLTETER */
+var gameService =
+/*#__PURE__*/
+function () {
+  function gameService() {
+    _classCallCheck(this, gameService);
+
+    this.points = 100;
+  }
+
+  _createClass(gameService, [{
+    key: "localStorageSet",
+    value: function localStorageSet() {
+      if (localStorage.getItem('points')) {
+        try {
+          this.points = JSON.parse(localStorage.getItem('points'));
+        } catch (e) {
+          Console.LOG('ERROR');
+        }
+      }
+    }
+  }, {
+    key: "savePoints",
+    value: function savePoints() {
+      var parsed = JSON.stringify(this.points);
+      localStorage.setItem('points', parsed);
+    }
+  }, {
+    key: "increment",
+    value: function increment() {
+      this.points += 20;
+    }
+  }, {
+    key: "value",
+    value: function value() {
+      return this.points;
+    }
+  }]);
+
+  return gameService;
+}();
+
+module.exports = new gameService();
 },{}],"components/Game.vue":[function(require,module,exports) {
 "use strict";
 
@@ -15651,7 +15701,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _countService = _interopRequireDefault(require("../services/countService"));
+var _countService = _interopRequireDefault(require("../services/countService.js"));
+
+var _gameService = _interopRequireDefault(require("../services/gameService.js"));
 
 var _data2 = _interopRequireDefault(require("../data.json"));
 
@@ -15679,10 +15731,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      points: 100,
+      points: _gameService.default.value(),
+      localStorageSet: _gameService.default.localStorageSet(),
       okay: true,
       message: 'saloute',
       level: _data2.default.game[this.$route.params.id],
@@ -15690,22 +15748,14 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    if (localStorage.getItem('points')) {
-      try {
-        this.points = JSON.parse(localStorage.getItem('points'));
-      } catch (e) {
-        localStorage.removeItem('points');
-      }
-    }
+    this.localStorageSet;
   },
   methods: {
-    savePoints: function savePoints() {
-      var parsed = JSON.stringify(this.points);
-      localStorage.setItem('points', parsed);
-    },
+    saveScore: function saveScore() {},
     incrementPoints: function incrementPoints() {
-      this.points += 20;
-      this.savePoints();
+      _gameService.default.increment();
+
+      _gameService.default.savePoints();
     }
   }
 };
@@ -15728,8 +15778,6 @@ exports.default = _default;
     [
       _vm.okay
         ? _c("div", { key: _vm.message, staticClass: "big-header" }, [
-            _c("p", [_vm._v(_vm._s(_vm.points))]),
-            _vm._v(" "),
             _c("h1", { staticStyle: { "font-size": "40px" } }, [
               _vm._v(_vm._s(_vm.level.question))
             ]),
@@ -15744,6 +15792,8 @@ exports.default = _default;
                   "div",
                   { key: choice.message },
                   [
+                    _c("p", [_vm._v(_vm._s(_vm.points))]),
+                    _vm._v(" "),
                     _c(
                       "router-link",
                       {
@@ -15759,7 +15809,7 @@ exports.default = _default;
                         _vm._v(
                           "\n                  " +
                             _vm._s(choice.message) +
-                            "  \n    "
+                            "  \n \n    "
                         )
                       ]
                     ),
@@ -15806,13 +15856,9 @@ render._withStripped = true
         }
 
         
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
       }
     })();
-},{"../services/countService":"services/countService.js","../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
+},{"../services/countService.js":"services/countService.js","../services/gameService.js":"services/gameService.js","../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16572,7 +16618,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58821" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53011" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
