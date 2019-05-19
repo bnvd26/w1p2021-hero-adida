@@ -23,17 +23,17 @@
     <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
   </div> 
 </transition>
-  <router-link :key="visible"  class="button" to="/game/1">Go to Game</router-link> 
+  <router-link :key="visible"  class="button" to="/game/1" v-on:click.native="incrementPoints()">Go to Game</router-link> 
 </template>
 <script>
-
+ import gameService from '../services/gameService.js';
 import data from '../data.json';
     export default {
     data () {
         return {
-      
-            tst: '',
-            view: '',
+      points : gameService.value(),
+      localStorageSet : gameService.localStorageSet(),
+ 
             counter: 0,
             visible: true,
             showModal: false,
@@ -45,43 +45,30 @@ import data from '../data.json';
         
     },
 
-     mounted () {
-    if (localStorage.tst) {
-      this.tst = localStorage.tst;
-    }
+    
 
-     if (localStorage.getItem('counter')) {
-      try {
-        this.cats = JSON.parse(localStorage.getItem('counter'));
-      } catch(e) {
-        localStorage.removeItem('counter');
-      }
-    }
+ mounted() {
+    this.localStorageSet;
   },
 
-
-   watch: {
-    tst(tstT) {
-      localStorage.tst = tstT;
+  methods : {
+    saveScore() {
+      
     },
-     
    
-  },
+    
 
- 
+    incrementPoints() {
+   gameService.savePoints();
+      gameService.increment();
    
-   methods: {
-     click : function () {
-       document.querySelector('.loader__title').classList.add('loader--active')
-     },
 
-     saveNumber : function () {
-           const parsed = JSON.stringify(this.counter);
-      localStorage.setItem('counter', parsed);
-     },
-
-   
+       
     }
+  }
+
+
+
   }
 
 </script>

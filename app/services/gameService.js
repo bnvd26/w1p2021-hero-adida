@@ -10,7 +10,7 @@ localStorageSet () {
     try {
       this.points = JSON.parse(localStorage.getItem('points'));
     } catch(e) {
-      Console.LOG('ERROR')
+      localStorage.removeItem('points');
     }
   }
 }
