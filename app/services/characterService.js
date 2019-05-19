@@ -1,4 +1,4 @@
-class CountService {
+class CharacterService {
   constructor() {
     this.points = 100;
   }
@@ -10,7 +10,7 @@ class CountService {
   }
 }
 
-module.exports = new CountService();
+module.exports = new CharacterService();
 
 
 

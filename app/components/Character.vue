@@ -26,7 +26,9 @@
   <router-link :key="visible"  class="button" to="/game/1" v-on:click.native="incrementPoints()">Go to Game</router-link> 
 </template>
 <script>
- import gameService from '../services/gameService.js';
+
+import characterService from '../services/characterService';
+ import gameService from '../services/gameService';
 import data from '../data.json';
     export default {
     data () {

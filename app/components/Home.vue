@@ -10,7 +10,7 @@
   </div>
   </transition>
 </template>
-
+<!-- NE PAS OUBLIER DE FAIRE LANIMATION DE DEBUT DE JEU-->
 <script>
 
 export default {

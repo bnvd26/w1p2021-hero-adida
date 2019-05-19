@@ -27,8 +27,8 @@
 </template>
 <script>
 
-import countService from '../services/countService.js';
-import gameService from '../services/gameService.js';
+
+import gameService from '../services/gameService';
 import data from '../data.json';
 export default {
   data() {

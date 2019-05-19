@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import router from './router';
-import VueLocalStorage from 'vue-ls';
+
 /*import reactiveStorage from "vue-reactive-storage";   possibilite de solutions pour le localStorage*/ 
 import './assets/scss/styles.scss';
 
@@ -25,7 +25,7 @@ var ls = function myFunction() {
 ls();*/
 
 
-Vue.use(VueLocalStorage);
+
 
 
 

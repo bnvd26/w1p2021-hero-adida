@@ -1,5 +1,5 @@
 /* A COMPLTETER */
-class gameService {
+class GameService {
   constructor() {
     this.points = 100;
   }
@@ -30,10 +30,14 @@ increment() {
   value() {
     return this.points;
   }
+
+  clearLocalStorage() {
+    localStorage.removeItem('points');
+  }
 }
 
 
-module.exports = new gameService();
+module.exports = new GameService();
 
 
 
