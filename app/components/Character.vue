@@ -54,6 +54,7 @@ import data from '../data.json';
 
   mounted() {
     localStorage.clear();
+    
 },
   
   methods : {

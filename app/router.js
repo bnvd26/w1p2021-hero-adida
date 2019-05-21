@@ -33,6 +33,7 @@ const router = new Router({
       path: '/game/:id',
       name: 'game',
       component: Game,
+      meta: { requiresFourty: true }
   
       
     },
@@ -60,4 +61,31 @@ const router = new Router({
   ],
 });
 
+
+const verifyScore = router.beforeEach((to, from, next) => {
+  console.log(to)
+  if (to.meta.requiresFourty) {
+   
+    setTimeout(() => {
+  let scoring = localStorage.getItem('points')
+  if (scoring < 40) {
+    next({name: 'lose'})
+  } else {
+ next()
+  }
+  })
+   
+  }
+  next()
+})
+
+verifyScore;
+
 export default router;
+
+
+
+
+  
+
+

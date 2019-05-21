@@ -1,6 +1,7 @@
 <template>
 <transition name="tiles" appear tag="div" class="test">
   <div class="big-header" :key="message" v-if="isActive">
+     <p>{{score}}</p>
   <div v-if="character === 'klopp'" class="entraineurs__information">
  <img :src= "characterKlopp.src" style="width: 30px; height: 30px;">
  <p>Reputation : {{points}}</p>
@@ -33,8 +34,8 @@
     <source src="../assets/audio/easports.mp3" type="audio/mp3">
 </audio>-->
 
-                                 
-    <router-link  :to="choice.link" class="button"  v-on:click.native="incrementeur()" >
+                               
+    <router-link  :to="choice.link" class="button"  v-on:click.native="decrementSave()" >
                   {{choice.message}}  
  
     </router-link>
@@ -55,7 +56,7 @@ export default {
   data() {
     return {
       character: null,
-    
+      score : this.points,
       points: null,
       isActive: true,
       message: 'Everything is okay',
@@ -67,11 +68,12 @@ export default {
     
     }
   },
+ 
 
   mounted()  {
     setTimeout(() => {
     this.character = localStorage.getItem('character');
-     this.points = localStorage.getItem('points')
+    this.points = localStorage.getItem('points')
  
 
     })
@@ -79,58 +81,21 @@ export default {
       
   }, 
   methods : {
-     
+  
+
+    incrementSave() {
+      gameService.localStorageAddGet();
+    },
+
+    decrementSave() {
+      gameService.localStorageRemoveGet();
+    }
   } 
 }
-
-   
-  
-
-    
-
-  
-        
-  
-  
-
-
-  /*CREATION IMPERATIVE DUN SERVICE POUR AFFICHER LES IMAGES CORRESPONDATES AUX QUESTIONS*/ 
-
-
-
-
-
- /*mounted() {
-    this.localStorageSet;
-  },*/
-
-
-
-
-
-    /*
-    saveScore() {
-      
-    },
-    incrementPoints() {
-      gameService.increment();
-      gameService.savePoints();       
-    }*/
- 
-
-
-
-
-
-
 </script>
 
-
-<style>
-
-
+ <style lang="scss" scoped>
 .entraineurs__information {
-
     display: flex;
     align-items: center;
     position:  absolute;
@@ -139,8 +104,13 @@ export default {
     right: 5%;
     width: 250px;
 }
-
 </style>
+
+
+
+
+
+
 
 
 

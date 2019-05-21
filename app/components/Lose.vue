@@ -14,15 +14,15 @@ export default {
     data() {
       return {
         points: gameService.value(),
-        message : "LOSE",
+        message : "VOUS AVEZ PERDU !!!!!!!!",
 
       }
     },
-    methods : {
-     clearScore () {
-       gameService.clearLocalStorage();
-       this.$router.push({path: '/character'});
-     }
-    }
+
+  mounted() {
+    localStorage.clear();
+    
+}
+    
 };
 </script>

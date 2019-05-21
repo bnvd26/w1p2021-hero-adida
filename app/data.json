@@ -52,7 +52,8 @@
           "srcZidane" : "/images/cardHazard.png",
           "srcKlopp" : "/images/cardKompany.png",
           "srcKombouare" : "/images/cardGouiri.png",
-          "altSrc" : "img-answer-one"
+          "altSrc" : "img-answer-one",
+          "choix" : "decrementSave()"
         
         
         },

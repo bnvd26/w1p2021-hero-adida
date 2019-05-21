@@ -1,27 +1,39 @@
 /* A COMPLTETER */
 class GameService {
   constructor() {
-    const value = localStorage.getItem('points');
-    if (value)
-      this.points = Number(value);
-    else
-      this.points = 100;
+   this.points = null
+
   }
 
-  set(value) {
-    this.points = value;
-    localStorage.setItem('points', value); 
+ 
+
+  
+
+  localStorageSetter () {
+    localStorage.getItem('points')
   }
 
-  increment() {
-    return this.points += 20;
+  localStorageAddGet() {
+    localStorage.setItem('points',parseInt(localStorage.getItem('points'))+20);
   }
 
+  localStorageRemoveGet() {
+    localStorage.setItem('points',parseInt(localStorage.getItem('points'))-20);
+  }
 
+  
 
-  get() {
+    
+  
+  
+
+  value() {
     return this.points;
   }
+
+
+
+ 
 
 
 
