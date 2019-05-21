@@ -15154,33 +15154,11 @@ render._withStripped = true
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"services/characterService.js":[function(require,module,exports) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var CharacterService = function CharacterService() {
+  _classCallCheck(this, CharacterService);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var CharacterService =
-/*#__PURE__*/
-function () {
-  function CharacterService() {
-    _classCallCheck(this, CharacterService);
-
-    this.points = 100;
-  }
-
-  _createClass(CharacterService, [{
-    key: "increment",
-    value: function increment() {
-      this.points += 20;
-    }
-  }, {
-    key: "value",
-    value: function value() {
-      return this.points;
-    }
-  }]);
-
-  return CharacterService;
-}();
+  this.afficheKlopp = false, this.afficheZidane = false, this.afficheKombouare = false;
+};
 
 module.exports = new CharacterService();
 },{}],"services/gameService.js":[function(require,module,exports) {
@@ -15197,41 +15175,45 @@ function () {
   function GameService() {
     _classCallCheck(this, GameService);
 
-    this.points = 100;
+    var value = localStorage.getItem('points');
+    if (value) this.points = Number(value);else this.points = 100;
   }
 
   _createClass(GameService, [{
-    key: "localStorageSet",
-    value: function localStorageSet() {
-      if (localStorage.getItem('points')) {
-        try {
-          this.points = JSON.parse(localStorage.getItem('points'));
-        } catch (e) {
-          localStorage.removeItem('points');
-        }
-      }
-    }
-  }, {
-    key: "savePoints",
-    value: function savePoints() {
-      var parsed = JSON.stringify(this.points);
-      localStorage.setItem('points', parsed);
+    key: "set",
+    value: function set(value) {
+      this.points = value;
+      localStorage.setItem('points', value);
     }
   }, {
     key: "increment",
     value: function increment() {
-      this.points += 20;
+      return this.points += 20;
     }
   }, {
-    key: "value",
-    value: function value() {
+    key: "get",
+    value: function get() {
       return this.points;
-    }
-  }, {
-    key: "clearLocalStorage",
-    value: function clearLocalStorage() {
-      localStorage.removeItem('points');
-    }
+    } // localStorageSet () {
+    //   if (localStorage.getItem('points')) {
+    //     try {
+    //       this.points = JSON.parse(localStorage.getItem('points'));
+    //     } catch(e) {
+    //       localStorage.removeItem('points');
+    //     }
+    //   }
+    // }
+    // 
+    // increment() {
+    //     this.points += 20;
+    //   }
+    //   value() {
+    //     return this.points;
+    //   }
+    //   clearLocalStorage() {
+    //     localStorage.clear('points');
+    //   }
+
   }]);
 
   return GameService;
@@ -15242,80 +15224,80 @@ module.exports = new GameService();
 module.exports = {
   "characters": [{
     "1": {
-      "id": 1,
       "message": "salut",
-      "src": "/klopp.png",
+      "src": "/images/klopp.png",
       "altSrc": "img-klopp",
-      "isactive": {
-        "title": "ZINEDINE ZIDANE",
-        "text": "BON",
-        "closeSvg": "/close.svg"
-      }
+      "description": "fan de foot",
+      "closeSvg": "images/close.svg",
+      "title": "Jurgen Klopp",
+      "text": "BON"
     },
     "2": {
-      "id": 2,
       "message": "pkay",
-      "src": "/zidane.png",
+      "src": "/images/zidane.png",
       "altSrc": "img-zidane",
-      "isactive": {
-        "title": "ZINEDINE ZIDANE",
-        "text": "BON"
-      }
+      "description": "fan de foot",
+      "closeSvg": "images/close.svg",
+      "title": "ZINEDINE ZIDANE",
+      "text": "BON"
     },
     "3": {
-      "id": 2,
       "message": "good",
-      "src": "/kombouare.png",
+      "src": "/images/kombouare.png",
       "altSrc": "img-kombouare",
-      "isactive": {
-        "title": "ZINEDINE ZIDANE",
-        "text": "BON"
-      }
+      "description": "fan de foot",
+      "closeSvg": "images/close.svg",
+      "title": "Antoine Kombouare",
+      "text": "BON"
     }
   }],
   "game": {
     "1": {
-      "question": "PAGE GAME/1 ?",
+      "question": "Recrutement du joueur ",
       "choices": {
         "answerOne": {
           "message": "Oui",
           "link": "/game/2",
-          "src": "/bowser.png",
-          "altSrc": "img-answer-one",
-          "reputation": 10,
-          "points": "increment()"
+          "srcZidane": "/images/cardHazard.png",
+          "srcKlopp": "/images/cardKompany.png",
+          "srcKombouare": "/images/cardGouiri.png",
+          "altSrc": "img-answer-one"
         },
         "answerTwo": {
           "message": "No",
           "link": "/lose",
-          "src": "/zelda.png",
+          "srcZidane": "/images/cardIsco.png",
+          "srcKlopp": "/images/cardMbappe.png",
+          "srcKombouare": "/images/cardPhilipouto.png",
           "altSrc": "img-answer-two"
         },
         "answerThree": {
           "message": "Maybe",
           "link": "/game/2",
-          "src": "/testimg.b3b21468.jpg",
+          "srcZidane": "/images/cardBalotelli.png",
+          "srcKlopp": "/images/cardVidal.png",
+          "srcKombouare": "/images/cardDelaplace.png",
           "altSrc": "img-answer-three"
         }
       }
     },
     "2": {
-      "question": "PAGE GAME/2 ?",
+      "question": "Choix du numero ",
       "choices": {
         "answerOne": {
-          "message": "Oui",
+          "message": "7",
           "link": "/game/3",
-          "src": "/testimg.b3b21468.jpg",
+          "srcZidane": "/images/cardDelaplace.png",
           "altSrc": "img-answer-one"
         },
         "answerTwo": {
-          "message": "No",
+          "message": "10",
           "link": "/lose"
         }
       }
     },
     "3": {
-      "question": "PAGE GAME/3 ?",
+      "question": "prolongation ou pas du contrat de l’entraineur",
       "choices": {
         "answerOne": {
           "message": "Oui",
@@ -15328,7 +15310,7 @@ module.exports = {
       }
     },
     "4": {
-      "question": "PAGE GAME/3 ?",
+      "question": "Les rumeurs disent que le président accorderait une prime pour chaque joueur s'ils remportent le dernier match.  Souhaitez vous accorder cette prime ?",
       "choices": {
         "answerOne": {
           "message": "Oui",
@@ -15406,37 +15388,11 @@ module.exports = {
       }
     },
     "10": {
-      "question": "PAGE GAME/3 ?",
+      "question": "LE JOUEUR VIENT DE RENTRER SUR LA PELOUSE SOUHAITEZ VOUS LE LAISSER TIRER LE PENALTY ??",
       "choices": {
         "answerOne": {
           "message": "Oui",
           "link": "/game/11"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
-    },
-    "11": {
-      "question": "PAGE GAME/3 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/12"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
-    },
-    "12": {
-      "question": "PAGE GAME/3 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/13"
         },
         "answerTwo": {
           "message": "No",
@@ -15489,29 +15445,48 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      points: _gameService.default.value(),
-      localStorageSet: _gameService.default.localStorageSet(),
-      counter: 0,
       visible: true,
-      showModal: false,
-      message: "Choisissez votre PERSONNAGE",
-      characters: _data2.default.characters[0],
-      charactersss: _data2.default.characters[0].id,
+      showModalOne: false,
+      showModalTwo: false,
+      showModalThree: false,
+      message: "Choisissez votre Entraineur ",
+      characterKlopp: _data2.default.characters[0][1],
+      characterZidane: _data2.default.characters[0][2],
+      characterKombouare: _data2.default.characters[0][3],
       newNumber: null
     };
   },
   mounted: function mounted() {
-    this.localStorageSet;
+    localStorage.clear();
   },
   methods: {
-    saveScore: function saveScore() {},
-    incrementPoints: function incrementPoints() {
-      _gameService.default.savePoints();
-
-      _gameService.default.increment();
+    showModalsOne: function showModalsOne() {
+      this.showModalOne = true;
+    },
+    showModalsTwo: function showModalsTwo() {
+      this.showModalTwo = true;
+    },
+    showModalsThree: function showModalsThree() {
+      this.showModalThree = true;
+    },
+    saveCharacterZidane: function saveCharacterZidane() {
+      localStorage.setItem('character', 'zidane');
+    },
+    saveCharacterKombouare: function saveCharacterKombouare() {
+      localStorage.setItem('character', 'kombouare');
+    },
+    saveCharacterKlopp: function saveCharacterKlopp() {
+      localStorage.setItem('character', 'klopp');
     }
   }
 };
@@ -15555,40 +15530,56 @@ exports.default = _default;
                     width: "100vw"
                   }
                 },
-                _vm._l(_vm.characters, function(character) {
-                  return _c(
-                    "div",
-                    {
-                      key: character.message,
-                      staticStyle: {
-                        display: "flex",
-                        "flex-direction": "row",
-                        "justify-content": "space-around",
-                        width: "100vw"
-                      }
+                [
+                  _c("img", {
+                    staticClass: "hover hoverr",
+                    staticStyle: { height: "220px" },
+                    attrs: {
+                      src: _vm.characterKlopp.src,
+                      alt: _vm.characterKlopp.altSrc
                     },
-                    [
-                      _c("img", {
-                        staticClass: "hover hoverr",
-                        staticStyle: { height: "220px" },
-                        attrs: { src: character.src, alt: character.altSrc },
-                        on: {
-                          click: function($event) {
-                            _vm.showModal = true
-                          }
-                        }
-                      })
-                    ]
-                  )
-                }),
-                0
+                    on: {
+                      click: function($event) {
+                        return _vm.showModalsOne()
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "hover hoverr",
+                    staticStyle: { height: "220px" },
+                    attrs: {
+                      src: _vm.characterKombouare.src,
+                      alt: _vm.characterKombouare.altSrc
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.showModalsTwo()
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "hover hoverr",
+                    staticStyle: { height: "220px" },
+                    attrs: {
+                      src: _vm.characterZidane.src,
+                      alt: _vm.characterZidane.altSrc
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.showModalsThree()
+                      }
+                    }
+                  })
+                ]
               )
             : _vm._e()
         ]
       ),
       _vm._v(" "),
       _c("transition", { attrs: { name: "modal" } }, [
-        _vm.showModal
+        _vm.showModalOne
           ? _c(
               "div",
               {
@@ -15597,67 +15588,129 @@ exports.default = _default;
                 attrs: { id: "modal-template" }
               },
               [
-                _vm._l(_vm.characters, function(character) {
-                  return _c(
-                    "div",
-                    { key: character.message },
-                    _vm._l(character, function(stat) {
-                      return _c("div", { key: stat.title }, [
-                        _c("img", {
-                          staticStyle: {
-                            width: "30px",
-                            height: "30px",
-                            cursor: "pointer",
-                            position: "absolute",
-                            right: "10px",
-                            top: "10px"
-                          },
-                          attrs: { src: stat.closeSvg },
-                          on: {
-                            click: function($event) {
-                              _vm.showModal = false
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("h1", [_vm._v(_vm._s(stat.title)), _c("h1")])
-                      ])
-                    }),
-                    0
-                  )
-                }),
-                _vm._v(" "),
-                _vm._l(_vm.charactersss, function(charact) {
-                  return _c("div", { key: charact.title }, [
-                    _vm._v("\n      " + _vm._s(charact.title) + "\n    ")
-                  ])
+                _c("img", {
+                  staticStyle: {
+                    width: "30px",
+                    height: "30px",
+                    cursor: "pointer",
+                    position: "absolute",
+                    right: "10px",
+                    top: "10px"
+                  },
+                  attrs: { src: _vm.characterKlopp.closeSvg },
+                  on: {
+                    click: function($event) {
+                      _vm.showModalOne = false
+                    }
+                  }
                 }),
                 _vm._v(" "),
                 _c(
                   "router-link",
-                  { staticClass: "button", attrs: { to: "game/1" } },
-                  [_vm._v(" Jouer avec Jurgen Klopp ")]
+                  {
+                    staticClass: "button",
+                    attrs: { to: "game/1" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.saveCharacterKlopp()
+                      }
+                    }
+                  },
+                  [_vm._v(" " + _vm._s(_vm.characterKlopp.title) + " ")]
                 )
               ],
-              2
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showModalTwo
+          ? _c(
+              "div",
+              {
+                staticClass: "modal",
+                staticStyle: { position: "absolute" },
+                attrs: { id: "modal-template" }
+              },
+              [
+                _c("img", {
+                  staticStyle: {
+                    width: "30px",
+                    height: "30px",
+                    cursor: "pointer",
+                    position: "absolute",
+                    right: "10px",
+                    top: "10px"
+                  },
+                  attrs: { src: _vm.characterKombouare.closeSvg },
+                  on: {
+                    click: function($event) {
+                      _vm.showModalTwo = false
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "button",
+                    attrs: { to: "game/1" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.saveCharacterKombouare()
+                      }
+                    }
+                  },
+                  [_vm._v(" " + _vm._s(_vm.characterKombouare.title) + " ")]
+                )
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showModalThree
+          ? _c(
+              "div",
+              {
+                staticClass: "modal",
+                staticStyle: { position: "absolute" },
+                attrs: { id: "modal-template" }
+              },
+              [
+                _c("img", {
+                  staticStyle: {
+                    width: "30px",
+                    height: "30px",
+                    cursor: "pointer",
+                    position: "absolute",
+                    right: "10px",
+                    top: "10px"
+                  },
+                  attrs: { src: _vm.characterZidane.closeSvg },
+                  on: {
+                    click: function($event) {
+                      _vm.showModalThree = false
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "button",
+                    attrs: { to: "game/1" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.saveCharacterZidane()
+                      }
+                    }
+                  },
+                  [_vm._v(" " + _vm._s(_vm.characterZidane.title) + " ")]
+                )
+              ],
+              1
             )
           : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          key: _vm.visible,
-          staticClass: "button",
-          attrs: { to: "/game/1" },
-          nativeOn: {
-            click: function($event) {
-              return _vm.incrementPoints()
-            }
-          }
-        },
-        [_vm._v("Go to Game")]
-      )
+      ])
     ],
     1
   )
@@ -15703,6 +15756,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _characterService = _interopRequireDefault(require("../services/characterService"));
+
 var _gameService = _interopRequireDefault(require("../services/gameService"));
 
 var _data2 = _interopRequireDefault(require("../data.json"));
@@ -15736,28 +15791,66 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      points: _gameService.default.value(),
-      localStorageSet: _gameService.default.localStorageSet(),
-      okay: true,
-      message: 'saloute',
+      character: null,
+      points: _gameService.default.get(),
+      isActive: true,
+      message: 'Everything is okay',
       level: _data2.default.game[this.$route.params.id],
-      choices: _data2.default.game[this.$route.params.id].choices
+      choices: _data2.default.game[this.$route.params.id].choices,
+      afficheKombouare: localStorage.getItem('antoineKombouare'),
+      afficheKlopp: localStorage.getItem('jurgenKlopp'),
+      afficheZidane: localStorage.getItem('zinedineZidane'),
+      characterKlopp: _data2.default.characters[0][1],
+      characterZidane: _data2.default.characters[0][2],
+      characterKombouare: _data2.default.characters[0][3]
     };
   },
   mounted: function mounted() {
-    this.localStorageSet;
-  },
-  methods: {
-    saveScore: function saveScore() {},
-    incrementPoints: function incrementPoints() {
-      _gameService.default.increment();
+    var _this = this;
 
-      _gameService.default.savePoints();
-    }
-  }
+    setTimeout(function () {
+      _this.character = localStorage.getItem('character');
+    });
+    console.log(this.character);
+  },
+  methods: {}
+  /*CREATION IMPERATIVE DUN SERVICE POUR AFFICHER LES IMAGES CORRESPONDATES AUX QUESTIONS*/
+
+  /*mounted() {
+     this.localStorageSet;
+   },*/
+
+  /*
+  saveScore() {
+    
+  },
+  incrementPoints() {
+    gameService.increment();
+    gameService.savePoints();       
+  }*/
+
 };
 exports.default = _default;
         var $5227df = exports.default || module.exports;
@@ -15776,8 +15869,41 @@ exports.default = _default;
     "transition",
     { staticClass: "test", attrs: { name: "tiles", appear: "", tag: "div" } },
     [
-      _vm.okay
+      _vm.isActive
         ? _c("div", { key: _vm.message, staticClass: "big-header" }, [
+            _vm.character === "klopp"
+              ? _c("div", [
+                  _c("img", {
+                    staticStyle: { width: "30px", height: "30px" },
+                    attrs: { src: _vm.characterKlopp.src }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Reputation : " + _vm._s(_vm.points))])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.character === "zidane"
+              ? _c("div", [
+                  _c("img", {
+                    staticStyle: { width: "30px", height: "30px" },
+                    attrs: { src: _vm.characterZidane.src }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Reputation : " + _vm._s(_vm.points))])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.character === "kombouare"
+              ? _c("div", [
+                  _c("img", {
+                    staticStyle: { width: "30px", height: "30px" },
+                    attrs: { src: _vm.characterKombouare.src }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Reputation : " + _vm._s(_vm.points))])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("h1", { staticStyle: { "font-size": "40px" } }, [
               _vm._v(_vm._s(_vm.level.question))
             ]),
@@ -15792,7 +15918,35 @@ exports.default = _default;
                   "div",
                   { key: choice.message },
                   [
-                    _c("p", [_vm._v(_vm._s(_vm.points))]),
+                    _vm.character === "klopp"
+                      ? _c("div", [
+                          _c("img", {
+                            staticStyle: { width: "200px" },
+                            attrs: { src: choice.srcKlopp, alt: choice.altSrc }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.character === "zidane"
+                      ? _c("div", [
+                          _c("img", {
+                            staticStyle: { width: "200px" },
+                            attrs: { src: choice.srcZidane, alt: choice.altSrc }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.character === "kombouare"
+                      ? _c("div", [
+                          _c("img", {
+                            staticStyle: { width: "200px" },
+                            attrs: {
+                              src: choice.srcKombouare,
+                              alt: choice.altSrc
+                            }
+                          })
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
                       "router-link",
@@ -15801,7 +15955,7 @@ exports.default = _default;
                         attrs: { to: choice.link },
                         nativeOn: {
                           click: function($event) {
-                            return _vm.incrementPoints()
+                            return _vm.incrementeur()
                           }
                         }
                       },
@@ -15812,12 +15966,7 @@ exports.default = _default;
                             "  \n \n    "
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticStyle: { width: "200px" },
-                      attrs: { src: choice.src, alt: choice.altSrc }
-                    })
+                    )
                   ],
                   1
                 )
@@ -15858,7 +16007,7 @@ render._withStripped = true
         
       }
     })();
-},{"../services/gameService":"services/gameService.js","../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
+},{"../services/characterService":"services/characterService.js","../services/gameService":"services/gameService.js","../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15884,13 +16033,16 @@ var _default = {
   data: function data() {
     return {
       points: _gameService.default.value(),
-      clearPoints: _gameService.default.clearLocalStorage(),
       message: "LOSE"
     };
   },
   methods: {
     clearScore: function clearScore() {
-      localStorage.clear('points');
+      _gameService.default.clearLocalStorage();
+
+      this.$router.push({
+        path: '/character'
+      });
     }
   }
 };
@@ -15920,12 +16072,12 @@ exports.default = _default;
       ]),
       _vm._v(" "),
       _c(
-        "router-link",
+        "a",
         {
           staticClass: "button",
-          attrs: { to: "/character" },
-          nativeOn: {
+          on: {
             click: function($event) {
+              $event.preventDefault()
               return _vm.clearScore()
             }
           }
@@ -16165,7 +16317,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51107" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62501" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

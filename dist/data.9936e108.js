@@ -121,80 +121,80 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 module.exports = {
   "characters": [{
     "1": {
-      "id": 1,
       "message": "salut",
-      "src": "/klopp.png",
+      "src": "/images/klopp.png",
       "altSrc": "img-klopp",
-      "isactive": {
-        "title": "ZINEDINE ZIDANE",
-        "text": "BON",
-        "closeSvg": "/close.svg"
-      }
+      "description": "fan de foot",
+      "closeSvg": "images/close.svg",
+      "title": "Jurgen Klopp",
+      "text": "BON"
     },
     "2": {
-      "id": 2,
       "message": "pkay",
-      "src": "/zidane.png",
+      "src": "/images/zidane.png",
       "altSrc": "img-zidane",
-      "isactive": {
-        "title": "ZINEDINE ZIDANE",
-        "text": "BON"
-      }
+      "description": "fan de foot",
+      "closeSvg": "images/close.svg",
+      "title": "ZINEDINE ZIDANE",
+      "text": "BON"
     },
     "3": {
-      "id": 2,
       "message": "good",
-      "src": "/kombouare.png",
+      "src": "/images/kombouare.png",
       "altSrc": "img-kombouare",
-      "isactive": {
-        "title": "ZINEDINE ZIDANE",
-        "text": "BON"
-      }
+      "description": "fan de foot",
+      "closeSvg": "images/close.svg",
+      "title": "Antoine Kombouare",
+      "text": "BON"
     }
   }],
   "game": {
     "1": {
-      "question": "PAGE GAME/1 ?",
+      "question": "Recrutement du joueur ",
       "choices": {
         "answerOne": {
           "message": "Oui",
           "link": "/game/2",
-          "src": "/bowser.png",
-          "altSrc": "img-answer-one",
-          "reputation": 10,
-          "points": "increment()"
+          "srcZidane": "/images/cardHazard.png",
+          "srcKlopp": "/images/cardKompany.png",
+          "srcKombouare": "/images/cardGouiri.png",
+          "altSrc": "img-answer-one"
         },
         "answerTwo": {
           "message": "No",
           "link": "/lose",
-          "src": "/zelda.png",
+          "srcZidane": "/images/cardIsco.png",
+          "srcKlopp": "/images/cardMbappe.png",
+          "srcKombouare": "/images/cardPhilipouto.png",
           "altSrc": "img-answer-two"
         },
         "answerThree": {
           "message": "Maybe",
           "link": "/game/2",
-          "src": "/testimg.b3b21468.jpg",
+          "srcZidane": "/images/cardBalotelli.png",
+          "srcKlopp": "/images/cardVidal.png",
+          "srcKombouare": "/images/cardDelaplace.png",
           "altSrc": "img-answer-three"
         }
       }
     },
     "2": {
-      "question": "PAGE GAME/2 ?",
+      "question": "Choix du numero ",
       "choices": {
         "answerOne": {
-          "message": "Oui",
+          "message": "7",
           "link": "/game/3",
-          "src": "/testimg.b3b21468.jpg",
+          "srcZidane": "/images/cardDelaplace.png",
           "altSrc": "img-answer-one"
         },
         "answerTwo": {
-          "message": "No",
+          "message": "10",
           "link": "/lose"
         }
       }
     },
     "3": {
-      "question": "PAGE GAME/3 ?",
+      "question": "prolongation ou pas du contrat de l’entraineur",
       "choices": {
         "answerOne": {
           "message": "Oui",
@@ -207,7 +207,7 @@ module.exports = {
       }
     },
     "4": {
-      "question": "PAGE GAME/3 ?",
+      "question": "Les rumeurs disent que le président accorderait une prime pour chaque joueur s'ils remportent le dernier match.  Souhaitez vous accorder cette prime ?",
       "choices": {
         "answerOne": {
           "message": "Oui",
@@ -285,37 +285,11 @@ module.exports = {
       }
     },
     "10": {
-      "question": "PAGE GAME/3 ?",
+      "question": "LE JOUEUR VIENT DE RENTRER SUR LA PELOUSE SOUHAITEZ VOUS LE LAISSER TIRER LE PENALTY ??",
       "choices": {
         "answerOne": {
           "message": "Oui",
           "link": "/game/11"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
-    },
-    "11": {
-      "question": "PAGE GAME/3 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/12"
-        },
-        "answerTwo": {
-          "message": "No",
-          "link": "/lose"
-        }
-      }
-    },
-    "12": {
-      "question": "PAGE GAME/3 ?",
-      "choices": {
-        "answerOne": {
-          "message": "Oui",
-          "link": "/game/13"
         },
         "answerTwo": {
           "message": "No",
@@ -353,7 +327,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51107" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62501" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

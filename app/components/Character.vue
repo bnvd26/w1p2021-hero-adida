@@ -2,76 +2,83 @@
   <div class="big-header "  >  <!--:class="showModal ? 'opacity' : ' '-->
     <h1 >{{message}}</h1>
     <br />
- <transition-group name="bounce" appear tag="div" class="test">
-   <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
-    <div v-for="character in characters" v-bind:key="character.message"  style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
-      <img :src="character.src"  :alt="character.altSrc" class="hover hoverr" @click="showModal = true" style="height: 220px;">
-    </div>
-  </div>
-   </transition-group> 
+    <transition-group name="bounce" appear tag="div" class="test">
+        <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
+            <img :src="characterKlopp.src" class="hover hoverr" :alt="characterKlopp.altSrc" @click="showModalsOne()" style="height: 220px;">
+            <img :src="characterKombouare.src" class="hover hoverr" :alt="characterKombouare.altSrc" @click="showModalsTwo()" style="height: 220px;">
+            <img :src="characterZidane.src" class="hover hoverr" :alt="characterZidane.altSrc" @click="showModalsThree()" style="height: 220px;">
+        </div>
+     </transition-group> 
 <transition name="modal">
-  <div v-if="showModal" style="position: absolute;" id="modal-template" class="modal" >
-    <div v-for="character in characters" v-bind:key="character.message" >
-      <div  v-for="stat in character" v-bind:key="stat.title">
-      <img :src="stat.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModal = false">
-      <h1 >{{stat.title}}<h1>
-    </div>
-  </div>
-    <div v-for="charact in charactersss" v-bind:key="charact.title">
-      {{charact.title}}
-    </div>
-    <router-link class="button" to="game/1"> Jouer avec Jurgen Klopp </router-link>
+  
+  
+  <div v-if="showModalOne" style="position: absolute;" id="modal-template" class="modal" >
+      <img :src="characterKlopp.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalOne = false">
+    <router-link class="button" to="game/1" @click.native="saveCharacterKlopp()"> {{characterKlopp.title}} </router-link>
   </div> 
+
+
+   <div v-if="showModalTwo" style="position: absolute;" id="modal-template" class="modal" >
+      <img :src="characterKombouare.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalTwo = false">
+    <router-link class="button" to="game/1" @click.native="saveCharacterKombouare()"> {{characterKombouare.title}} </router-link>
+  </div> 
+
+
+   <div v-if="showModalThree" style="position: absolute;" id="modal-template" class="modal" >
+      <img :src="characterZidane.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalThree = false">
+    <router-link class="button" to="game/1" @click.native="saveCharacterZidane()"> {{characterZidane.title}} </router-link>
+  </div> 
+
+
 </transition>
-  <router-link :key="visible"  class="button" to="/game/1" v-on:click.native="incrementPoints()">Go to Game</router-link> 
 </template>
 <script>
 
 import characterService from '../services/characterService';
- import gameService from '../services/gameService';
+import gameService from '../services/gameService';
 import data from '../data.json';
     export default {
     data () {
         return {
-      points : gameService.value(),
-      localStorageSet : gameService.localStorageSet(),
- 
-            counter: 0,
             visible: true,
-            showModal: false,
-            message : "Choisissez votre PERSONNAGE",
-            characters: data.characters[0],
-            charactersss: data.characters[0].id,
-            newNumber: null 
-        }
-        
+            showModalOne: false,
+            showModalTwo: false,
+            showModalThree: false,
+            message : "Choisissez votre Entraineur ",
+            characterKlopp: data.characters[0][1],
+            characterZidane: data.characters[0][2],
+            characterKombouare: data.characters[0][3],            
+            newNumber: null,
+        }        
     },
 
-    
-
- mounted() {
-    this.localStorageSet;
-  },
-
+  mounted() {
+    localStorage.clear();
+},
+  
   methods : {
-    saveScore() {
-      
-    },
-   
-    
+  
+        showModalsOne() {
+          this.showModalOne = true;
+        },
+         showModalsTwo() {
+          this.showModalTwo = true;
+        },
+        showModalsThree() {
+          this.showModalThree = true;
+        },
+        saveCharacterZidane() {
+            localStorage.setItem('character', 'zidane');  
+        }, 
+        saveCharacterKombouare() {
+        localStorage.setItem('character', 'kombouare');  
+        },
+        saveCharacterKlopp () {
+        localStorage.setItem('character', 'klopp')
+        }
 
-    incrementPoints() {
-   gameService.savePoints();
-      gameService.increment();
-   
-
-       
+  }
     }
-  }
-
-
-
-  }
 
 </script>
 <style>
@@ -162,5 +169,8 @@ import data from '../data.json';
     transform: scale3d(0.3, 0.3, 0.3);
   }
 }
-
 </style>
+
+
+
+

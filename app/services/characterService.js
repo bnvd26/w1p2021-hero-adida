@@ -1,13 +1,12 @@
 class CharacterService {
   constructor() {
-    this.points = 100;
+    this.afficheKlopp = false,
+    this.afficheZidane = false,
+    this.afficheKombouare = false
   }
-  increment() {
-    this.points += 20;
-  }
-  value() {
-    return this.points 
-  }
+  
+
+
 }
 
 module.exports = new CharacterService();

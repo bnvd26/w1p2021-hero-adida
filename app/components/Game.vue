@@ -1,23 +1,42 @@
 <template>
 <transition name="tiles" appear tag="div" class="test">
-  <div class="big-header" :key="message" v-if="okay">
- 
+  <div class="big-header" :key="message" v-if="isActive">
+  <div v-if="character === 'klopp'">
+ <img :src= "characterKlopp.src" style="width: 30px; height: 30px;">
+ <p>Reputation : {{points}}</p>
+  </div>
+    <div v-if="character === 'zidane'">
+ <img :src= "characterZidane.src" style="width: 30px; height: 30px;">
+ <p>Reputation : {{points}}</p>
+  </div>
+    <div v-if="character === 'kombouare'">
+ <img :src= "characterKombouare.src" style="width: 30px; height: 30px;">
+ <p>Reputation : {{points}}</p>
+  </div>
+       
     <h1 style="font-size: 40px;">{{ level.question }}</h1>
     <br />
     <div class="answers">
     <div  v-for="choice in choices" 
           v-bind:key="choice.message"
-          >   
+    >   
+<div v-if="character === 'klopp'">
 
-                             <p>{{points}}</p>
+     <img v-bind:src = "choice.srcKlopp" :alt="choice.altSrc" style="width: 200px;" >
+</div>
+<div v-if="character === 'zidane'">
+     <img v-bind:src = "choice.srcZidane" :alt="choice.altSrc" style="width: 200px;" >
+</div>
+<div v-if="character === 'kombouare'">
+     <img v-bind:src = "choice.srcKombouare" :alt="choice.altSrc" style="width: 200px;" >
+</div>
+
                                  
-    <router-link  :to="choice.link" class="button"  v-on:click.native="incrementPoints()" >
+    <router-link  :to="choice.link" class="button"  v-on:click.native="incrementeur()" >
                   {{choice.message}}  
  
     </router-link>
 
-
-     <img v-bind:src = "choice.src" :alt="choice.altSrc" style="width: 200px;" >
 
   </div>
 
@@ -26,44 +45,81 @@
 </transition>
 </template>
 <script>
-
-
+  
+import characterService from '../services/characterService'
 import gameService from '../services/gameService';
 import data from '../data.json';
 export default {
   data() {
     return {
-
-      points : gameService.value(),
-      localStorageSet : gameService.localStorageSet(),
-  
-      okay: true,
-      message: 'saloute',
+      character: null,
+      points: gameService.get(),
+      isActive: true,
+      message: 'Everything is okay',
       level: data.game[this.$route.params.id],
-      choices: data.game[this.$route.params.id].choices
+      choices: data.game[this.$route.params.id].choices,
+      afficheKombouare: localStorage.getItem('antoineKombouare'),
+      afficheKlopp: localStorage.getItem('jurgenKlopp'),
+      afficheZidane: localStorage.getItem('zinedineZidane'),
+      characterKlopp: data.characters[0][1],
+      characterZidane: data.characters[0][2],
+      characterKombouare: data.characters[0][3],
+
+       
+         
     }
   },
 
- mounted() {
-    this.localStorageSet;
-  },
+  mounted()  {
+    setTimeout(() => {
+    this.character = localStorage.getItem('character');
 
+    })
+    console.log(this.character);
+      
+  }, 
   methods : {
+     
+  } 
+}
+
+   
+  
+
+    
+
+  
+        
+  
+  
+
+
+  /*CREATION IMPERATIVE DUN SERVICE POUR AFFICHER LES IMAGES CORRESPONDATES AUX QUESTIONS*/ 
+
+
+
+
+
+ /*mounted() {
+    this.localStorageSet;
+  },*/
+
+
+
+
+
+    /*
     saveScore() {
       
     },
-   
-    
-
     incrementPoints() {
-
       gameService.increment();
-      gameService.savePoints();
+      gameService.savePoints();       
+    }*/
+ 
 
-       
-    }
-  }
-}
+
+
 
 
 

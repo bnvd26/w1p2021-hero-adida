@@ -1,11 +1,10 @@
 # Le site dont vous êtes le héros
 
-URL du site : http://votre-url-ici.com
+URL du site : https://vuejs-project.netlify.com/
 
 ### Groupe
 
-- Prénom & Nom
-- Prénom & Nom
+- Benjamin Adida
 
 ### Grille d'auto-évaluation
 

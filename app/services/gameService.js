@@ -1,46 +1,57 @@
 /* A COMPLTETER */
 class GameService {
   constructor() {
-    this.points = 100;
+    const value = localStorage.getItem('points');
+    if (value)
+      this.points = Number(value);
+    else
+      this.points = 100;
+  }
+
+  set(value) {
+    this.points = value;
+    localStorage.setItem('points', value); 
+  }
+
+  increment() {
+    return this.points += 20;
   }
 
 
-localStorageSet () {
-  if (localStorage.getItem('points')) {
-    try {
-      this.points = JSON.parse(localStorage.getItem('points'));
-    } catch(e) {
-      localStorage.removeItem('points');
-    }
-  }
-}
 
-savePoints() {
-  const parsed = JSON.stringify(this.points);
-  localStorage.setItem('points', parsed); 
-}
-
-
-increment() {
-    this.points += 20;
-    
-  }
-
-
-  value() {
+  get() {
     return this.points;
   }
 
-  clearLocalStorage() {
-    localStorage.removeItem('points');
-  }
+
+
+  // localStorageSet () {
+//   if (localStorage.getItem('points')) {
+//     try {
+//       this.points = JSON.parse(localStorage.getItem('points'));
+//     } catch(e) {
+//       localStorage.removeItem('points');
+//     }
+//   }
+// }
+
+// 
+
+
+// increment() {
+//     this.points += 20;
+    
+//   }
+
+
+//   value() {
+//     return this.points;
+//   }
+
+//   clearLocalStorage() {
+//     localStorage.clear('points');
+//   }
 }
 
 
 module.exports = new GameService();
-
-
-
-
-    
- 
