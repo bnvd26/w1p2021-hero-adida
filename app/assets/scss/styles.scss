@@ -102,6 +102,10 @@ $hetic-green: #14133f;
   }
 }
 
+html {
+  cursor: url('../images/ball.cur');
+}
+
 
 body,
 button,
@@ -111,6 +115,7 @@ textarea {
   font-family: 'ea_font_v1.5_by_ghettosharkRg';
   text-transform: uppercase;
   letter-spacing: 1.2px;
+ 
 }
 
 .big-header {

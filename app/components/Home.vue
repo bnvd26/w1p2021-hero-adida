@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      message: 'ULTIMATE CAREER 19',
+      message: 'ULTIMATE MATCH 19',
       rules: 'CLICKER POUR JOUER'
 
     }

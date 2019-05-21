@@ -15070,7 +15070,7 @@ exports.default = void 0;
 var _default = {
   data: function data() {
     return {
-      message: 'ULTIMATE CAREER 19',
+      message: 'ULTIMATE MATCH 19',
       rules: 'CLICKER POUR JOUER'
     };
   }
@@ -15230,7 +15230,8 @@ module.exports = {
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title": "Jurgen Klopp",
-      "text": "BON"
+      "text": "BON",
+      "score": 82
     },
     "2": {
       "message": "pkay",
@@ -15239,7 +15240,8 @@ module.exports = {
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title": "ZINEDINE ZIDANE",
-      "text": "BON"
+      "text": "BON",
+      "score": 87
     },
     "3": {
       "message": "good",
@@ -15248,7 +15250,8 @@ module.exports = {
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title": "Antoine Kombouare",
-      "text": "BON"
+      "text": "BON",
+      "score": 67
     }
   }],
   "game": {
@@ -15481,12 +15484,15 @@ var _default = {
     },
     saveCharacterZidane: function saveCharacterZidane() {
       localStorage.setItem('character', 'zidane');
+      localStorage.setItem('points', 82);
     },
     saveCharacterKombouare: function saveCharacterKombouare() {
       localStorage.setItem('character', 'kombouare');
+      localStorage.setItem('points', 87);
     },
     saveCharacterKlopp: function saveCharacterKlopp() {
       localStorage.setItem('character', 'klopp');
+      localStorage.setItem('points', 82);
     }
   }
 };
@@ -15590,8 +15596,8 @@ exports.default = _default;
               [
                 _c("img", {
                   staticStyle: {
-                    width: "30px",
-                    height: "30px",
+                    width: "40px",
+                    height: "40px",
                     cursor: "pointer",
                     position: "absolute",
                     right: "10px",
@@ -15634,8 +15640,8 @@ exports.default = _default;
               [
                 _c("img", {
                   staticStyle: {
-                    width: "30px",
-                    height: "30px",
+                    width: "40px",
+                    height: "40px",
                     cursor: "pointer",
                     position: "absolute",
                     right: "10px",
@@ -15678,8 +15684,8 @@ exports.default = _default;
               [
                 _c("img", {
                   staticStyle: {
-                    width: "30px",
-                    height: "30px",
+                    width: "40px",
+                    height: "40px",
                     cursor: "pointer",
                     position: "absolute",
                     right: "10px",
@@ -15810,18 +15816,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
       character: null,
-      points: _gameService.default.get(),
+      points: null,
       isActive: true,
       message: 'Everything is okay',
       level: _data2.default.game[this.$route.params.id],
       choices: _data2.default.game[this.$route.params.id].choices,
-      afficheKombouare: localStorage.getItem('antoineKombouare'),
-      afficheKlopp: localStorage.getItem('jurgenKlopp'),
-      afficheZidane: localStorage.getItem('zinedineZidane'),
       characterKlopp: _data2.default.characters[0][1],
       characterZidane: _data2.default.characters[0][2],
       characterKombouare: _data2.default.characters[0][3]
@@ -15832,8 +15837,8 @@ var _default = {
 
     setTimeout(function () {
       _this.character = localStorage.getItem('character');
+      _this.points = localStorage.getItem('points');
     });
-    console.log(this.character);
   },
   methods: {}
   /*CREATION IMPERATIVE DUN SERVICE POUR AFFICHER LES IMAGES CORRESPONDATES AUX QUESTIONS*/
@@ -15872,7 +15877,7 @@ exports.default = _default;
       _vm.isActive
         ? _c("div", { key: _vm.message, staticClass: "big-header" }, [
             _vm.character === "klopp"
-              ? _c("div", [
+              ? _c("div", { staticClass: "entraineurs__information" }, [
                   _c("img", {
                     staticStyle: { width: "30px", height: "30px" },
                     attrs: { src: _vm.characterKlopp.src }
@@ -15883,7 +15888,7 @@ exports.default = _default;
               : _vm._e(),
             _vm._v(" "),
             _vm.character === "zidane"
-              ? _c("div", [
+              ? _c("div", { staticClass: "entraineurs__information" }, [
                   _c("img", {
                     staticStyle: { width: "30px", height: "30px" },
                     attrs: { src: _vm.characterZidane.src }
@@ -15894,7 +15899,7 @@ exports.default = _default;
               : _vm._e(),
             _vm._v(" "),
             _vm.character === "kombouare"
-              ? _c("div", [
+              ? _c("div", { staticClass: "entraineurs__information" }, [
                   _c("img", {
                     staticStyle: { width: "30px", height: "30px" },
                     attrs: { src: _vm.characterKombouare.src }
@@ -16005,6 +16010,10 @@ render._withStripped = true
         }
 
         
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
       }
     })();
 },{"../services/characterService":"services/characterService.js","../services/gameService":"services/gameService.js","../data.json":"data.json","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Lose.vue":[function(require,module,exports) {
@@ -16259,7 +16268,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./easports15-webfont.woff2":[["easports15-webfont.aebd52ed.woff2","assets/scss/easports15-webfont.woff2"],"assets/scss/easports15-webfont.woff2"],"./easports15-webfont.woff":[["easports15-webfont.5f894091.woff","assets/scss/easports15-webfont.woff"],"assets/scss/easports15-webfont.woff"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app.js":[function(require,module,exports) {
+},{"./easports15-webfont.woff2":[["easports15-webfont.aebd52ed.woff2","assets/scss/easports15-webfont.woff2"],"assets/scss/easports15-webfont.woff2"],"./easports15-webfont.woff":[["easports15-webfont.5f894091.woff","assets/scss/easports15-webfont.woff"],"assets/scss/easports15-webfont.woff"],"./../images/ball.cur":[["ball.ca6b40c3.cur","assets/images/ball.cur"],"assets/images/ball.cur"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -16317,7 +16326,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63647" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

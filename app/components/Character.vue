@@ -13,19 +13,19 @@
   
   
   <div v-if="showModalOne" style="position: absolute;" id="modal-template" class="modal" >
-      <img :src="characterKlopp.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalOne = false">
+      <img :src="characterKlopp.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalOne = false">
     <router-link class="button" to="game/1" @click.native="saveCharacterKlopp()"> {{characterKlopp.title}} </router-link>
   </div> 
 
 
    <div v-if="showModalTwo" style="position: absolute;" id="modal-template" class="modal" >
-      <img :src="characterKombouare.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalTwo = false">
+      <img :src="characterKombouare.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalTwo = false">
     <router-link class="button" to="game/1" @click.native="saveCharacterKombouare()"> {{characterKombouare.title}} </router-link>
   </div> 
 
 
    <div v-if="showModalThree" style="position: absolute;" id="modal-template" class="modal" >
-      <img :src="characterZidane.closeSvg" style="width: 30px; height:30px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalThree = false">
+      <img :src="characterZidane.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalThree = false">
     <router-link class="button" to="game/1" @click.native="saveCharacterZidane()"> {{characterZidane.title}} </router-link>
   </div> 
 
@@ -68,13 +68,16 @@ import data from '../data.json';
           this.showModalThree = true;
         },
         saveCharacterZidane() {
-            localStorage.setItem('character', 'zidane');  
+        localStorage.setItem('character', 'zidane'); 
+        localStorage.setItem('points', 82) 
         }, 
         saveCharacterKombouare() {
         localStorage.setItem('character', 'kombouare');  
+        localStorage.setItem('points', 87)
         },
         saveCharacterKlopp () {
         localStorage.setItem('character', 'klopp')
+         localStorage.setItem('points', 82)
         }
 
   }

@@ -127,7 +127,8 @@ module.exports = {
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title": "Jurgen Klopp",
-      "text": "BON"
+      "text": "BON",
+      "score": 82
     },
     "2": {
       "message": "pkay",
@@ -136,7 +137,8 @@ module.exports = {
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title": "ZINEDINE ZIDANE",
-      "text": "BON"
+      "text": "BON",
+      "score": 87
     },
     "3": {
       "message": "good",
@@ -145,7 +147,8 @@ module.exports = {
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title": "Antoine Kombouare",
-      "text": "BON"
+      "text": "BON",
+      "score": 67
     }
   }],
   "game": {
@@ -327,7 +330,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63647" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
