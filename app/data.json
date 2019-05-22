@@ -127,35 +127,35 @@
       }
   },
   "5" : {
-    "question" : "PAGE GAME/3 ?",
+    "question" : "L'entraineur souhaiterais effectuer un entrainement a huis clos ce qui risque de deplaire fortement au supporter ou bien au contraire faire du bien a l'equipe", 
       "choices" : {
         "answerOne" : {
-          "message" : "Oui",
+          "message" : "Faire cet entrainement a huis clo",
           "link" : "/game/6"
         },
         "answerTwo" : {
-          "message" : "No",
+          "message" : "Ne pas faire cet entrainementa huis clo",
           "link" : "/game/6"
         
         }
       }
   },
   "6" : {
-    "question" : "PAGE GAME/3 ?",
+    "question" : "Souhaitez vous titulariser le joueur recruté au début de ce jeu ? ",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/7"
+          "link" : "/game/8"
         },
         "answerTwo" : {
-          "message" : "No",
+          "message" : "Non",
           "link" : "/game/7"
         
         }
       }
   },
   "7" : {
-    "question" : "PAGE GAME/3 ?",
+    "question" : "match decevant souhaitez vous le faire entrer ",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
@@ -169,7 +169,7 @@
       }
   },
   "8" : {
-    "question" : "PAGE GAME/3 ?",
+    "question" : "Le joueur recrute fait un match decevant souhaitez vous le remplacer ?",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
@@ -183,7 +183,7 @@
       }
   },
   "9" : {
-    "question" : "PAGE GAME/3 ?",
+    "question" : "C'est l'heure du penalty ",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
