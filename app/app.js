@@ -12,14 +12,18 @@ Vue.component('modal', {
   template: '#modal-template'
 })
 
-var body = document.querySelector('.body');
-
-
-
 var onceTime = true;
 
+var body = document.querySelector('.root');
+var entrance = document.querySelector('.entrance');
+
+
+
+
+
 var ls = function myFunction() {
-  setTimeout(function(){ body.classList.remove('none') }, 3000);
+  
+  setTimeout(function(){ body.classList.remove('none'); entrance.style.display="none" }, 3000);
   onceTime = false;
 }
 
