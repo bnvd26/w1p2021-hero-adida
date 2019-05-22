@@ -1,51 +1,43 @@
 <template>
-<transition name="tiles" appear tag="div" class="test">
-  <div class="big-header" :key="message" v-if="isActive">
-     <p>{{score}}</p>
-  <div v-if="character === 'klopp'" class="entraineurs__information">
- <img :src= "characterKlopp.src" style="width: 30px; height: 30px;">
- <p>Reputation : {{points}}</p>
-  </div>
-    <div v-if="character === 'zidane'" class="entraineurs__information">
- <img :src= "characterZidane.src" style="width: 30px; height: 30px;">
- <p>Reputation : {{points}}</p>
-  </div>
-    <div v-if="character === 'kombouare'" class="entraineurs__information">
- <img :src= "characterKombouare.src" style="width: 30px; height: 30px;">
- <p>Reputation : {{points}}</p>
-  </div>
-       
-    <h1 style="font-size: 40px;">{{ level.question }}</h1>
-    <br />
-    <div class="answers">
-    <div  v-for="choice in choices" 
-          v-bind:key="choice.message"
-    >   
-<div v-if="character === 'klopp'">
-     <img v-bind:src = "choice.srcKlopp" :alt="choice.altSrc" style="width: 200px;" >
-</div>
-<div v-if="character === 'zidane'">
-     <img v-bind:src = "choice.srcZidane" :alt="choice.altSrc" style="width: 200px;" >
-</div>
-<div v-if="character === 'kombouare'">
-     <img v-bind:src = "choice.srcKombouare" :alt="choice.altSrc" style="width: 200px;" >
-</div>
-<!--<audio autoplay loop>
-    <source src="../assets/audio/easports.mp3" type="audio/mp3">
-</audio>-->
-
-                               
-    <router-link  :to="choice.link" class="button"  v-on:click.native="decrementSave()" >
-                  {{choice.message}}  
- 
-    </router-link>
-
-
-  </div>
-
-</div>
-  </div>
-</transition>
+  <transition name="tiles" appear tag="div" class="test">
+    <div class="big-header" :key="message" v-if="isActive">
+     
+      <div v-if="character === 'klopp'" class="entraineurs__information">
+        <img :src= "characterKlopp.src" style="width: 50px; height: 50px;">
+        <p>Reputation : {{points}}</p>
+      </div>
+      <div v-if="character === 'zidane'" class="entraineurs__information">
+        <img :src= "characterZidane.src" style="width: 50px; height: 50px;">
+        <p>Reputation : {{points}}</p>
+      </div>
+      <div v-if="character === 'kombouare'" class="entraineurs__information">
+        <img :src= "characterKombouare.src" style="width: 50px; height: 50px;">
+        <p>Reputation : {{points}}</p>
+      </div>      
+        <h1 style="font-size: 40px;">{{ level.question }}</h1>
+        <br />
+      <div class="answers">
+        <div  v-for="choice in choices" v-bind:key="choice.message" class="card">
+          <div v-if="character === 'klopp'">
+              <img v-bind:src = "choice.srcKlopp" :alt="choice.altSrc" style="width: 200px;" >
+           
+          </div>
+          <div v-if="character === 'zidane'">
+              <img v-bind:src = "choice.srcZidane" :alt="choice.altSrc" style="width: 200px;" >
+      
+          </div>
+          <div v-if="character === 'kombouare'" >
+              <img v-bind:src = "choice.srcKombouare" :alt="choice.altSrc" style="width: 200px;" >
+  
+          </div>
+    <!--<audio autoplay loop>
+        <source src="../assets/audio/easports.mp3" type="audio/mp3">
+    </audio>-->
+              <router-link  :to="choice.link" class="button"  v-on:click.native="decrementSave()" >  {{choice.message}}  </router-link>
+        </div>
+      </div>
+    </div>
+  </transition>
 </template>
 <script>
   
@@ -56,7 +48,6 @@ export default {
   data() {
     return {
       character: null,
-      score : this.points,
       points: null,
       isActive: true,
       message: 'Everything is okay',
@@ -68,33 +59,29 @@ export default {
     
     }
   },
- 
 
   mounted()  {
     setTimeout(() => {
     this.character = localStorage.getItem('character');
     this.points = localStorage.getItem('points')
- 
+    })      
+  },
 
-    })
-  
-      
-  }, 
   methods : {
-  
-
     incrementSave() {
       gameService.localStorageAddGet();
     },
-
     decrementSave() {
       gameService.localStorageRemoveGet();
     }
   } 
 }
+
 </script>
 
  <style lang="scss" scoped>
+
+
 .entraineurs__information {
     display: flex;
     align-items: center;
@@ -104,6 +91,24 @@ export default {
     right: 5%;
     width: 250px;
 }
+
+
+.answers {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
 </style>
 
 

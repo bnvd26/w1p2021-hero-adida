@@ -6,11 +6,11 @@
       "message" : "salut",
       "src" : "/images/klopp.png",
       "altSrc" : "img-klopp",
-      "description": "fan de foot",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas voluptate magni dignissimos! Ad voluptas fugit nihil adipisci distinctio minus debitis, dicta at odit ratione aut expedita inventore facilis cumque impedit.",
       "closeSvg": "images/close.svg",
       "title" : "Jurgen Klopp",
-      "text" : "BON",
-      "score" : 82      
+      "text" : "BON"
+          
     },
   
     "2" : {
@@ -20,18 +20,18 @@
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title" : "ZINEDINE ZIDANE",
-      "text" : "BON" ,
-      "score" : 87      
+      "text" : "BON" 
+           
     },  
     "3" : {
       "message" : "good",
       "src" : "/images/kombouare.png",
       "altSrc" : "img-kombouare",
-      "description": "fan de foot",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas voluptate magni dignissimos! Ad voluptas fugit nihil adipisci distinctio minus debitis, dicta at odit ratione aut expedita inventore facilis cumque impedit.",
       "closeSvg": "images/close.svg",
       "title" : "Antoine Kombouare",
-      "text" : "BON",
-      "score" : 67 
+      "text" : "BON"
+    
 
   }
 
@@ -50,8 +50,11 @@
           "message" : "Oui",
           "link" : "/game/2",
           "srcZidane" : "/images/cardHazard.png",
+          "messageZidane": "Recruter Hazard",
           "srcKlopp" : "/images/cardKompany.png",
+          "messageKlopp": "Recruter Kompany",
           "srcKombouare" : "/images/cardGouiri.png",
+          "messageKombouare": "Recrtuer Gouiri",
           "altSrc" : "img-answer-one",
           "choix" : "decrementSave()"
         
@@ -59,7 +62,7 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose",
+          "link" : "/game/2",
           "srcZidane" : "/images/cardIsco.png",
           "srcKlopp" : "/images/cardMbappe.png",
           "srcKombouare" : "/images/cardPhilipouto.png",
@@ -90,7 +93,7 @@
         },
         "answerTwo" : {
           "message" : "10",
-          "link" : "/lose"
+          "link" : "/game/3"
         
         }
       }
@@ -104,13 +107,13 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/game/4"
         
         }
       }
   },
   "4" : {
-    "question" : "Les rumeurs disent que le président accorderait une prime pour chaque joueur s'ils remportent le dernier match.  Souhaitez vous accorder cette prime ?",
+    "question" : "Les rumeurs disent que le president accorderait une prime pour chaque joueur s'ils remportent le dernier match.  Souhaitez vous accorder cette prime ?",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
@@ -118,7 +121,7 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/game/5"
         
         }
       }
@@ -132,7 +135,7 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/game/6"
         
         }
       }
@@ -146,7 +149,7 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/game/7"
         
         }
       }
@@ -160,7 +163,7 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/game/8"
         
         }
       }
@@ -174,7 +177,7 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/game/9"
         
         }
       }
@@ -188,7 +191,7 @@
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/game/10"
         
         }
       }

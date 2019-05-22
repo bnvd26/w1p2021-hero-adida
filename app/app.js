@@ -15,7 +15,7 @@ Vue.component('modal', {
 var body = document.querySelector('.body');
 
 
-/*          A VALIDER 
+
 var onceTime = true;
 
 var ls = function myFunction() {
@@ -23,7 +23,7 @@ var ls = function myFunction() {
   onceTime = false;
 }
 
-ls();*/
+ls();
 
 
 

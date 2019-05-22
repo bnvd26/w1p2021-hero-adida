@@ -2,6 +2,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 @import '../scss/fonts.scss';
 
+
+@mixin flex-center { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .none {
   display: none;
 }
@@ -13,6 +21,9 @@
   background-color: lightblue;
   opacity: .9;
   animation: fadeIn 1s ease-out;
+  @include flex-center;
+  flex-direction: column;
+
 }
 
 .opacity {
@@ -27,18 +38,14 @@
 
 
 
-/*
+
 .play-enter-active {
   animation: myFade 3s infinite;        // a rajouter a la fin 
-}*/
+}
 
 $hetic-green: #14133f;
 
-@mixin flex-center { 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 @keyframes myFade {
   0%{
@@ -122,7 +129,7 @@ textarea {
   background-color: $hetic-green;
   height: 100vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 
   flex-direction: column;
@@ -144,12 +151,6 @@ textarea {
 
 }
 
-.answers {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 70%;
-}
 
 
 

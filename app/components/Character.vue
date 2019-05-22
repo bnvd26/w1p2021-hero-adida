@@ -1,14 +1,32 @@
 <template>
-  <div class="big-header "  >  <!--:class="showModal ? 'opacity' : ' '-->
+  <div class="big-header "  > 
+     <!--:class="showModal ? 'opacity' : ' '-->
     <h1 >{{message}}</h1>
-    <br />
-    <transition-group name="bounce" appear tag="div" class="test">
-        <div :key="message" v-if="visible" style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
-            <img :src="characterKlopp.src" class="hover hoverr" :alt="characterKlopp.altSrc" @click="showModalsOne()" style="height: 220px;">
-            <img :src="characterKombouare.src" class="hover hoverr" :alt="characterKombouare.altSrc" @click="showModalsTwo()" style="height: 220px;">
-            <img :src="characterZidane.src" class="hover hoverr" :alt="characterZidane.altSrc" @click="showModalsThree()" style="height: 220px;">
+
+    <div style="display: flex; flex-direction: row; justify-content:space-around; width:100vw;">
+   
+           <transition-group name="fadeInLeftBig" appear>
+          <div v-if="testy" :key="visible">
+              <img :src="characterKombouare.src" class="hover hoverr" :alt="characterKombouare.altSrc" @click="showModalsTwo()" style="height: 220px;">
+
         </div>
-     </transition-group> 
+          </transition-group>
+             <transition-group name="fadeInUp" appear>
+          <div v-if="testy" :key="visible">
+              <img  :src="characterKlopp.src" class="hover hoverr" :alt="characterKlopp.altSrc" @click="showModalsOne()" style="height: 220px;">
+        </div>
+          </transition-group>
+           <transition-group name="fadeInRightBig" appear>
+          <div v-if="testy" :key="visible">
+            <img :src="characterZidane.src" class="hover hoverr" :alt="characterZidane.altSrc" @click="showModalsThree()" style="height: 220px;">
+
+        </div>
+          </transition-group>
+</div>
+          
+         
+       
+  
 <transition name="modal">
   
   
@@ -19,6 +37,7 @@
 
 
    <div v-if="showModalTwo" style="position: absolute;" id="modal-template" class="modal" >
+     <p>{{characterKombouare.description}}</p>
       <img :src="characterKombouare.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalTwo = false">
     <router-link class="button" to="game/1" @click.native="saveCharacterKombouare()"> {{characterKombouare.title}} </router-link>
   </div> 
@@ -31,6 +50,7 @@
 
 
 </transition>
+
 </template>
 <script>
 
@@ -41,6 +61,7 @@ import data from '../data.json';
     data () {
         return {
             visible: true,
+            testy: true,
             showModalOne: false,
             showModalTwo: false,
             showModalThree: false,
@@ -70,7 +91,7 @@ import data from '../data.json';
         },
         saveCharacterZidane() {
         localStorage.setItem('character', 'zidane'); 
-        localStorage.setItem('points', 82) 
+        localStorage.setItem('points', 110) 
         }, 
         saveCharacterKombouare() {
         localStorage.setItem('character', 'kombouare');  
@@ -78,7 +99,7 @@ import data from '../data.json';
         },
         saveCharacterKlopp () {
         localStorage.setItem('character', 'klopp')
-         localStorage.setItem('points', 82)
+         localStorage.setItem('points', 102)
         }
 
   }
@@ -87,9 +108,7 @@ import data from '../data.json';
 </script>
 <style>
 
-.translate-enter, .translate-enter-active {
-  transform: translateY(100px);
-}
+
 
 .fade-enter, .fade-leave {
   transition: opacity .9s;
@@ -104,73 +123,62 @@ import data from '../data.json';
   color: red;
 }
 
-.bounce-enter-active {
-  animation: bounceIn 2s;
+
+
+.fadeInUp-enter-active, .fadeInUp-enter {
+animation: fadeInUpBig 1s;
 }
 
-@keyframes bounceIn {
-  from,
-  20%,
-  40%,
-  60%,
-  80%,
-  to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
+.fadeInLeftBig-enter-active, .fadeInLeftBig-enter {
+  animation: fadeInLeftBig 1s;
+}
 
-  0% {
+.fadeInRightBig-enter-active, .fadeInRightBig-enter {
+  animation: fadeInRightBig 1s;
+}
+
+
+
+@keyframes fadeInUpBig {
+  from {
     opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  20% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1);
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-
-  40% {
-    -webkit-transform: scale3d(0.9, 0.9, 0.9);
-    transform: scale3d(0.9, 0.9, 0.9);
-  }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: scale3d(1.03, 1.03, 1.03);
-    transform: scale3d(1.03, 1.03, 1.03);
-  }
-
-  80% {
-    -webkit-transform: scale3d(0.97, 0.97, 0.97);
-    transform: scale3d(0.97, 0.97, 0.97);
+    -webkit-transform: translate3d(0, 2000px, 0);
+    transform: translate3d(0, 2000px, 0);
   }
 
   to {
     opacity: 1;
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 
-@keyframes bounceOut {
-  20% {
-    -webkit-transform: scale3d(0.9, 0.9, 0.9);
-    transform: scale3d(0.9, 0.9, 0.9);
-  }
-
-  50%,
-  55% {
-    opacity: 1;
-    -webkit-transform: scale3d(1.1, 1.1, 1.1);
-    transform: scale3d(1.1, 1.1, 1.1);
+@keyframes fadeInLeftBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
   }
 
   to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRightBig {
+  from {
     opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 </style>

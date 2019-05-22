@@ -1,9 +1,9 @@
 <template>
   <div class="big-header">
    <h1>{{message}}</h1>
-    <br />
+
     <router-link class="button" to="/home">Go to Home</router-link>
-    <a class="button" @click.prevent="clearScore()">PLAY AGAIN</a>
+    <router-link class="button" @click.prevent="clearScore()" to="/character">PLAY AGAIN</router-link>
 
   </div>
 </template>
