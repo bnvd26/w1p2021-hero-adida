@@ -1,6 +1,8 @@
 <template id="page">
   <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false" appear>
     <div class="big-header page"  :key="message" v-if="isActive">
+       <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;" >
+    <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;">
 			<div class="center"></div>
       <div v-if="character === 'klopp'" class="entraineurs__information">
         <img :src= "characterKlopp.src" style="width: 70px; height: 70px;">
@@ -8,13 +10,13 @@
         <p>Reputation : {{points}}</p><br><p>Mentalite : {{mental}}</p>
         </div>
       </div>
-      <div v-if="character === 'zidane'" class="entraineurs__information">
+      <div v-else-if="character === 'zidane'" class="entraineurs__information">
         <img :src= "characterZidane.src" style="width: 70px; height: 70px;">
         <div>
         <p>Reputation : {{points}}</p><br><p>Mentalite : {{mental}}</p>
         </div>
       </div>
-      <div v-if="character === 'kombouare'" class="entraineurs__information">
+      <div v-else-if="character === 'kombouare'" class="entraineurs__information">
         <img :src= "characterKombouare.src" style="width: 70px; height: 70px;">
         <div>
         <p>Reputation : {{points}}</p><br><p>Mentalite : {{mental}}</p>
@@ -56,6 +58,7 @@ export default {
       isActive: true,
       step: this.getStep(),
       message: 'Everything is okay',
+      audio: false,
     }
   },
   mounted()  {
@@ -68,6 +71,12 @@ export default {
     })      
   },
   methods : {   
+      myAudio() {
+     this.audio = true;
+    },
+    notAudio() {
+      this.audio = false;
+    },
     incrementSave() {
       gameService.localStorageAddGet();
     },
@@ -183,21 +192,8 @@ $color6: darken(#fcf5d8, 20%);
 		width: 100%;
 		font-size: 3rem;
 		text-align: center;
-	}
-
-
-
+  }
 }
-
-
-
-
-
-
-
-
-
-
 
 .entraineurs__information {
     display: flex;
@@ -226,8 +222,6 @@ $color6: darken(#fcf5d8, 20%);
   justify-content: space-around;
   width: 100%;
 }
-
-
 
 .choice {
     display: flex;

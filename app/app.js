@@ -5,13 +5,7 @@ import './assets/scss/styles.scss';
 Vue.component('modal', {
   template: '#modal-template'  
 })
-var audio = document.getElementById('audio')
-console.log(audio)
-let y = setTimeout({  
-})
-setTimeout(() => {
-  audio.volume = 1;
-})   
+
 
 
 

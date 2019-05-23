@@ -44,7 +44,7 @@
 
 "game" : {
   "1" : {
-    "question" : "Recrutement du joueur ",
+    "question" : "Le coach peut recruter un de ces joueurs  ",
       "choices" : {
         "answerOne" : {
           "messageCtaKombouare" : "Recrtuez Gouiri",
