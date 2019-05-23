@@ -15,7 +15,17 @@ Vue.component('modal', {
 })
 var audio = document.getElementById('audio')
 console.log(audio)
-audio.volume = 1;
+let y = setTimeout({
+  
+})
+
+
+setTimeout(() => {
+
+  audio.volume = 1;
+  
+  })   
+
 
 
 
