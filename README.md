@@ -31,7 +31,7 @@ Notes :
 | Routing | Une route dont l'`id` varie permet d'afficher les différentes étapes du jeu | OUI |
 | Routing | Lorsqu'on recharge la page (`Ctrl + R`), on se trouve toujours à la même étape | -OUI|
 | Transitions | Chaque page apparaît grâce à une transition fluide (la complexité de la transition n'est pas prise en compte ici) | OUI |
-| Transitions | Les transitions internes au jeu (d'une étape à une autre) et externes (intro, fin...) sont différentes | - |
+| Transitions | Les transitions internes au jeu (d'une étape à une autre) et externes (intro, fin...) sont différentes | OUI |
 | État | Le choix du personnage et/ou de ses caractéristiques impacte l'aventure au moins une fois. **Le choix du personnage aura un impatc sur la première étape du jeu** | OUI |
 | État | Une décision ou un événement aléatoire survenu pendant l'aventure a un impact sur la suite, au moins une fois. **La consigne ne permet pas de descendre en dessous de 40 de réputation** | OUI |
 | État | Le choix du personnage et/ou ce qu'il s'est passé pendant l'aventure impactent l'écran de fin. **Indiquez ici comment succintement.** | OUI |
@@ -39,7 +39,7 @@ Notes :
 | Sauvegarde | Lorsqu'on recharge la page (`Ctrl + R`), le personnage, ses caractéristiques, les choix du joueur et tout le reste sont rétablis | OUI |
 | Sauvegarde | Lorsqu'on quitte le jeu et qu'on revient plus tard à la page d'accueil (sur le même navigateur), il est possible de reprendre l'aventure où on l'avait laissée | OUI |
 | Multimédia | L'expérience présente une vidéo ou plus | - |
-| Multimédia | L'expérience présente un audio ou plus | - |
+| Multimédia | L'expérience présente un audio ou plus | OUI |
 | Multimédia | L'utilisateur a la possibilité de couper le son à tout moment | - |
 
 

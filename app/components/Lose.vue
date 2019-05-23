@@ -1,6 +1,10 @@
 <template>
   <div class="big-header">
    <h1>{{message}}</h1>
+   <p>Malheursement l'aventure s'arrete ici avec {{perso}}</p>
+   <div v-if="perso == 'kombouare'">
+     <p>Votre equipe est releguee en deuxieme divison vous avez certainement pas fait les bons choix</p>
+   </div>
 
     <router-link class="button" to="/home">Go to Home</router-link>
     <router-link class="button" @click.prevent="clearScore()" to="/character">PLAY AGAIN</router-link>
@@ -14,15 +18,18 @@ export default {
     data() {
       return {
         points: gameService.value(),
-        message : "VOUS AVEZ PERDU !!!!!!!!",
+        perso: localStorage.getItem('character'),
+        message : "VOUS AVEZ PERDU !!!!!!!!"
 
       }
     },
 
-  mounted() {
-    localStorage.clear();
+  beforeCreate() {
+  
+  localStorage.removeItem('step');
     
-}
+},
+
     
 };
 </script>

@@ -48,9 +48,7 @@ const router = new Router({
 
 
 const verifyScore = router.beforeEach((to, from, next) => {
-  console.log(to)
-  if (to.meta.requiresFourty) {
-   
+  if (to.meta.requiresFourty) {   
     setTimeout(() => {
   let scoring = localStorage.getItem('points')
   if (scoring < 40) {

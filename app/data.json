@@ -9,7 +9,8 @@
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas voluptate magni dignissimos! Ad voluptas fugit nihil adipisci distinctio minus debitis, dicta at odit ratione aut expedita inventore facilis cumque impedit.",
       "closeSvg": "images/close.svg",
       "title" : "Jurgen Klopp",
-      "text" : "BON"
+      "text" : "BON",
+      "cta": "JOUER AVEC JURGEN KLOPP"
           
     },
   
@@ -20,7 +21,8 @@
       "description": "fan de foot",
       "closeSvg": "images/close.svg",
       "title" : "ZINEDINE ZIDANE",
-      "text" : "BON" 
+      "text" : "BON" ,
+      "cta": "JOUER AVEC ZINEDINE ZIDANE"
            
     },  
     "3" : {
@@ -30,7 +32,8 @@
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas voluptate magni dignissimos! Ad voluptas fugit nihil adipisci distinctio minus debitis, dicta at odit ratione aut expedita inventore facilis cumque impedit.",
       "closeSvg": "images/close.svg",
       "title" : "Antoine Kombouare",
-      "text" : "BON"
+      "text" : "BON",
+      "cta": "JOUER AVEC ANTOINE KOMBOUARE"
     
 
   }
@@ -47,7 +50,7 @@
     "question" : "Recrutement du joueur ",
       "choices" : {
         "answerOne" : {
-          "message" : "Oui",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
           "link" : "/game/2",
           "srcZidane" : "/images/cardHazard.png",
           "messageZidane": "Recruter Hazard",
@@ -66,6 +69,7 @@
           "srcZidane" : "/images/cardIsco.png",
           "srcKlopp" : "/images/cardMbappe.png",
           "srcKombouare" : "/images/cardPhilipouto.png",
+          "messageCtaKombouare" : "Recrtuez Philippoteaux",
           "altSrc" : "img-answer-two"
         
         },
@@ -75,6 +79,7 @@
           "srcZidane" : "/images/cardBalotelli.png",
           "srcKlopp" : "/images/cardVidal.png",
           "srcKombouare" : "/images/cardDelaplace.png",
+          "messageCtaKombouare" : "Recrtuez Delaplace",
           "altSrc" : "img-answer-three"
         
         }

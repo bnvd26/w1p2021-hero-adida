@@ -2,8 +2,11 @@
 class GameService {
   constructor() {
    this.points = null
+   this.step = null
 
   }
+
+  
 
   localStorageSetter () {
     localStorage.getItem('points')
@@ -15,7 +18,9 @@ class GameService {
 
   localStorageRemoveGet() {
     localStorage.setItem('points',parseInt(localStorage.getItem('points'))-20);
-  }  
+  } 
+  
+ 
 
   value() {
     return this.points;
