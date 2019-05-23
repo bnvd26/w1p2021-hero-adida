@@ -7,19 +7,19 @@
     <div style="display: flex; flex-direction: row; justify-content:space-around; width:100vw; margin:auto;">
    
            <transition-group name="fadeInLeftBig" appear>
-          <div v-if="testy" :key="visible" class="flex-center">
+          <div v-if="transition" :key="visible" class="flex-center">
               <img :src="characterKombouare.src" class="hover hoverr" :alt="characterKombouare.altSrc" @click="showModalsTwo()" style="height: 220px;">
               <p style="font-size: 30px;">{{characterKombouare.title}} 🇫🇷</p>
         </div>
           </transition-group>
              <transition-group name="fadeInUp" appear>
-          <div v-if="testy" :key="visible" class="flex-center">
+          <div v-if="transition" :key="visible" class="flex-center">
               <img  :src="characterKlopp.src" class="hover hoverr" :alt="characterKlopp.altSrc" @click="showModalsOne()" style="height: 220px;">
                 <p style="font-size: 30px;">{{characterKlopp.title}} 🇩🇪</p>
         </div>
           </transition-group>
            <transition-group name="fadeInRightBig" appear>
-          <div v-if="testy" :key="visible" class="flex-center">
+          <div v-if="transition" :key="visible" class="flex-center">
             <img :src="characterZidane.src" class="hover hoverr" :alt="characterZidane.altSrc" @click="showModalsThree()" style="height: 220px;">
               <p style="font-size: 30px;">{{characterZidane.title}} 🇫🇷</p>
 
@@ -66,7 +66,7 @@ import data from '../data.json';
     data () {
         return {
             visible: true,
-            testy: true,
+            transition: true,
             showModalOne: false,
             showModalTwo: false,
             showModalThree: false,
@@ -96,26 +96,36 @@ import data from '../data.json';
         },
         saveCharacterZidane() {
         localStorage.setItem('character', 'zidane'); 
-        localStorage.setItem('points', 110) 
+        localStorage.setItem('points', 110);
+        localStorage.setItem('Mentalite', 75)
         }, 
         saveCharacterKombouare() {
         localStorage.setItem('character', 'kombouare');  
         localStorage.setItem('points', 87)
+        localStorage.setItem('Mentalite', 62)
         },
         saveCharacterKlopp () {
         localStorage.setItem('character', 'klopp')
-         localStorage.setItem('points', 102)
+        localStorage.setItem('points', 102)
+        localStorage.setItem('Mentalite', 83)
         }
 
   }
     }
 
 </script>
-<style>
+<style <style lang="scss" scoped>
+
 
 .rotate-enter-active {
   animation: rotateIn 1s;
 }
+
+
+.modal-leave-active {
+  animation: fadeOut 1s;
+}
+
 
 @keyframes rotateIn {
   from {
@@ -135,23 +145,6 @@ import data from '../data.json';
   }
 }
 
-
-
-.fade-enter, .fade-leave {
-  transition: opacity .9s;
-  color: red;
-
-}
-
-
-.fade-enter, .fade-leave-active {
-  opacity: 0;
-  transform: translateX(20px);
-  color: red;
-}
-
-
-
 .fadeInUp-enter-active, .fadeInUp-enter {
 animation: fadeInUpBig 1.3s;
 }
@@ -163,8 +156,6 @@ animation: fadeInUpBig 1.3s;
 .fadeInRightBig-enter-active, .fadeInRightBig-enter {
   animation: fadeInRightBig 1.3s;
 }
-
-
 
 @keyframes fadeInUpBig {
   from {
@@ -179,7 +170,6 @@ animation: fadeInUpBig 1.3s;
     transform: translate3d(0, 0, 0);
   }
 }
-
 
 @keyframes fadeInLeftBig {
   from {

@@ -1,30 +1,17 @@
 import Vue from 'vue';
 import router from './router';
-
-/*import reactiveStorage from "vue-reactive-storage";   possibilite de solutions pour le localStorage*/ 
 import './assets/scss/styles.scss';
-
-
-
  new Vue({ router: router }).$mount('#root');
-
-
 Vue.component('modal', {
-  template: '#modal-template'
-  
+  template: '#modal-template'  
 })
 var audio = document.getElementById('audio')
 console.log(audio)
-let y = setTimeout({
-  
+let y = setTimeout({  
 })
-
-
 setTimeout(() => {
-
   audio.volume = 1;
-  
-  })   
+})   
 
 
 

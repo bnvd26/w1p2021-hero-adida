@@ -2,13 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 @import '../scss/fonts.scss';
 
-
 @mixin flex-center { 
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 .none {
   display: none;
@@ -17,13 +15,11 @@
 .modal {
   width: 90vw;
   height: 80vh;
-
   background-color: lightblue;
   opacity: .97;
   animation: fadeIn 1s ease-out;
   @include flex-center;
   flex-direction: column;
-
 }
 
 .entrance {
@@ -35,25 +31,14 @@
 }
 
 .opacity {
-
   opacity: .4;
-
 }
-
-.modal-leave-active {
-  animation: fadeOut 1s;
-}
-
-
-
 
 .play-enter-active {
-  animation: myFade 3s infinite;        // a rajouter a la fin 
+  animation: myFade 3s infinite;         
 }
 
 $hetic-green: #14133f;
-
-
 
 @keyframes myFade {
   0%{
@@ -77,17 +62,15 @@ $hetic-green: #14133f;
   }
 }
 
-
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
 
   to {
-    opacity: .97;
+    opacity: 1;
   }
 }
-
 
 @keyframes fadeInS {
   from {
@@ -106,7 +89,6 @@ $hetic-green: #14133f;
   }
 }
 
-
 @keyframes fadeOut {
   from {
     opacity: .97;
@@ -120,7 +102,6 @@ $hetic-green: #14133f;
 html {
   cursor: url('../images/ball.cur');
 }
-
 
 body,
 button,
@@ -185,29 +166,16 @@ a img {
  
 }
 
-.test {
-  width: 50vw;
-  height: 70%;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  align-items: center;
-}
 
-.test .button {
-  width: 50%;
-}
+
+
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to  {
   opacity: 0;
 }
-
-
-
-
 
 @keyframes flipInX {
   from {
@@ -247,10 +215,6 @@ a img {
   animation: flipInX 2s ease-in-out;
 }
 
-
-
-
-
 @keyframes fadeOutUp {
   from {
     opacity: 1;
@@ -262,7 +226,6 @@ a img {
     transform: translateY(0,0 , 0);
   }
 }
-
 
 .translateX {
   animation: fadeOutUp 2s forwards;

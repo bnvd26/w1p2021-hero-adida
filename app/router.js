@@ -53,7 +53,8 @@ const verifyScore = router.beforeEach((to, from, next) => {
   let scoring = localStorage.getItem('points')
   if (scoring < 40) {
     next({name: 'lose'})
-  } else {
+  } 
+  else {
       next()
         }
       })

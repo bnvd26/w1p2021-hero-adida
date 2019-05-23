@@ -42,9 +42,6 @@
  
 ],
 
-
-
-
 "game" : {
   "1" : {
     "question" : "Recrutement du joueur ",
@@ -53,39 +50,39 @@
           "messageCtaKombouare" : "Recrtuez Gouiri",
           "link" : "/game/2",
           "srcZidane" : "/images/cardHazard.png",
-          "messageZidane": "Recruter Hazard",
+          "messageCtaZidane" : "Recruter Hazard",
           "srcKlopp" : "/images/cardKompany.png",
           "messageKlopp": "Recruter Kompany",
+          "messageCtaKlopp" : "Recruter Kompany",
           "srcKombouare" : "/images/cardGouiri.png",
-          "messageKombouare": "Recrtuer Gouiri",
           "altSrc" : "img-answer-one",
-          "choix" : "decrementSave()"
-        
-        
+          "choix" : "decrementSave"      
         },
         "answerTwo" : {
           "message" : "No",
           "link" : "/game/2",
           "srcZidane" : "/images/cardIsco.png",
+          "messageCtaZidane" : "Recruter Isco",
           "srcKlopp" : "/images/cardMbappe.png",
+          "messageCtaKlopp" : "Recruter Mbappe",
           "srcKombouare" : "/images/cardPhilipouto.png",
           "messageCtaKombouare" : "Recrtuez Philippoteaux",
-          "altSrc" : "img-answer-two"
-        
+          "altSrc" : "img-answer-two",
+          "choix" : "incrementSave" 
         },
         "answerThree" : {
           "message" : "Maybe",
           "link" : "/game/2",
           "srcZidane" : "/images/cardBalotelli.png",
+          "messageCtaZidane" : "Recruter Balotelli",
           "srcKlopp" : "/images/cardVidal.png",
+          "messageCtaKlopp" : "Recruter Vidal",
           "srcKombouare" : "/images/cardDelaplace.png",
           "messageCtaKombouare" : "Recrtuez Delaplace",
-          "altSrc" : "img-answer-three"
-        
+          "altSrc" : "img-answer-three",
+          "choix" : "incrementSave" 
         }
       }
-   
-
   },
   "2" : {
     "question" : "Choix du numero ",
@@ -94,11 +91,19 @@
           "message" : "7",
           "link" : "/game/3",
           "srcZidane" : "/images/cardDelaplace.png",
-          "altSrc" : "img-answer-one"
+          "altSrc" : "img-answer-one",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "10",
-          "link" : "/game/3"
+          "link" : "/game/3",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -108,11 +113,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/4"
+          "link" : "/game/4",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/game/4"
+          "link" : "/game/4",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -122,11 +135,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/5"
+          "link" : "/game/5",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/game/5"
+          "link" : "/game/5",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -136,11 +157,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Faire cet entrainement a huis clo",
-          "link" : "/game/6"
+          "link" : "/game/6",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "Ne pas faire cet entrainementa huis clo",
-          "link" : "/game/6"
+          "link" : "/game/6",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -150,11 +179,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/8"
+          "link" : "/game/8",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "Non",
-          "link" : "/game/7"
+          "link" : "/game/7",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -164,11 +201,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/8"
+          "link" : "/game/8",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/game/8"
+          "link" : "/game/8",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -178,11 +223,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/9"
+          "link" : "/game/9",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/game/9"
+          "link" : "/game/9",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -192,11 +245,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/10"
+          "link" : "/game/10",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/game/10"
+          "link" : "/game/10",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
@@ -206,11 +267,19 @@
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/11"
+          "link" : "/win",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "No",
-          "link" : "/lose"
+          "link" : "/lose",
+          "messageCtaKombouare" : "Recrtuez Gouiri",
+          "messageCtaZidane" : "Recruter Hazard",
+          "messageCtaKlopp" : "Recruter Vidal",
+          "choix" : "incrementSave" 
         
         }
       }
