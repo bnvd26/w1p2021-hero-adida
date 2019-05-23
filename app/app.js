@@ -15,7 +15,7 @@ Vue.component('modal', {
 })
 var audio = document.getElementById('audio')
 console.log(audio)
-audio.volume = 0;
+audio.volume = 1;
 
 
 

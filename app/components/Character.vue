@@ -208,6 +208,8 @@ animation: fadeInUpBig 1.3s;
     transform: translate3d(0, 0, 0);
   }
 }
+
+
 </style>
 
 

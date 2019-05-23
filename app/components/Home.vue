@@ -2,10 +2,12 @@
 <transition name="begin" appear >
   <div class="big-header">
     <h1 style="font-size: 100px; word-spacing: 50px;" >{{message}}</h1>
-
-
+<div style="border: 1px solid white; margin:30px; padding:30px">
+  <p>{{rules}}</p>
+</div>
+  
     <transition name="play" appear :duration="100000" >
-    <router-link  class="button" to="/character" > {{rules}} </router-link>
+    <router-link  class="button" to="/character" > {{button}} </router-link>
     </transition>
   </div>
   </transition>
@@ -17,7 +19,8 @@ export default {
   data() {
     return {
       message: 'ULTIMATE MATCH 19',
-      rules: 'CLICKER POUR JOUER'
+      button: 'CLICKER POUR JOUER',
+      rules: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque illum illo perspiciatis! Similique eius accusamus adipisci vero totam? Accusamus, sint fuga. Quaerat dicta dolorem tempore cum? Veniam molestias officiis neque'
 
     }
   }
