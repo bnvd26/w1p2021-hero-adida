@@ -1,7 +1,7 @@
 <template id="page">
   <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false" appear>
     <div class="big-header page"  :key="message" v-if="isActive">
-   <img src="../assets/images/bggame.jpg" style="position: fixed; max-width: 100%; max-height:100%; z-index:-1; bottom:0; left:0;">
+   <img src="../assets/images/bggame.jpg" style="position: fixed; width: 100%; height:100%; z-index:-1; bottom:0; left:0;">
        <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%; background-color: white;" >
     <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%; background-color: white;">
 			<div class="center"></div>
@@ -92,11 +92,11 @@ export default {
 
        myAudio() {
           this.audio = true
-          document.querySelector('audio').pause();
+          document.querySelector('audio').volume = 0;
         },
         notAudio() {
           this.audio = false
-            document.querySelector('audio').play();
+            document.querySelector('audio').volume = 1;
        
         },
 
@@ -211,31 +211,7 @@ $color5: #8ed3c9;
 $color6: darken(#fcf5d8, 20%);
 
 
-.active-animation {
-	position: absolute;
-	top: 30px;
-	left: 50%;
-	transform: translate(-50%, 0);
-}
 
-.page {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-
-	
-	.center {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		width: 100%;
-		font-size: 3rem;
-		text-align: center;
-  }
-}
 
 .entraineurs__information {
     display: flex;

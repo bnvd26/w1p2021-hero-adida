@@ -55,6 +55,11 @@ stopSound(){
     this.sound.pause();
 } 
 
+
+getStep()
+ {
+   return this.step;
+ }
    
 
      

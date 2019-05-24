@@ -5,8 +5,7 @@
 		v-bind:css="false"
 		appear>
   <div class="big-header page"  > 
-       <img src="../assets/images/bggame.jpg" style="position: fixed; max-width: 100%; max-height:100%; z-index:-1; bottom:0; left:0;">
-
+       <img src="../assets/images/bggame.jpg" style="position: fixed; width: 100%; height:100%; z-index:-1; bottom:0; left:0;">
     <div class="center"></div>
     <h1 style="font-size: 40px; padding: 14px; border: 3px white solid; margin-top: 50px;">{{message}}</h1>
     <div style="display: flex; flex-direction: row; justify-content:space-around; width:100vw; margin:auto;">  

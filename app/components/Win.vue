@@ -72,31 +72,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
 
-.active-animation {
-	position: absolute;
-	top: 30px;
-	left: 50%;
-	transform: translate(-50%, 0);
-}
-
-.page {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-
-	
-	.center {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		width: 100%;
-		font-size: 3rem;
-		text-align: center;
-  }
-}
-</style>

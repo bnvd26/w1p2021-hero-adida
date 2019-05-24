@@ -6,25 +6,29 @@
   <h2>Bienvenue sur ULTIMATE MANAGEMENT 19'  </h2>
  <p>Votre but est de faire les meilleurs choix possibles afin de gagner le dernier match de la saison qui sera decisif. Durant cette partie et en fonction du coach choisis vous aurez un nombre de points qui represente votre reptutation et votre mentalite de groupe. Si jamais un des deux tombe en dessous de 70 vous aurez perdu et pas fait le travail ncessaire pour mener a bien votre equipe dans cette quete </p>
 </div>
-    <transition name="play" appear :duration="100000" >
-    <router-link  class="button" to="/character" > {{button}} </router-link>
-    </transition>
+    <transition-group name="play" appear :duration="100000" >
+    <router-link :key="message" class="button" to="/character" > {{button}} </router-link>
+
+   <router-link :key="button" :to="'/game/' + step" class="button">Reprendre ma partie</router-link>
+    </transition-group>
+    
     <video autoplay muted id="myVideo">
   <source src="../assets/audio/trailer.mp4" type="video/mp4">
 </video>
 
   </div>
-
+ 
 </template>
 
 <script>
-
+import game from '../services/gameService'
 export default {
   data() {
     return {
       audio: false,
       message: 'ULTIMATE MANAGEMENT 19',
-      button: 'CLICKER POUR JOUER'
+      button: 'CLICKER POUR JOUER',
+      step: localStorage.getItem('step')
     }
   }
 }
