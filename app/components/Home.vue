@@ -4,7 +4,7 @@
     <h1 style="font-size: 100px; word-spacing: 50px;" >{{message}}</h1>
 <div style="border: 1px solid white; margin:30px; padding:30px; width: 555px;line-height: 30px;">
   <h2>Bienvenue sur ULTIMATE MANAGEMENT 19'  </h2>
- <p>Votre but est de faire les meilleurs choix possibles afin de gagner le dernier match de la saison qui sera decisif. Durant cette partie et en fonction du coach choisis vous aurez un nombre de points qui represente votre reptutation et votre mentalite de groupe. Si jamais un des deux tombe en dessous de 40 vous aurez perdu et pas fait le travail ncessaire pour mener a bien votre equipe dans cette quete </p>
+ <p>Votre but est de faire les meilleurs choix possibles afin de gagner le dernier match de la saison qui sera decisif. Durant cette partie et en fonction du coach choisis vous aurez un nombre de points qui represente votre reptutation et votre mentalite de groupe. Si jamais un des deux tombe en dessous de 70 vous aurez perdu et pas fait le travail ncessaire pour mener a bien votre equipe dans cette quete </p>
 </div>
     <transition name="play" appear :duration="100000" >
     <router-link  class="button" to="/character" > {{button}} </router-link>

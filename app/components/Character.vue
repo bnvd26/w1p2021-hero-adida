@@ -1,6 +1,11 @@
 <template>
-<transition name="rotate" appear>
-  <div class="big-header "  > 
+<transition 
+		v-on:enter="enter" 
+		v-on:leave="leave"
+		v-bind:css="false"
+		appear>
+  <div class="big-header page"  > 
+    <div class="center"></div>
     <h1 style="font-size: 40px; padding: 14px; border: 3px white solid; margin-top: 50px;">{{message}}</h1>
     <div style="display: flex; flex-direction: row; justify-content:space-around; width:100vw; margin:auto;">  
            <transition name="fadeInLeftBig" appear>
@@ -90,13 +95,64 @@ import data from '../data.json';
         localStorage.setItem('character', 'klopp')
         localStorage.setItem('points', 102)
         localStorage.setItem('Mentalite', 83)
-        }
+        },
+        enter(el, done) {
+			const tl = new TimelineMax({
+				onComplete: done
+			})
+			
+			tl.set(el, {
+				autoAlpha: 0,
+				scale: 2,
+				transformOrigin: '50% 50%'
+			})
+			
+			tl.to(el, 1, {
+				autoAlpha: 1,
+				scale: 1,
+				ease: Power4.easeOut
+			})
+		},
+		leave(el, done) {
+			TweenMax.to(el, 1, {
+				scale: 0,
+				ease: Power4.easeOut,
+				onComplete: done
+			});
+		}	
 
   }
     }
 
 </script>
 <style <style lang="scss" scoped>
+
+.active-animation {
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.page {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+
+	
+	.center {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		font-size: 3rem;
+		text-align: center;
+  }
+}
+
 
 
 .rotate-enter-active {

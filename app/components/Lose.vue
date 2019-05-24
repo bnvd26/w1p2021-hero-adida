@@ -1,15 +1,27 @@
 <template>
-  <div class="big-header">
-     <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;" >
-    <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;">
+<transition 
+		v-on:enter="enter" 
+		v-on:leave="leave"
+		v-bind:css="false"
+		appear>
+  <div class="big-header page">
+    <div class="center"></div>
    <h1>{{message}}</h1>
    <p>Malheursement l'aventure s'arrete ici avec {{perso}}</p>
-   <div v-if="perso == 'kombouare'">
+   <div v-if="perso == 'kombouare'" style="display: flex;flex-direction: column;align-items: center;">
+     <img src="../assets/images/relgation.jpeg" style="position: fixed; min-width: 100%; min-height:100%; z-index:-1; bottom:0; left:0;">
+     <p style="font-size: 40px;">Cest la furie dans le stade </p>
      <p>Votre equipe est releguee en deuxieme divison vous avez certainement pas fait les bons choix</p>
+   </div>
+     <div v-else-if="perso == 'klopp'" style="display: flex;flex-direction: column;align-items: center;">
+     <img src="../assets/images/deception.jpg" style="position: fixed; min-width: 100%; min-height:100%; z-index:-1; bottom:0; left:0;">
+     <p style="font-size: 40px;">QUELLE DECEPTION POUR LES JOUEURS ET LES SUPPORTERS</p>
+     <p>Votre equipe a perdue la finale vous avez certainement pas fait les bons choix</p>
    </div>
     <router-link class="button" to="/home">Go to Home</router-link>
     <router-link class="button" @click.prevent="clearScore()" to="/character">PLAY AGAIN</router-link>
   </div>
+</transition>
 </template>
 <script>
 import gameService from '../services/gameService'
@@ -18,7 +30,8 @@ export default {
       return {
         points: gameService.value(),
         perso: localStorage.getItem('character'),
-        message : "VOUS AVEZ PERDU !!!!!!!!"
+        message : "VOUS AVEZ PERDU !!",
+        komb: require('../assets/images/relgation.jpeg')
 
       }
     },
@@ -28,7 +41,55 @@ export default {
   localStorage.removeItem('step');
     
 },
+methods: {
+  enter(el, done) {
+			TweenMax.fromTo(el, 1, {
+				autoAlpha: 0,
+				scale: 1.5,
+			}, {
+				autoAlpha: 1,
+				scale: 1,
+				transformOrigin: '50% 50%',
+				ease: Power4.easeOut,
+				onComplete: done
+			});
+		},
+		leave(el, done) {
+			TweenMax.fromTo(el, 1, {
+				autoAlpha: 1,
+				scale: 1,
+			}, {
+				autoAlpha: 0,
+				scale: 0.8,
+				ease: Power4.easeOut,
+				onComplete: done
+      });
+
+    }
+}
+}
 
     
-};
+
 </script>
+
+<style lang="scss" scoped>
+.page {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+
+	
+	.center {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		font-size: 3rem;
+		text-align: center;
+  }
+}
+</style>

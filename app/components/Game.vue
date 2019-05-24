@@ -2,8 +2,8 @@
   <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false" appear>
     <div class="big-header page"  :key="message" v-if="isActive">
    
-       <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;" >
-    <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;">
+       <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%; background-color: white;" >
+    <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%; background-color: white;">
 			<div class="center"></div>
       <div v-if="character === 'klopp'" class="entraineurs__information">
         <img :src= "characterKlopp.src" style="width: 70px; height: 70px;">
@@ -30,11 +30,11 @@
               <img v-bind:src = "choice.srcKlopp" :alt="choice.altSrc" style="width: 200px;" >
               <router-link  :to="choice.link"  tag="button" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaKlopp}}  </router-link>
           </div>
-          <div v-if="character === 'zidane'" class="choice">
+          <div v-else-if="character === 'zidane'" class="choice">
               <img v-bind:src = "choice.srcZidane" :alt="choice.altSrc" style="width: 200px;" >
               <router-link  :to="choice.link" tag="button" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaZidane}}  </router-link>
           </div>
-          <div v-if="character === 'kombouare'" class="choice">
+          <div v-else-if="character === 'kombouare'" class="choice">
               <img v-bind:src = "choice.srcKombouare" :alt="choice.altSrc" style="width: 200px;" >
               <router-link  :to="choice.link" tag="button" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaKombouare}}  </router-link>
           </div>  
@@ -62,20 +62,29 @@ export default {
       step: this.getStep(),
       message: 'Everything is okay',
       audio: false,
+      player: null
       
     }
   }, 
+  create() {
+    setTimeout(() => {
+    this.player = localStorage.getItem('joueur recrute')
+    if(this.player = true) {
+      console.log('okay')
+    }
+    })
+  },
   mounted()  {
     setTimeout(() => {
     this.character = localStorage.getItem('character');
     this.points = localStorage.getItem('points') 
-    this.mental = localStorage.getItem('Mentalite')  
-    this.getStep();
-     
-    this.firstStep();
+    this.mental = localStorage.getItem('Mentalite') 
     
-
+    this.getStep();
+    this.firstStep();
     }) 
+
+    console.log(this.verfiyScore)
        
   },
   methods : { 
