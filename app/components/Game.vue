@@ -1,7 +1,7 @@
 <template id="page">
   <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false" appear>
     <div class="big-header page"  :key="message" v-if="isActive">
-   
+   <img src="../assets/images/bggame.jpg" style="position: fixed; max-width: 100%; max-height:100%; z-index:-1; bottom:0; left:0;">
        <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%; background-color: white;" >
     <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%; background-color: white;">
 			<div class="center"></div>
@@ -23,7 +23,7 @@
         <p>Reputation : {{points}}</p><br><p>Mentalite : {{mental}}</p>
       </div> 
       </div>     
-        <h1 style="font-size: 40px;">{{ level.question }}</h1>
+        <h1 style="font-size: 40px; color:#ffba57">{{ level.question }}</h1>
       <div class="answers">
         <div  v-for="choice in choices" v-bind:key="choice.message">
           <div v-if="character === 'klopp'" class="choice">
@@ -39,7 +39,7 @@
               <router-link  :to="choice.link" tag="button" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaKombouare}}  </router-link>
           </div>  
     </div>
-        <audio src="../assets/audio/soundOne.mp3" autoplay class="audio"></audio>
+        <audio v-if="audio" src="../assets/audio/soundOne.mp3" autoplay class="audio"></audio>
   </transition>
  
 </template>
@@ -61,7 +61,7 @@ export default {
       isActive: true,
       step: this.getStep(),
       message: 'Everything is okay',
-      audio: false,
+      audio: null,
       player: null
       
     }
@@ -79,6 +79,7 @@ export default {
     this.character = localStorage.getItem('character');
     this.points = localStorage.getItem('points') 
     this.mental = localStorage.getItem('Mentalite') 
+    this.audio = localStorage.getItem('audio')
     
     this.getStep();
     this.firstStep();
@@ -90,14 +91,17 @@ export default {
   methods : { 
 
        myAudio() {
-          this.audio = true;
-              let theaudio= document.querySelector('.audio')
-        theaudio.pause();
+          this.audio = true
+          document.querySelector('audio').pause();
         },
         notAudio() {
-          this.audio = false;
-              let theaudio= document.querySelector('.audio')
-        theaudio.play();
+          this.audio = false
+            document.querySelector('audio').play();
+       
+        },
+
+        decrementMax() {
+          gameService.decrementMax();
         },
 
     incrementSave() {

@@ -42,6 +42,10 @@ class GameService {
     localStorage.setItem('joueur recrute ', false)
   }
 
+  decrementMax() {
+    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))-100)
+  }
+
 
   playSound() {
 

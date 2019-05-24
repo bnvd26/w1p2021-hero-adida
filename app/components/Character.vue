@@ -5,6 +5,8 @@
 		v-bind:css="false"
 		appear>
   <div class="big-header page"  > 
+       <img src="../assets/images/bggame.jpg" style="position: fixed; max-width: 100%; max-height:100%; z-index:-1; bottom:0; left:0;">
+
     <div class="center"></div>
     <h1 style="font-size: 40px; padding: 14px; border: 3px white solid; margin-top: 50px;">{{message}}</h1>
     <div style="display: flex; flex-direction: row; justify-content:space-around; width:100vw; margin:auto;">  
@@ -29,6 +31,7 @@
 </div>  
 <transition name="modal">
   <div v-if="showModalOne" style="position: absolute;" id="modal-template" class="modal" >
+        <p>{{characterKlopp.description}}</p>
       <img :src="characterKlopp.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalOne = false">
     <router-link class="button" tag="button" to="game/1" @click.native="saveCharacterKlopp()"> {{characterKlopp.cta}} </router-link>
   </div> 
@@ -38,6 +41,7 @@
     <router-link class="button" tag="button" to="game/1" @click.native="saveCharacterKombouare()"> {{characterKombouare.cta}} </router-link>
   </div> 
    <div v-if="showModalThree" style="position: absolute;" id="modal-template" class="modal" >
+         <p>{{characterZidane.description}}</p>
       <img :src="characterZidane.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalThree = false">
     <router-link class="button"  tag="button" to="game/1" @click.native="saveCharacterZidane()"> {{characterZidane.cta}} </router-link>
   </div> 

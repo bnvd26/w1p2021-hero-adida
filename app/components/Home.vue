@@ -9,9 +9,10 @@
     <transition name="play" appear :duration="100000" >
     <router-link  class="button" to="/character" > {{button}} </router-link>
     </transition>
-    <video autoplay muted  id="myVideo">
+    <video autoplay muted id="myVideo">
   <source src="../assets/audio/trailer.mp4" type="video/mp4">
 </video>
+
   </div>
 
 </template>
@@ -27,6 +28,8 @@ export default {
     }
   }
 }
+
+
 
 
 </script>

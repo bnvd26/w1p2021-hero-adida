@@ -211,45 +211,52 @@
 }
   ,
   "8" : {
-    "question" : "Le match est decevant souhaitez vous faire entrer le joueur recruté en debut de partie ?",
+    "question" : "Le match est pour l'instant decevant passer les consignes a vos joueurs, faites attention a ne pas trop vous decouvrir il est encore tot dans le match ",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
           "link" : "/game/9",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
+          "messageCtaKombouare" : "Jouer plus defensif",
+          "messageCtaZidane" : "Jouer plus defensif",
+          "messageCtaKlopp" : "Jouer plus defensif",
           "choix" : "addMenta" 
         },
         "answerTwo" : {
           "message" : "No",
           "link" : "/game/9",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "decrementSave" 
-        
+          "messageCtaKombouare" : "Jouer a fond les coups",
+          "messageCtaZidane" : "Jouer a fond les coups",
+          "messageCtaKlopp" : "Jouer a fond les coups",
+          "choix" : "decrementMax"        
+        },
+        "answerThree" : {
+          "message" : "No",
+          "link" : "/game/9",
+          "messageCtaKombouare" : "Gros pressing",
+          "messageCtaZidane" : "Gros pressing",
+          "messageCtaKlopp" : "Gros pressing",
+          "choix" : "removeMenta"        
         }
       }
   },
   "9" : {
-    "question" : "On arrive a la 60eme minute le match est assez equilibr",
+    "question" : "On arrive a la 60eme minute le match sest nettement equilibre, lequipe den face est en palce il est temps de faire un changement tactique",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
           "link" : "/game/10",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "messageCtaKombouare" : "Passez en 4-4-2",
+          "messageCtaZidane" : "Passez en 4-4-2",
+          "messageCtaKlopp" : "Passez en 4-4-2",
+          "choix" : "addMenta" 
         },
         "answerTwo" : {
           "message" : "No",
           "link" : "/game/10",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "messageCtaKombouare" : "Passez en 5-4-1",
+          "messageCtaZidane" : "Passez en 5-4-1",
+          "messageCtaKlopp" : "Passez en 5-4-1",
+          "choix" : "removeMenta" 
         
         }
       }
@@ -260,18 +267,18 @@
         "answerOne" : {
           "message" : "Oui",
           "link" : "/win",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
+          "messageCtaKombouare" : "Tire le penlaty",
+          "messageCtaZidane" : "Tire le penlaty",
+          "messageCtaKlopp" : "Tire le penlaty",
           "choix" : "incrementSave" 
         },
         "answerTwo" : {
-          "message" : "No",
+          "message" : "Aux joueur de choisir entre eux",
           "link" : "/lose",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "messageCtaKombouare" : "Ne tire pas le penalty",
+          "messageCtaZidane" : "Ne tire pas le penalty",
+          "messageCtaKlopp" : "Ne tire pas le penalty",
+          "choix" : "decrementMax" 
         
         }
       }
