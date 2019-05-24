@@ -44,7 +44,7 @@
 
 "game" : {
   "1" : {
-    "question" : "Le coach peut recruter un de ces joueurs  ",
+    "question" : "Le coach peut recruter un de ces joueurs. Faites le bon choix  car il est possible qu'il  soit decisif pour le reste de la partie  ",
       "choices" : {
         "answerOne" : {
           "messageCtaKombouare" : "Recrtuez Gouiri",
@@ -56,7 +56,7 @@
           "messageCtaKlopp" : "Recruter Kompany",
           "srcKombouare" : "/images/cardGouiri.png",
           "altSrc" : "img-answer-one",
-          "choix" : "decrementSave"      
+          "choix" : "incrementSave"      
         },
         "answerTwo" : {
           "message" : "No",
@@ -109,117 +109,109 @@
       }
   },
   "3" : {
-    "question" : "prolongation ou pas du contrat de l’entraineur",
+    "question" : "L'entraineur arrive en fin de combat la saison n'est pas encore jouer, tout dependera du resultat du dernier match, voulez vous prendre le risque de prolonger le contrat du coach au sein du club",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
           "link" : "/game/4",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
+          "messageCtaKombouare" : "Prolonger",
+          "messageCtaZidane" : "Prolonger",
+          "messageCtaKlopp" : "Prolonger",
           "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "No",
           "link" : "/game/4",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
-        
-        }
-      }
-  },
-  "4" : {
-    "question" : "Les rumeurs disent que le president accorderait une prime pour chaque joueur s'ils remportent le dernier match.  Souhaitez vous accorder cette prime ?",
-      "choices" : {
-        "answerOne" : {
-          "message" : "Oui",
-          "link" : "/game/5",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
-        },
-        "answerTwo" : {
-          "message" : "No",
-          "link" : "/game/5",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
-        
-        }
-      }
-  },
-  "5" : {
-    "question" : "L'entraineur souhaiterais effectuer un entrainement a huis clos ce qui risque de deplaire fortement au supporter ou bien au contraire faire du bien a l'equipe", 
-      "choices" : {
-        "answerOne" : {
-          "message" : "Faire cet entrainement a huis clo",
-          "link" : "/game/6",
-          "messageCtaKombouare" : "Acceptez le huis clo",
-          "messageCtaZidane" : "Acceptez le huis clo",
-          "messageCtaKlopp" : "Acceptez le huis clo",
-          "choix" : "incrementSave" 
-        },
-        "answerTwo" : {
-          "message" : "Ne pas faire cet entrainementa huis clo",
-          "link" : "/game/6",
-          "messageCtaKombouare" : "Refuser",
-          "messageCtaZidane" : "Refuser",
-          "messageCtaKlopp" : "Refuser",
+          "messageCtaKombouare" : "Ne pas prolonger",
+          "messageCtaZidane" : "Ne pas prolonger",
+          "messageCtaKlopp" : "Ne pas prolonger",
           "choix" : "decrementSave" 
         
         }
       }
   },
-  "6" : {
-    "question" : "Souhaitez vous titulariser le joueur recruté au début de ce jeu ? ",
+  "4" : {
+    "question" : "Les rumeurs disent que le president accorderait une prime pour chaque joueur s'ils remportent le dernier match.  Souhaitez vous accorder cette prime ? Sachez que cela peut avoir de l'impact sur la mentalite du groupe",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
-          "link" : "/game/8",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
+          "link" : "/game/5",
+          "messageCtaKombouare" : "Accorder la prime",
+          "messageCtaZidane" : "Accorder la prime",
+          "messageCtaKlopp" : "Accorder la prime",
+          "choix" : "addMenta" 
+        },
+        "answerTwo" : {
+          "message" : "No",
+          "link" : "/game/5",
+          "messageCtaKombouare" : "Ne pas accorder la prime",
+          "messageCtaZidane" : "Ne pas accorder la prime",
+          "messageCtaKlopp" : "Ne pas accorder la prime",
+          "choix" : "removeMenta" 
+        
+        }
+      }
+  },
+  "5" : {
+    "question" : "Le president souhaiterais effectuer un entrainement a huis clos ce qui risque de deplaire fortement aux supporters ou bien au contraire faire du bien a l'equipe", 
+      "choices" : {
+        "answerOne" : {
+          "message" : "Faire cet entrainement a huis clo",
+          "link" : "/game/6",
+          "messageCtaKombouare" : "Maintenir le huis clo",
+          "messageCtaZidane" : "Maintenir le huis clo",
+          "messageCtaKlopp" : "Maintenir le huis clo",
+          "choix" : "addMenta" 
+        },
+        "answerTwo" : {
+          "message" : "Ne pas faire cet entrainement a huis clo",
+          "link" : "/game/6",
+          "messageCtaKombouare" : "Refuser",
+          "messageCtaZidane" : "Refuser",
+          "messageCtaKlopp" : "Refuser",
           "choix" : "incrementSave" 
+        
+        }
+      }
+  },
+  "6" : {
+    "question" : "J-1 avant le grand match, il est temps de faire des choix tactiques, souhaitez-vous titulariser votre joueur recruté au debut de la partie",
+      "choices" : {
+        "answerOne" : {
+          "message" : "Oui",
+          "link" : "/game/7",
+          "messageCtaKombouare" : "Titulaire",
+          "messageCtaZidane" : "Titulaire",
+          "messageCtaKlopp" : "Titulaire",
+          "choix" : "addStatuMental" 
         },
         "answerTwo" : {
           "message" : "Non",
           "link" : "/game/7",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "messageCtaKombouare" : "Remplacant",
+          "messageCtaZidane" : "Remplacant",
+          "messageCtaKlopp" : "Remplacant",
+          "choix" : "removeStatuMental" 
         
         }
       }
   },
   "7" : {
-    "question" : "match decevant souhaitez vous le faire entrer ",
+    "question" : "C'est le jour J, le match approche etes-vous pret ?",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
           "link" : "/game/8",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
-        },
-        "answerTwo" : {
-          "message" : "No",
-          "link" : "/game/8",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
-        
-        }
+          "messageCtaKombouare" : "Commencer le match",
+          "messageCtaZidane" : "Commencer le match",
+          "messageCtaKlopp" : "Commencer le match",
+          "choix" : "addMenta"
       }
-  },
+  }
+}
+  ,
   "8" : {
-    "question" : "Le joueur recrute fait un match decevant souhaitez vous le remplacer ?",
+    "question" : "Le match est decevant souhaitez vous faire entrer le joueur recruté en debut de partie ?",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",
@@ -227,7 +219,7 @@
           "messageCtaKombouare" : "Recrtuez Gouiri",
           "messageCtaZidane" : "Recruter Hazard",
           "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "choix" : "addMenta" 
         },
         "answerTwo" : {
           "message" : "No",
@@ -235,13 +227,13 @@
           "messageCtaKombouare" : "Recrtuez Gouiri",
           "messageCtaZidane" : "Recruter Hazard",
           "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "choix" : "decrementSave" 
         
         }
       }
   },
   "9" : {
-    "question" : "C'est l'heure du penalty ",
+    "question" : "On arrive a la 60eme minute le match est assez equilibr",
       "choices" : {
         "answerOne" : {
           "message" : "Oui",

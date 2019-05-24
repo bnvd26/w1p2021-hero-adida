@@ -103,6 +103,12 @@ export default {
     addMenta() {
       gameService.addMental();
     },
+    addStatuMental() {
+      gameService.addPlayerMental();
+    },
+    removeStatuMental() {
+      gameService.removePlayerMental();
+    },
     handle_function_call(function_name) {
        this[function_name]()
     },

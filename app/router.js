@@ -52,12 +52,11 @@ const verifyScore = router.beforeEach((to, from, next) => {
     setTimeout(() => {
   let scoring = localStorage.getItem('points')
   let mentality = localStorage.getItem('Mentalite')
+  let statuPlayer = localStorage.getItem('joueur recrute')
   if (scoring < 40 || mentality < 40) {
     next({name: 'lose'})
-  } 
-  else {
-      next()
-        }
+  }
+  else next()
       })
     }
   next()

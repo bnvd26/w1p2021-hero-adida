@@ -15,21 +15,31 @@ class GameService {
     localStorage.getItem('points')
   }
   localStorageAddGet() {
-    localStorage.setItem('points',parseInt(localStorage.getItem('points'))+20)
-    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))+5)
+    localStorage.setItem('points',parseInt(localStorage.getItem('points'))+10)
+    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))+8)
 
   }
   localStorageRemoveGet() {
-    localStorage.setItem('points',parseInt(localStorage.getItem('points'))-20)
-    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))-5)
+    localStorage.setItem('points',parseInt(localStorage.getItem('points'))-18)
+    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))-10)
   }
   
   removeMental() {
-    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))-7)
+    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))-10)
   }
 
   addMental() {
     localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))+7)
+  }
+
+  addPlayerMental() {
+    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))+9)
+    localStorage.setItem('joueur recrute ', true)
+  }
+
+  removePlayerMental() {
+    localStorage.setItem('Mentalite',parseInt(localStorage.getItem('Mentalite'))-15)
+    localStorage.setItem('joueur recrute ', false)
   }
 
 
