@@ -274,7 +274,7 @@
         },
         "answerTwo" : {
           "message" : "Aux joueur de choisir entre eux",
-          "link" : "/lose",
+          "link" : "/win",
           "messageCtaKombouare" : "Ne tire pas le penalty",
           "messageCtaZidane" : "Ne tire pas le penalty",
           "messageCtaKlopp" : "Ne tire pas le penalty",
