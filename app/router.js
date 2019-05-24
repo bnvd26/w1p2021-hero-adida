@@ -51,7 +51,8 @@ const verifyScore = router.beforeEach((to, from, next) => {
   if (to.meta.requiresFourty) {   
     setTimeout(() => {
   let scoring = localStorage.getItem('points')
-  if (scoring < 40) {
+  let mentality = localStorage.getItem('Mentalite')
+  if (scoring < 40 || mentality < 40) {
     next({name: 'lose'})
   } 
   else {

@@ -1,6 +1,7 @@
 <template id="page">
   <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false" appear>
     <div class="big-header page"  :key="message" v-if="isActive">
+   
        <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;" >
     <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;">
 			<div class="center"></div>
@@ -27,18 +28,20 @@
         <div  v-for="choice in choices" v-bind:key="choice.message">
           <div v-if="character === 'klopp'" class="choice">
               <img v-bind:src = "choice.srcKlopp" :alt="choice.altSrc" style="width: 200px;" >
-              <router-link  :to="choice.link" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaKlopp}}  </router-link>
+              <router-link  :to="choice.link"  tag="button" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaKlopp}}  </router-link>
           </div>
           <div v-if="character === 'zidane'" class="choice">
               <img v-bind:src = "choice.srcZidane" :alt="choice.altSrc" style="width: 200px;" >
-              <router-link  :to="choice.link" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaZidane}}  </router-link>
+              <router-link  :to="choice.link" tag="button" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaZidane}}  </router-link>
           </div>
           <div v-if="character === 'kombouare'" class="choice">
               <img v-bind:src = "choice.srcKombouare" :alt="choice.altSrc" style="width: 200px;" >
-              <router-link  :to="choice.link" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaKombouare}}  </router-link>
+              <router-link  :to="choice.link" tag="button" class="button"  v-on:click.native="handle_function_call(choice.choix)" >  {{choice.messageCtaKombouare}}  </router-link>
           </div>  
     </div>
+        <audio src="../assets/audio/soundOne.mp3" autoplay class="audio"></audio>
   </transition>
+ 
 </template>
 <script>
 
@@ -59,29 +62,46 @@ export default {
       step: this.getStep(),
       message: 'Everything is okay',
       audio: false,
+      
     }
-  },
+  }, 
   mounted()  {
     setTimeout(() => {
     this.character = localStorage.getItem('character');
     this.points = localStorage.getItem('points') 
     this.mental = localStorage.getItem('Mentalite')  
     this.getStep();
-    this.firstStep();    
-    })      
+     
+    this.firstStep();
+    
+
+    }) 
+       
   },
-  methods : {   
-      myAudio() {
-     this.audio = true;
-    },
-    notAudio() {
-      this.audio = false;
-    },
+  methods : { 
+
+       myAudio() {
+          this.audio = true;
+              let theaudio= document.querySelector('.audio')
+        theaudio.pause();
+        },
+        notAudio() {
+          this.audio = false;
+              let theaudio= document.querySelector('.audio')
+        theaudio.play();
+        },
+
     incrementSave() {
       gameService.localStorageAddGet();
     },
     decrementSave() {
       gameService.localStorageRemoveGet();
+    },
+    removeMenta() {
+      gameService.removeMental();
+    },
+    addMenta() {
+      gameService.addMental();
     },
     handle_function_call(function_name) {
        this[function_name]()
@@ -153,9 +173,12 @@ export default {
 				ease: Power4.easeOut,
 				onComplete: done
 			});
-    } 
+    }
+    
   } 
 }
+
+
 </script>
 
 

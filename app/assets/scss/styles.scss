@@ -73,11 +73,14 @@ textarea {
   height: 40px;
   @include flex-center;
   flex-direction: column;
+  outline-style: none;
+  cursor: pointer;
+
 
 }
 
 .button:hover {
-  
+
 }
 
 .flex-center {

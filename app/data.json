@@ -85,25 +85,25 @@
       }
   },
   "2" : {
-    "question" : "Choix du numero ",
+    "question" : "A present votre joueur recrute il faut lui attribuer un numero il se peut que le joueur ait une preferance",
       "choices" : {
         "answerOne" : {
           "message" : "7",
           "link" : "/game/3",
-          "srcZidane" : "/images/cardDelaplace.png",
-          "altSrc" : "img-answer-one",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
+   
+     
+          "messageCtaKombouare" : "Attribuez le numero 7",
+          "messageCtaZidane" : "Attribuez le numero 7",
+          "messageCtaKlopp" : "Attribuez le numero 7",
           "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "10",
           "link" : "/game/3",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "messageCtaKombouare" : "Attribuez le numero 10",
+          "messageCtaZidane" : "Attribuez le numero 10",
+          "messageCtaKlopp" : "Attribuez le numero 10",
+          "choix" : "addMenta" 
         
         }
       }
@@ -158,18 +158,18 @@
         "answerOne" : {
           "message" : "Faire cet entrainement a huis clo",
           "link" : "/game/6",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
+          "messageCtaKombouare" : "Acceptez le huis clo",
+          "messageCtaZidane" : "Acceptez le huis clo",
+          "messageCtaKlopp" : "Acceptez le huis clo",
           "choix" : "incrementSave" 
         },
         "answerTwo" : {
           "message" : "Ne pas faire cet entrainementa huis clo",
           "link" : "/game/6",
-          "messageCtaKombouare" : "Recrtuez Gouiri",
-          "messageCtaZidane" : "Recruter Hazard",
-          "messageCtaKlopp" : "Recruter Vidal",
-          "choix" : "incrementSave" 
+          "messageCtaKombouare" : "Refuser",
+          "messageCtaZidane" : "Refuser",
+          "messageCtaKlopp" : "Refuser",
+          "choix" : "decrementSave" 
         
         }
       }

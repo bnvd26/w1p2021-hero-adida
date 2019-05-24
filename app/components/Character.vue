@@ -1,42 +1,40 @@
 <template>
 <transition name="rotate" appear>
   <div class="big-header "  > 
-      <img @click="notAudio()" v-if="audio" src="../assets/images/sound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;" >
-    <img @click="myAudio()" v-if="!audio" src="../assets/images/noSound.svg" style="width: 50px; position:absolute; left: 3.5%; top: 5%;">
     <h1 style="font-size: 40px; padding: 14px; border: 3px white solid; margin-top: 50px;">{{message}}</h1>
     <div style="display: flex; flex-direction: row; justify-content:space-around; width:100vw; margin:auto;">  
-           <transition-group name="fadeInLeftBig" appear>
+           <transition name="fadeInLeftBig" appear>
           <div v-if="transition" :key="visible" class="flex-center" @click="showModalsTwo()">
               <img :src="characterKombouare.src"  :alt="characterKombouare.altSrc"  style="height: 220px;">
               <p style="font-size: 30px;">{{characterKombouare.title}} 🇫🇷</p>
         </div>
-          </transition-group>
-             <transition-group name="fadeInUp" appear>
+          </transition>
+             <transition name="fadeInUp" appear>
           <div v-if="transition" :key="visible" class="flex-center" @click="showModalsOne()">
               <img  :src="characterKlopp.src"  :alt="characterKlopp.altSrc"  style="height: 220px;">
                 <p style="font-size: 30px;">{{characterKlopp.title}} 🇩🇪</p>
         </div>
-          </transition-group>
-           <transition-group name="fadeInRightBig" appear >
+          </transition>
+           <transition name="fadeInRightBig" appear >
           <div v-if="transition" :key="visible" class="flex-center" @click="showModalsThree()">
             <img :src="characterZidane.src"  :alt="characterZidane.altSrc"  style="height: 220px;">
               <p style="font-size: 30px;">{{characterZidane.title}} 🇫🇷</p>
         </div>
-          </transition-group>
+          </transition>
 </div>  
 <transition name="modal">
   <div v-if="showModalOne" style="position: absolute;" id="modal-template" class="modal" >
       <img :src="characterKlopp.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalOne = false">
-    <router-link class="button" to="game/1" @click.native="saveCharacterKlopp()"> {{characterKlopp.cta}} </router-link>
+    <router-link class="button" tag="button" to="game/1" @click.native="saveCharacterKlopp()"> {{characterKlopp.cta}} </router-link>
   </div> 
    <div v-if="showModalTwo" style="position: absolute;" id="modal-template" class="modal" >
      <p>{{characterKombouare.description}}</p>
       <img :src="characterKombouare.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalTwo = false">
-    <router-link class="button" to="game/1" @click.native="saveCharacterKombouare()"> {{characterKombouare.cta}} </router-link>
+    <router-link class="button" tag="button" to="game/1" @click.native="saveCharacterKombouare()"> {{characterKombouare.cta}} </router-link>
   </div> 
    <div v-if="showModalThree" style="position: absolute;" id="modal-template" class="modal" >
       <img :src="characterZidane.closeSvg" style="width: 40px; height:40px; cursor: pointer; position:absolute; right:10px; top:10px;" @click="showModalThree = false">
-    <router-link class="button" to="game/1" @click.native="saveCharacterZidane()"> {{characterZidane.cta}} </router-link>
+    <router-link class="button"  tag="button" to="game/1" @click.native="saveCharacterZidane()"> {{characterZidane.cta}} </router-link>
   </div> 
 </transition>
 <transition>
@@ -69,12 +67,6 @@ import data from '../data.json';
 },
   
   methods : {
-        myAudio() {
-          this.audio = true;
-        },
-        notAudio() {
-          this.audio = false;
-        },
         showModalsOne() {
           this.showModalOne = true;
         },
